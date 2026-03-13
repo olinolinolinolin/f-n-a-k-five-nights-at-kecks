@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://rp6f2m5iqiki"]
+
+[ext_resource type="PackedScene" uid="uid://bowe1withyrll" path="res://couch.tscn" id="1_0tj10"]
+[ext_resource type="Script" uid="uid://cw1l75xcsucjy" path="res://testhub_1.gd" id="1_l4bsx"]
+[ext_resource type="Script" uid="uid://dowvjaorvyddf" path="res://playerfnak1.gd" id="2_l4bsx"]
+[ext_resource type="PackedScene" uid="uid://lerqbjeo7kad" path="res://phonescreen.tscn" id="4_iquic"]
+[ext_resource type="Script" uid="uid://dennvt4mxtvc1" path="res://fnak1phone.gd" id="4_l2drd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l2drd"]
+viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iquic"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_iquic"]
+resource_local_to_scene = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iquic"]
+viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_82okx"]
+viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2drd"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_iquic")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_82okx")
+
+[sub_resource type="Environment" id="Environment_l4bsx"]
+background_mode = 1
+
+[node name="Node3D" type="Node3D" unique_id=687863000]
+script = ExtResource("1_l4bsx")
+
+[node name="Room1" type="CSGBox3D" parent="." unique_id=648013926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19995117, 0, 0)
+use_collision = true
+size = Vector3(50, 10, 30)
+
+[node name="Room-" type="CSGBox3D" parent="Room1" unique_id=849087352]
+operation = 2
+size = Vector3(48, 9, 28)
+
+[node name="Couch" parent="." unique_id=953036864 instance=ExtResource("1_0tj10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.045616, -3.999998, 1.1865153)
+
+[node name="Player" type="Node3D" parent="." unique_id=1091223669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1069965, 0, -8.638553)
+script = ExtResource("2_l4bsx")
+
+[node name="Player Camera" type="Camera3D" parent="Player" unique_id=1715869540]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Phone" type="CSGBox3D" parent="Player/Player Camera" unique_id=539443802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120277405, -0.026115388, -0.5054045)
+layers = 2
+size = Vector3(0.5, 1, 0.1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Player Camera/Phone" unique_id=217774569]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
+light_energy = 0.4
+light_indirect_energy = 0.4
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 27.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player/Player Camera/Phone" unique_id=829646916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 0, 0.20501566)
+light_energy = 0.2
+light_bake_mode = 1
+light_cull_mask = 4294967294
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Player/Player Camera/Phone" unique_id=475394090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33771825, -0.529721, 0.10998821)
+radius = 0.32545885
+
+[node name="Sprite3D" type="Sprite3D" parent="Player/Player Camera/Phone" unique_id=445940984]
+transform = Transform3D(0.08790785, 0, 0, 0, 0.18719022, 0, 8.881784e-16, 0, 0.99999994, 0, 0, 0.0524745)
+visible = false
+texture = SubResource("ViewportTexture_l2drd")
+
+[node name="PhoneBody" type="StaticBody3D" parent="Player/Player Camera/Phone" unique_id=1840292616]
+transform = Transform3D(0.40499997, 0, 0, 0, 0.85, 0, 0, 0, 0.99999994, -3.8146973e-06, 0, 0.060123444)
+script = ExtResource("4_l2drd")
+
+[node name="PhoneCollision" type="CollisionShape3D" parent="Player/Player Camera/Phone/PhoneBody" unique_id=1795340267]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, -3.5527137e-15, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_iquic")
+
+[node name="PhoneScreen" type="MeshInstance3D" parent="Player/Player Camera/Phone/PhoneBody" unique_id=631315197]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, -3.5527137e-15, 0, 1, 9.536743e-07, 0, 0)
+mesh = SubResource("QuadMesh_iquic")
+surface_material_override/0 = SubResource("StandardMaterial3D_l2drd")
+
+[node name="SubViewport" type="SubViewport" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen" unique_id=760432024]
+
+[node name="Phone Screen Texture" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport" unique_id=1918666695 instance=ExtResource("4_iquic")]
+offset_left = 390.0
+offset_top = 6.0
+offset_right = -366.0
+offset_bottom = -3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782115699]
+environment = SubResource("Environment_l4bsx")
