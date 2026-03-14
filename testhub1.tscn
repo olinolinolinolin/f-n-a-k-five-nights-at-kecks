@@ -53,7 +53,7 @@ script = ExtResource("2_l4bsx")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Phone" type="CSGBox3D" parent="Player/Player Camera" unique_id=539443802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120277405, -0.026115388, -0.5054045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.04, -1)
 layers = 2
 size = Vector3(0.5, 1, 0.1)
 
