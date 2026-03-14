@@ -2,6 +2,7 @@ extends Node3D
 @onready var camera = $"Player Camera"
 @onready var phone = $"Player Camera/Phone"
 var phoneinface = false
+var phonelighton = true
 
 
 
@@ -40,3 +41,13 @@ func camera_rotation(event: InputEvent):
 		camera.rotate_x(event.relative.y * .001)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
 		camera.rotation.z = clamp(camera.rotation.z,0,0)
+
+
+func _on_phone_screen_texture_light_off() -> void:
+	if phonelighton == true:
+		$"Player Camera/Phone/PhoneLight".hide()
+		phonelighton = false
+	else:
+		$"Player Camera/Phone/PhoneLight".show()
+		phonelighton = true
+	

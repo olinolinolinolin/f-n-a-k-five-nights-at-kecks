@@ -1,5 +1,7 @@
 extends Control
 
+signal LightOff
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("holy moly this works")
+
+
+func _on_button_3_pressed() -> void:
+	LightOff.emit()

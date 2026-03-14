@@ -15,15 +15,11 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 [sub_resource type="QuadMesh" id="QuadMesh_iquic"]
 resource_local_to_scene = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_iquic"]
-viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_82okx"]
 viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2drd"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_iquic")
 emission_enabled = true
 emission_texture = SubResource("ViewportTexture_82okx")
 
@@ -57,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.04, -1)
 layers = 2
 size = Vector3(0.5, 1, 0.1)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Player/Player Camera/Phone" unique_id=217774569]
+[node name="PhoneLight" type="SpotLight3D" parent="Player/Player Camera/Phone" unique_id=217774569]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
 light_energy = 0.4
 light_indirect_energy = 0.4
@@ -67,6 +63,7 @@ spot_range = 27.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/Player Camera/Phone" unique_id=829646916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 0, 0.20501566)
+visible = false
 light_energy = 0.2
 light_bake_mode = 1
 light_cull_mask = 4294967294
@@ -103,3 +100,5 @@ offset_bottom = -3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782115699]
 environment = SubResource("Environment_l4bsx")
+
+[connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
