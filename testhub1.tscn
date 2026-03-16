@@ -20,11 +20,14 @@ viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubVi
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2drd"]
 resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission_texture = SubResource("ViewportTexture_82okx")
 
 [sub_resource type="Environment" id="Environment_l4bsx"]
 background_mode = 1
+ssil_enabled = true
+glow_enabled = true
 
 [node name="Node3D" type="Node3D" unique_id=687863000]
 script = ExtResource("1_l4bsx")
@@ -59,14 +62,17 @@ light_energy = 0.4
 light_indirect_energy = 0.4
 light_bake_mode = 1
 shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 27.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/Player Camera/Phone" unique_id=829646916]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 0, 0.20501566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, -0.08314744, 0.1980896)
 visible = false
 light_energy = 0.2
 light_bake_mode = 1
 light_cull_mask = 4294967294
+shadow_enabled = true
+omni_range = 0.27577606
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Player/Player Camera/Phone" unique_id=475394090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33771825, -0.529721, 0.10998821)

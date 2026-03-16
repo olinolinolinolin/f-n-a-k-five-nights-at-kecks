@@ -30,7 +30,8 @@ func _process(delta: float) -> void:
 			tween.tween_property(phone, "position",phonelocations[0],.5)
 			phoneinface = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 func _unhandled_input(event: InputEvent):
 	camera_rotation(event)
 
@@ -40,7 +41,7 @@ func camera_rotation(event: InputEvent):
 		
 		camera.rotate_x(event.relative.y * .001)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
-		camera.rotation.z = clamp(camera.rotation.z,0,0)
+		camera.rotation.z = clamp(camera.rotation.z,deg_to_rad(0),deg_to_rad(0))
 
 
 func _on_phone_screen_texture_light_off() -> void:
