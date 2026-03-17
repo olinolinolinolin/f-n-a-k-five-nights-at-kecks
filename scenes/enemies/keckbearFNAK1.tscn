@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://mr6vad7ungy7"]
+
+[ext_resource type="Texture2D" uid="uid://cnuksv68vg2ff" path="res://assets/sprites/test assets/Keckbear.png" id="1_4c2xy"]
+[ext_resource type="Script" uid="uid://cccrw2ickqaof" path="res://scenes/enemies/KeckbearFNAK1.gd" id="1_6glov"]
+
+[sub_resource type="Curve3D" id="Curve3D_40k8i"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 51.136112, -6.219528, -2.7548084, 0, 0, 0, 0, 0, 0, 9.796806, -1.9178119, -3.0025024, 0, 0, 0, 0, 0, 0, -6.267808, 2.4543862, -11.300228),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="Keckbear" type="Node3D" unique_id=376216375]
+script = ExtResource("1_6glov")
+attacktime1 = 5.0
+attacktime2 = 10.0
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1077918954]
+curve = SubResource("Curve3D_40k8i")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=164052617]
+transform = Transform3D(0.005991736, 0.103496194, 0.99461186, -1.1175871e-08, 0.9946297, -0.10349805, -0.99998206, 0.00062012183, 0.005959559, 51.136112, -6.219528, -2.7548084)
+
+[node name="Sprite3D" type="Sprite3D" parent="Path3D/PathFollow3D" unique_id=473914356]
+visible = false
+billboard = 1
+shaded = true
+texture = ExtResource("1_4c2xy")
+
+[node name="visibletime" type="Timer" parent="." unique_id=1226658766]
+
+[connection signal="timeout" from="visibletime" to="." method="_on_visibletime_timeout"]

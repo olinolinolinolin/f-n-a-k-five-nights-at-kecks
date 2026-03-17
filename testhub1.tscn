@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dowvjaorvyddf" path="res://playerfnak1.gd" id="2_l4bsx"]
 [ext_resource type="PackedScene" uid="uid://lerqbjeo7kad" path="res://phonescreen.tscn" id="4_iquic"]
 [ext_resource type="Script" uid="uid://dennvt4mxtvc1" path="res://fnak1phone.gd" id="4_l2drd"]
+[ext_resource type="PackedScene" uid="uid://mr6vad7ungy7" path="res://scenes/enemies/keckbearFNAK1.tscn" id="6_82okx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l2drd"]
 viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
@@ -28,6 +29,13 @@ emission_texture = SubResource("ViewportTexture_82okx")
 background_mode = 1
 ssil_enabled = true
 glow_enabled = true
+
+[sub_resource type="Curve3D" id="Curve3D_82okx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 45.136112, -0.2195282, -2.7548084, 0, 0, 0, 0, 0, 0, 38, 0, 20, 0, 0, 0, 0, 0, 0, 9.796806, 0.08218813, 8.997498, 0, 0, 0, 0, 0, 0, -34.267998, 0.454, 12.7, 0, 0, 0, 0, 0, 0, -44.474342, -0.20678449, -14.588361),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Node3D" type="Node3D" unique_id=687863000]
 script = ExtResource("1_l4bsx")
@@ -107,4 +115,36 @@ offset_bottom = -3.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782115699]
 environment = SubResource("Environment_l4bsx")
 
+[node name="HideBasic" type="Control" parent="." unique_id=194987521]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HideBasic" unique_id=73044547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Keckbear" parent="." unique_id=376216375 instance=ExtResource("6_82okx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
+
+[node name="Path3D" parent="Keckbear" index="0" unique_id=1077918954]
+curve = SubResource("Curve3D_82okx")
+
+[node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
+transform = Transform3D(-0.9541746, 0.0027543555, 0.2992238, 2.3282974e-10, 0.9998968, -0.009205024, -0.29923776, -0.008782769, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+loop = false
+
+[connection signal="dead" from="Player" to="Keckbear" method="_on_player_dead"]
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
+[connection signal="attackplayer" from="Keckbear" to="Player" method="_on_keckbear_attackplayer"]
+
+[editable path="Keckbear"]

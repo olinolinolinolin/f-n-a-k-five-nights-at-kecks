@@ -3,6 +3,8 @@ extends Node3D
 @onready var phone = $"Player Camera/Phone"
 var phoneinface = false
 var phonelighton = true
+var hiding = false
+signal dead
 
 
 
@@ -17,7 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and hiding == false:
 		if phoneinface == false:
 			var tween = create_tween()
 			tween.tween_property(phone, "position",phonelocations[1],.25)
@@ -32,6 +34,14 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+	if Input.is_action_just_pressed("hide"):
+		if hiding == true:
+			$"../HideBasic".hide()
+			hiding = false
+		else:
+			$"../HideBasic".show()
+			hiding = true
 func _unhandled_input(event: InputEvent):
 	camera_rotation(event)
 
@@ -52,3 +62,11 @@ func _on_phone_screen_texture_light_off() -> void:
 		$"Player Camera/Phone/PhoneLight".show()
 		phonelighton = true
 	
+
+
+func _on_keckbear_attackplayer() -> void:
+	if hiding == true:
+		print("living")
+	else:
+		print("dead af")
+	dead.emit(hiding)
