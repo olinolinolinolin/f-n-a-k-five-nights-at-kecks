@@ -18,9 +18,9 @@ func _process(delta: float) -> void:
 		forward = false
 	if $Path3D/PathFollow3D.progress_ratio == 0.0:
 		forward = true
-	if forward == true:
+	if forward == true and canbeseen == false:
 		$Path3D/PathFollow3D.progress_ratio += .1 * delta
-	else:
+	if forward == false and canbeseen == false:
 		$Path3D/PathFollow3D.progress_ratio -= .1 * delta
 
 func determinetimetoscare():
@@ -29,6 +29,7 @@ func determinetimetoscare():
 
 func _on_visibletime_timeout() -> void:
 	canbeseen = true
+	$Path3D/PathFollow3D/Sprite3D/SoundFX.play()
 	$Path3D/PathFollow3D/Sprite3D.show()
 	await get_tree().create_timer(5).timeout
 	attackplayer.emit()
@@ -38,5 +39,7 @@ func _on_visibletime_timeout() -> void:
 func _on_player_dead(hiding) -> void:
 	if hiding == true:
 		$Path3D/PathFollow3D/Sprite3D.hide()
+		determinetimetoscare()
+		canbeseen = false
 	else:
 		pass

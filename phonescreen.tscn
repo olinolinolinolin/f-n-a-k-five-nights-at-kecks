@@ -42,35 +42,19 @@ icon = ExtResource("1_c7pon")
 
 [node name="Button2" type="Button" parent="GridContainer" unique_id=2048746886]
 layout_mode = 2
-text = "app 2"
+icon = ExtResource("1_c7pon")
 
 [node name="Button3" type="Button" parent="GridContainer" unique_id=1759352543]
 layout_mode = 2
-text = "Flashglight"
+text = "Flashlight"
 
 [node name="Button4" type="Button" parent="GridContainer" unique_id=1532941844]
 layout_mode = 2
-text = "app 4"
+icon = ExtResource("1_c7pon")
 
 [node name="Button5" type="Button" parent="GridContainer" unique_id=1359262743]
 layout_mode = 2
-text = "app 5"
-
-[node name="Button6" type="Button" parent="GridContainer" unique_id=1379492349]
-layout_mode = 2
-text = "app 6"
-
-[node name="Button7" type="Button" parent="GridContainer" unique_id=512707426]
-layout_mode = 2
-text = "app 7"
-
-[node name="Button8" type="Button" parent="GridContainer" unique_id=679782179]
-layout_mode = 2
-text = "app 8"
-
-[node name="Button9" type="Button" parent="GridContainer" unique_id=1179170005]
-layout_mode = 2
-text = "app 9"
+icon = ExtResource("1_c7pon")
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_3_pressed"]

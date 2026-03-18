@@ -32,7 +32,7 @@ glow_enabled = true
 
 [sub_resource type="Curve3D" id="Curve3D_82okx"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 45.136112, -0.2195282, -2.7548084, 0, 0, 0, 0, 0, 0, 38, 0, 20, 0, 0, 0, 0, 0, 0, 9.796806, 0.08218813, 8.997498, 0, 0, 0, 0, 0, 0, -34.267998, 0.454, 12.7, 0, 0, 0, 0, 0, 0, -44.474342, -0.20678449, -14.588361),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 45.136112, -0.2195282, -2.7548084, 0, 0, 0, 0, 0, 0, 38, 0, 20, 0, 0, 0, 0, 0, 0, 9.796806, 0.08218813, 16.997498, 0, 0, 0, 0, 0, 0, -10.267998, 0.454, 12.7, 0, 0, 0, 0, 0, 0, -12.474342, 0.99321556, -14.588361),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -46,8 +46,9 @@ use_collision = true
 size = Vector3(50, 10, 30)
 
 [node name="Room-" type="CSGBox3D" parent="Room1" unique_id=849087352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0)
 operation = 2
-size = Vector3(48, 9, 28)
+size = Vector3(33, 9, 28)
 
 [node name="Couch" parent="." unique_id=953036864 instance=ExtResource("1_0tj10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.045616, -3.999998, 1.1865153)
@@ -140,10 +141,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027543555, 0.2992238, 2.3282974e-10, 0.9998968, -0.009205024, -0.29923776, -0.008782769, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.002754294, 0.2992238, 2.3282974e-10, 0.99987453, -0.009205024, -0.29923776, -0.008782572, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
 [connection signal="dead" from="Player" to="Keckbear" method="_on_player_dead"]
+[connection signal="usingphone" from="Player" to="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" method="_on_player_usingphone"]
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
 [connection signal="attackplayer" from="Keckbear" to="Player" method="_on_keckbear_attackplayer"]
 

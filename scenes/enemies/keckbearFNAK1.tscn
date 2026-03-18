@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnuksv68vg2ff" path="res://assets/sprites/test assets/Keckbear.png" id="1_4c2xy"]
 [ext_resource type="Script" uid="uid://cccrw2ickqaof" path="res://scenes/enemies/KeckbearFNAK1.gd" id="1_6glov"]
+[ext_resource type="AudioStream" uid="uid://cvwpyqv6bmjo2" path="res://assets/audio/grrrr.wav" id="3_mjmd0"]
 
 [sub_resource type="Curve3D" id="Curve3D_40k8i"]
 _data = {
@@ -26,6 +27,10 @@ visible = false
 billboard = 1
 shaded = true
 texture = ExtResource("1_4c2xy")
+
+[node name="SoundFX" type="AudioStreamPlayer3D" parent="Path3D/PathFollow3D/Sprite3D" unique_id=542525746]
+transform = Transform3D(0.0059917346, -1.1175869e-08, -0.999982, 0.10349618, 0.9946296, 0.00062012183, 0.99461174, -0.10349804, 0.0059595583, 0, 0, 0)
+stream = ExtResource("3_mjmd0")
 
 [node name="visibletime" type="Timer" parent="." unique_id=1226658766]
 
