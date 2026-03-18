@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bh0g3c3j7amr6"]
+
+[ext_resource type="Texture2D" uid="uid://d1vdxplc4t305" path="res://assets/sprites/test assets/Shadow Keckbear.png" id="1_2d11o"]
+[ext_resource type="Script" uid="uid://ckn3jxs1gsv4o" path="res://scenes/enemies/shadow_keckbear_fnak_1.gd" id="1_ekp4g"]
+[ext_resource type="AudioStream" uid="uid://ddcirvihhg46a" path="res://assets/audio/shadowkecknoise.wav" id="3_ef1ek"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekp4g"]
+size = Vector3(3, 7, 3)
+
+[node name="ShadowKeckbearFnak1" type="Node3D" unique_id=1364804302]
+script = ExtResource("1_ekp4g")
+attacktime1 = 7.0
+attacktime2 = 10.0
+
+[node name="KeckbearSprite" type="Sprite3D" parent="." unique_id=1800887309]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+billboard = 1
+shaded = true
+texture = ExtResource("1_2d11o")
+
+[node name="KeckbearBody" type="StaticBody3D" parent="." unique_id=305537794 groups=["Shadow"]]
+
+[node name="KeckbearCollision" type="CollisionShape3D" parent="KeckbearBody" unique_id=1575971785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018912792, 0)
+shape = SubResource("BoxShape3D_ekp4g")
+
+[node name="CrashoutTimer" type="Timer" parent="." unique_id=1776759098]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1405949062]
+one_shot = true
+
+[node name="ShadowSFX" type="AudioStreamPlayer3D" parent="." unique_id=721076619]
+stream = ExtResource("3_ef1ek")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

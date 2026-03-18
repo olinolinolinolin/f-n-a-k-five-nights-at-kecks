@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://lerqbjeo7kad" path="res://phonescreen.tscn" id="4_iquic"]
 [ext_resource type="Script" uid="uid://dennvt4mxtvc1" path="res://fnak1phone.gd" id="4_l2drd"]
 [ext_resource type="PackedScene" uid="uid://mr6vad7ungy7" path="res://scenes/enemies/keckbearFNAK1.tscn" id="6_82okx"]
+[ext_resource type="PackedScene" uid="uid://bh0g3c3j7amr6" path="res://scenes/enemies/ShadowKeckbearFNAK1.tscn" id="7_5ht26"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5ht26"]
+height = 21.0
+radius = 2.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l2drd"]
 viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
@@ -72,7 +77,13 @@ light_indirect_energy = 0.4
 light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
-spot_range = 27.0
+spot_range = 50.0
+
+[node name="FlashLightArea" type="Area3D" parent="Player/Player Camera/Phone/PhoneLight" unique_id=309917819]
+
+[node name="FlashLightCollison" type="CollisionShape3D" parent="Player/Player Camera/Phone/PhoneLight/FlashLightArea" unique_id=580639316]
+transform = Transform3D(1, -8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371139e-08, 1, -8.742278e-08, -1, -4.371138e-08, -1.1920929e-06, -4.1350722e-07, -10.5)
+shape = SubResource("CylinderShape3D_5ht26")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/Player Camera/Phone" unique_id=829646916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, -0.08314744, 0.1980896)
@@ -89,11 +100,10 @@ radius = 0.32545885
 
 [node name="Sprite3D" type="Sprite3D" parent="Player/Player Camera/Phone" unique_id=445940984]
 transform = Transform3D(0.08790785, 0, 0, 0, 0.18719022, 0, 8.881784e-16, 0, 0.99999994, 0, 0, 0.0524745)
-visible = false
 texture = SubResource("ViewportTexture_l2drd")
 
 [node name="PhoneBody" type="StaticBody3D" parent="Player/Player Camera/Phone" unique_id=1840292616]
-transform = Transform3D(0.40499997, 0, 0, 0, 0.85, 0, 0, 0, 0.99999994, -3.8146973e-06, 0, 0.060123444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8146973e-06, 0, 0.060123444)
 script = ExtResource("4_l2drd")
 
 [node name="PhoneCollision" type="CollisionShape3D" parent="Player/Player Camera/Phone/PhoneBody" unique_id=1795340267]
@@ -101,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, -3.5527137e-15, 0, 1, 0, 0, 0
 shape = SubResource("ConcavePolygonShape3D_iquic")
 
 [node name="PhoneScreen" type="MeshInstance3D" parent="Player/Player Camera/Phone/PhoneBody" unique_id=631315197]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, -3.5527137e-15, 0, 1, 9.536743e-07, 0, 0)
+transform = Transform3D(0.44909844, 0, 0, 0, 0.94957143, 0, 0, 0, 0.99999994, 9.536743e-07, 0, 0)
 mesh = SubResource("QuadMesh_iquic")
 surface_material_override/0 = SubResource("StandardMaterial3D_l2drd")
 
@@ -141,11 +151,21 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.002754294, 0.2992238, 2.3282974e-10, 0.99987453, -0.009205024, -0.29923776, -0.008782572, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.0027542878, 0.2992238, 2.3282974e-10, 0.99987227, -0.009205024, -0.29923776, -0.008782553, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
+[node name="Sprite3D" parent="Keckbear/Path3D/PathFollow3D" index="0" unique_id=473914356]
+visible = true
+
+[node name="ShadowKeckbearFnak1" parent="." unique_id=1364804302 instance=ExtResource("7_5ht26")]
+transform = Transform3D(-2.9802322e-08, -4.656613e-10, -1, 9.313226e-10, 0.99999994, 4.656613e-10, 1, 1.8626451e-09, -5.9604645e-08, 18.568056, -1.1097641, -12.377404)
+spawnlocations = PackedVector3Array(2.568056, -1.1097641, 12.622596, 18.568056, -1.1097641, 6.622596, 18.568056, -1.1097641, -12.377404)
+
+[connection signal="lightonshadow" from="." to="ShadowKeckbearFnak1" method="_on_node_3d_lightonshadow"]
 [connection signal="dead" from="Player" to="Keckbear" method="_on_player_dead"]
 [connection signal="usingphone" from="Player" to="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" method="_on_player_usingphone"]
+[connection signal="body_entered" from="Player/Player Camera/Phone/PhoneLight/FlashLightArea" to="." method="_on_flash_light_area_body_entered"]
+[connection signal="body_exited" from="Player/Player Camera/Phone/PhoneLight/FlashLightArea" to="." method="_on_flash_light_area_body_exited"]
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
 [connection signal="attackplayer" from="Keckbear" to="Player" method="_on_keckbear_attackplayer"]
 
