@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ckqft3h4qsqa3"]
+
+[ext_resource type="Script" uid="uid://brjv5aphk58ih" path="res://gnome_scene.gd" id="1_1y00n"]
+[ext_resource type="Texture2D" uid="uid://bpvw4ovaiki3o" path="res://assets/sprites/test assets/360.png" id="1_olnwt"]
+[ext_resource type="AudioStream" uid="uid://bmhtkpd3ldctl" path="res://assets/audio/gnomealert.wav" id="3_yqtxq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y00n"]
+albedo_color = Color(0.5876306, 0.33358887, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_yqtxq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.9364853, 0.009002246, -4.1939344, 0, 0, 0, 0, 0, 0, 3.6504636, -0.17602459, -4.5654044),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Node3D" type="Node3D" unique_id=2005253817]
+script = ExtResource("1_1y00n")
+attacktime1 = 1.0
+attacktime2 = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1571739014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1946102313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28875947, -2.2614722, -5.4648895)
+size = Vector3(11, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=248224611]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 4.711241, 2.7385278, -5.4648895)
+size = Vector3(11, 1, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2113710647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4.5)
+material_override = SubResource("StandardMaterial3D_1y00n")
+size = Vector3(1, 5, 2)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=622562520]
+curve = SubResource("Curve3D_yqtxq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=246383938]
+transform = Transform3D(0.04321824, 0.021502152, -0.99881643, -1.8625947e-09, 0.9997653, 0.021521948, 0.9990386, -0.0009301776, 0.04320863, -4.9364853, 0.009002246, -4.1939344)
+loop = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Path3D/PathFollow3D" unique_id=2062958096]
+transform = Transform3D(0.043219287, -2.3283064e-10, 0.9990656, -0.013363091, 0.9999105, 0.0005780838, -0.9989762, -0.0133755915, 0.04321542, 0, 0, 0)
+visible = false
+billboard = 2
+texture = ExtResource("1_olnwt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=168145440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="GnomeTime" type="Timer" parent="." unique_id=419082849]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=326136763]
+stream = ExtResource("3_yqtxq")
+
+[connection signal="timeout" from="GnomeTime" to="." method="_on_gnome_time_timeout"]

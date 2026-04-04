@@ -22,6 +22,7 @@ grow_vertical = 2
 color = Color(0, 0.73365164, 0.118717514, 1)
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1228841675]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,23 +39,79 @@ columns = 3
 
 [node name="Button" type="Button" parent="GridContainer" unique_id=362813103]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Button5")
+focus_neighbor_right = NodePath("../Button2")
+focus_neighbor_bottom = NodePath("../Button4")
 icon = ExtResource("1_c7pon")
 
 [node name="Button2" type="Button" parent="GridContainer" unique_id=2048746886]
 layout_mode = 2
-icon = ExtResource("1_c7pon")
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button3")
+focus_neighbor_bottom = NodePath("../Button5")
+text = "RING
+app"
 
 [node name="Button3" type="Button" parent="GridContainer" unique_id=1759352543]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Button2")
+focus_neighbor_right = NodePath("../Button4")
 text = "Flashlight"
 
 [node name="Button4" type="Button" parent="GridContainer" unique_id=1532941844]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Button3")
+focus_neighbor_top = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button5")
 icon = ExtResource("1_c7pon")
 
 [node name="Button5" type="Button" parent="GridContainer" unique_id=1359262743]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Button4")
+focus_neighbor_top = NodePath("../Button2")
+focus_neighbor_right = NodePath("../Button")
 icon = ExtResource("1_c7pon")
 
+[node name="GnomeButtons" type="HBoxContainer" parent="." unique_id=1493342502]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 334.0
+offset_right = 321.0
+offset_bottom = 534.0
+
+[node name="Back" type="Button" parent="GnomeButtons" unique_id=1318978197]
+z_index = 10
+y_sort_enabled = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Scare Gnome" type="Button" parent="GnomeButtons" unique_id=2093452016]
+z_index = 10
+y_sort_enabled = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Scare
+Gnome"
+
+[node name="GnomeRingView" type="TextureRect" parent="." unique_id=738056034]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 567.0
+offset_top = 334.0
+offset_right = -585.0
+offset_bottom = -314.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="GnomeButtons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="GnomeButtons/Scare Gnome" to="." method="_on_scare_gnome_pressed"]

@@ -4,6 +4,7 @@ class_name fnak1phone
 @onready var phone_body: fnak1phone = $"."
 @onready var phone_screen: MeshInstance3D = $PhoneScreen
 @onready var sub_viewport: SubViewport = $PhoneScreen/SubViewport
+var subviewportisfocused = true
 
 
 
@@ -18,6 +19,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if subviewportisfocused == true:
+		sub_viewport.push_unhandled_input(event)
+
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	var mouse3D = phone_screen.global_transform.affine_inverse() * event_position
 	var calculate2DPosition = Vector2(mouse3D.x, mouse3D.z)
@@ -31,3 +36,7 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 	event.position = mouse2D
 
 	sub_viewport.push_input(event)
+
+
+func _on_player_usingphone(phone) -> void:
+	pass

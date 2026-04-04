@@ -1,26 +1,19 @@
 extends Control
 var usingphone = false
 signal LightOff
+signal GnomeScare
 @onready var apps = [$GridContainer/Button, $GridContainer/Button2, $GridContainer/Button3, $GridContainer/Button4, $GridContainer/Button5]
 var appnumber = 0
+var gnomeview = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apps[appnumber].grab_focus()
+	$GridContainer/Button.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if usingphone == true and Input.is_action_just_pressed("ui_left"):
-		appnumber -= 1
-		appnumber = clamp(appnumber,0,4)
-		keepfocusing(appnumber)
-	if usingphone == true and Input.is_action_just_pressed("ui_right"):
-		appnumber += 1
-		appnumber = clamp(appnumber,0,4)
-		keepfocusing(appnumber)
-	if usingphone == true and Input.is_action_just_pressed("ui_accept"):
-		appfunction()
+	pass
 
 
 func _on_button_pressed() -> void:
@@ -50,5 +43,28 @@ func appfunction():
 	match appnumber:
 		0:
 			print("Holy moly this works")
+		1:
+			$GridContainer.hide()
+			$GnomeRingView.show()
+			$GnomeRingView/Back.grab_focus()
+			gnomeview = true
 		2:
 			LightOff.emit()
+
+
+func _on_back_pressed() -> void:
+	$GnomeRingView.hide()
+	$GnomeButtons.hide()
+	$GridContainer.show()
+
+
+func _on_button_2_pressed() -> void:
+	$GridContainer.hide()
+	$GnomeButtons.show()
+	$GnomeRingView.show()
+	$GnomeButtons/Back.grab_focus()
+
+
+func _on_scare_gnome_pressed() -> void:
+	GnomeScare.emit()
+	
