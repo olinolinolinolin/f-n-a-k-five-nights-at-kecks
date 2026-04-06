@@ -39,7 +39,7 @@ size = Vector3(1, 5, 2)
 curve = SubResource("Curve3D_yqtxq")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=246383938]
-transform = Transform3D(0.04321824, 0.021502152, -0.99881643, -1.8625947e-09, 0.9997653, 0.021521948, 0.9990386, -0.0009301776, 0.04320863, -4.9364853, 0.009002246, -4.1939344)
+transform = Transform3D(0.043218233, 0.021502152, -0.99881643, -1.8625945e-09, 0.9997653, 0.021521948, 0.99903846, -0.0009301776, 0.04320863, -4.9364853, 0.009002246, -4.1939344)
 loop = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Path3D/PathFollow3D" unique_id=2062958096]

@@ -169,7 +169,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027542755, 0.2992238, 2.3282974e-10, 0.9998678, -0.009205024, -0.29923776, -0.008782513, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.0027542736, 0.2992238, 2.3282974e-10, 0.9998671, -0.009205024, -0.29923776, -0.008782507, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
 [node name="Sprite3D" parent="Keckbear/Path3D/PathFollow3D" index="0" unique_id=473914356]

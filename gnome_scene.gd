@@ -32,6 +32,7 @@ func _on_gnome_time_timeout() -> void:
 
 func resetgnome():
 	$Path3D/PathFollow3D.progress_ratio = 0.0
+	$Path3D/PathFollow3D/Sprite3D.hide()
 	creeping = false
 	determinetimetoscare()
 
