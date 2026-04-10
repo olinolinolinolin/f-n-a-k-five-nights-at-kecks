@@ -6,8 +6,10 @@ signal GnomeScare
 var appnumber = 0
 var gnomeview = false
 var qtebeingdone = false
+var qtetextures = [preload("res://assets/sprites/test assets/1.png"),preload("res://assets/sprites/test assets/2.png"),preload("res://assets/sprites/test assets/3.png"),preload("res://assets/sprites/test assets/4.png")]
 var allqtesymbosl = ["1","2","3","4"]
 var enteredqtesequence = []
+@onready var qtetextrects = [$QteHContainer/QTERect1, $QteHContainer/QTERect2, $QteHContainer/QTERect3, $QteHContainer/QTERect4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -91,3 +93,15 @@ func discordqtecheck():
 	allqtesymbosl.shuffle()
 	print(allqtesymbosl)
 	qtebeingdone = true
+	var loop = 0
+	for symbol in allqtesymbosl:
+		match symbol:
+			"1":
+				qtetextrects[loop].texture = qtetextures[0]
+			"2":
+				qtetextrects[loop].texture = qtetextures[1]
+			"3":
+				qtetextrects[loop].texture = qtetextures[2]
+			"4":
+				qtetextrects[loop].texture = qtetextures[3]
+		loop += 1

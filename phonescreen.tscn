@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://b1ywwqcbwcp88" path="res://assets/sprites/evilcord.png" id="1_c7pon"]
 [ext_resource type="Script" uid="uid://culexwsjsns13" path="res://phoneui.gd" id="1_pgscc"]
+[ext_resource type="Texture2D" uid="uid://dx3wa7mes6xob" path="res://assets/sprites/test assets/1.png" id="3_bkcj5"]
+[ext_resource type="Texture2D" uid="uid://turkdfqufv6y" path="res://assets/sprites/test assets/2.png" id="4_c0vrj"]
+[ext_resource type="Texture2D" uid="uid://dfb3nb3il8k00" path="res://assets/sprites/test assets/3.png" id="5_jy02w"]
+[ext_resource type="Texture2D" uid="uid://cqmtu8lr7d7u3" path="res://assets/sprites/test assets/4.png" id="6_qxtta"]
 
 [node name="Control" type="Control" unique_id=1079393012]
 layout_mode = 3
@@ -109,6 +113,36 @@ offset_right = -585.0
 offset_bottom = -314.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="QteHContainer" type="HBoxContainer" parent="." unique_id=644184991]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QTERect1" type="TextureRect" parent="QteHContainer" unique_id=1017101745]
+layout_mode = 2
+texture = ExtResource("3_bkcj5")
+
+[node name="QTERect2" type="TextureRect" parent="QteHContainer" unique_id=1899433710]
+layout_mode = 2
+texture = ExtResource("4_c0vrj")
+
+[node name="QTERect3" type="TextureRect" parent="QteHContainer" unique_id=1857151402]
+layout_mode = 2
+texture = ExtResource("5_jy02w")
+
+[node name="QTERect4" type="TextureRect" parent="QteHContainer" unique_id=680469161]
+layout_mode = 2
+texture = ExtResource("6_qxtta")
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]
