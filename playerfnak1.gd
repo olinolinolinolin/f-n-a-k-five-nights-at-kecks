@@ -15,11 +15,12 @@ var phonelocations = [Vector3(0.678,0.042,-1.01),Vector3(0,0,-.50)]
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
+	
 	
 	if Input.get_connected_joypads().size() > 0 and hiding == false:
 		if Input.is_action_pressed("joystickleft"):
@@ -62,6 +63,7 @@ func _process(delta: float) -> void:
 			$"../HideBasic".show()
 			hiding = true
 			usingphone.emit(false)
+
 func _unhandled_input(event: InputEvent):
 	camera_rotation(event)
 

@@ -169,7 +169,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027542731, 0.2992238, 2.3282974e-10, 0.99986696, -0.009205024, -0.29923776, -0.008782506, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.0027542715, 0.2992238, 2.3282974e-10, 0.9998663, -0.009205024, -0.29923776, -0.0087825, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
 [node name="Sprite3D" parent="Keckbear/Path3D/PathFollow3D" index="0" unique_id=473914356]
@@ -186,6 +186,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 0)
 attacktime1 = 5.0
 attacktime2 = 10.0
 
+[node name="Control" type="Control" parent="." unique_id=813682598]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ComplaintProgressUI" type="VBoxContainer" parent="Control" unique_id=1030116939]
+layout_mode = 0
+offset_right = 487.0
+offset_bottom = 174.0
+
+[node name="ComplainLabel" type="Label" parent="Control/ComplaintProgressUI" unique_id=1214656289]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Annoyance"
+horizontal_alignment = 1
+
+[node name="ComplainProgresBar" type="ProgressBar" parent="Control/ComplaintProgressUI" unique_id=1474884735]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+
 [connection signal="lightonshadow" from="." to="ShadowKeckbearFnak1" method="_on_node_3d_lightonshadow"]
 [connection signal="dead" from="Player" to="Keckbear" method="_on_player_dead"]
 [connection signal="usingphone" from="Player" to="Player/Player Camera/Phone/PhoneBody" method="_on_player_usingphone"]
@@ -194,6 +218,7 @@ attacktime2 = 10.0
 [connection signal="body_exited" from="Player/Player Camera/Phone/PhoneLight/FlashLightArea" to="." method="_on_flash_light_area_body_exited"]
 [connection signal="GnomeScare" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="DifferentSubviewport/Node3D" method="_on_phone_screen_texture_gnome_scare"]
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
+[connection signal="qteresult" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="." method="_on_phone_screen_texture_qteresult"]
 [connection signal="attackplayer" from="Keckbear" to="Player" method="_on_keckbear_attackplayer"]
 
 [editable path="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture"]

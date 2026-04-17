@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var your_subviewport: SubViewport = $"Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport"
 
+var annoyance = 0.0
+var annoyancemulti = 0
+
 var checkpoint := int(SaveManager.get_value(&"playercheckpoint", 0))
 
 var KeckbearFlashed = false
@@ -42,3 +45,8 @@ func _unhandled_input(event):
 func savecheckpoint():
 	SaveManager.set_value(&"playercheckpoint", checkpoint)
 	SaveManager.persist()
+
+
+func _on_phone_screen_texture_qteresult(result) -> void:
+	annoyancemulti = clamp(annoyancemulti + result,-3,3)
+	print(annoyancemulti)

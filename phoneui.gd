@@ -1,5 +1,6 @@
 extends Control
 var usingphone = false
+signal qteresult
 signal LightOff
 signal GnomeScare
 @onready var apps = [$GridContainer/Button, $GridContainer/Button2, $GridContainer/Button3, $GridContainer/Button4, $GridContainer/Button5]
@@ -9,7 +10,9 @@ var qtebeingdone = false
 var qtetextures = [preload("res://assets/sprites/test assets/1.png"),preload("res://assets/sprites/test assets/2.png"),preload("res://assets/sprites/test assets/3.png"),preload("res://assets/sprites/test assets/4.png")]
 var allqtesymbosl = ["1","2","3","4"]
 var enteredqtesequence = []
-@onready var qtetextrects = [$QteHContainer/QTERect1, $QteHContainer/QTERect2, $QteHContainer/QTERect3, $QteHContainer/QTERect4]
+var qteprogresscheck = 0
+@onready var qtetextrects = [$QteVContainer/QteHContainer/QTERect1, $QteVContainer/QteHContainer/QTERect2,
+ $QteVContainer/QteHContainer/QTERect3, $QteVContainer/QteHContainer/QTERect4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,20 +24,42 @@ func _process(delta: float) -> void:
 	if qtebeingdone == true:
 		if Input.is_action_just_pressed("qte1"):
 			enteredqtesequence.append("1")
+			if enteredqtesequence[qteprogresscheck] == allqtesymbosl[qteprogresscheck]:
+				print("yeah")
+				qteprogresscheck += 1
+			else:
+				qtefail()
+			
 		if Input.is_action_just_pressed("qte2"):
 			enteredqtesequence.append("2")
+			if enteredqtesequence[qteprogresscheck] == allqtesymbosl[qteprogresscheck]:
+				print("yeah")
+				qteprogresscheck += 1
+			else:
+				qtefail()
+			
 		if Input.is_action_just_pressed("qte3"):
 			enteredqtesequence.append("3")
+			if enteredqtesequence[qteprogresscheck] == allqtesymbosl[qteprogresscheck]:
+				print("yeah")
+				qteprogresscheck += 1
+			else:
+				qtefail()
+			
 		if Input.is_action_just_pressed("qte4"):
 			enteredqtesequence.append("4")
+			if enteredqtesequence[qteprogresscheck] == allqtesymbosl[qteprogresscheck]:
+				print("yeah")
+				qteprogresscheck += 1
+			else:
+				qtefail()
+			
 	if qtebeingdone == true and enteredqtesequence.size() == 4:
 		qtebeingdone = false
 		if enteredqtesequence == allqtesymbosl:
-			print("you did it")
-			enteredqtesequence.clear()
+			qtesuccess()
 		else:
-			print("you fucked up")
-			enteredqtesequence.clear()
+			qtefail()
 
 func _on_button_pressed() -> void:
 	discordqtecheck()
@@ -105,3 +130,19 @@ func discordqtecheck():
 			"4":
 				qtetextrects[loop].texture = qtetextures[3]
 		loop += 1
+
+
+func qtesuccess():
+	qtebeingdone = false
+	qteprogresscheck = 0
+	print("you did it")
+	enteredqtesequence.clear()
+	qteresult.emit(1)
+
+
+func qtefail():
+	qtebeingdone = false
+	qteprogresscheck = 0
+	print("you fucked up")
+	enteredqtesequence.clear()
+	qteresult.emit(-1)
