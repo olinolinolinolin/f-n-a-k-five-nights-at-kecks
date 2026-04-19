@@ -3,17 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://b1ywwqcbwcp88" path="res://assets/sprites/evilcord.png" id="1_c7pon"]
 [ext_resource type="Script" uid="uid://culexwsjsns13" path="res://phoneui.gd" id="1_pgscc"]
 [ext_resource type="Texture2D" uid="uid://dx3wa7mes6xob" path="res://assets/sprites/test assets/1.png" id="3_bkcj5"]
+[ext_resource type="Texture2D" uid="uid://di6wu3cc7oy5h" path="res://assets/sprites/discordchat.png" id="3_c0vrj"]
 [ext_resource type="Texture2D" uid="uid://turkdfqufv6y" path="res://assets/sprites/test assets/2.png" id="4_c0vrj"]
 [ext_resource type="Texture2D" uid="uid://dfb3nb3il8k00" path="res://assets/sprites/test assets/3.png" id="5_jy02w"]
 [ext_resource type="Texture2D" uid="uid://cqmtu8lr7d7u3" path="res://assets/sprites/test assets/4.png" id="6_qxtta"]
 
 [node name="Control" type="Control" unique_id=1079393012]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(256, 256)
 script = ExtResource("1_pgscc")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=431560513]
@@ -76,79 +84,101 @@ focus_neighbor_top = NodePath("../Button2")
 focus_neighbor_right = NodePath("../Button")
 icon = ExtResource("1_c7pon")
 
-[node name="GnomeButtons" type="HBoxContainer" parent="." unique_id=1493342502]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=47579587]
 visible = false
-top_level = true
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-offset_left = 11.0
-offset_top = 334.0
-offset_right = 321.0
-offset_bottom = 534.0
-
-[node name="Back" type="Button" parent="GnomeButtons" unique_id=1318978197]
-z_index = 10
-y_sort_enabled = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Back"
-
-[node name="Scare Gnome" type="Button" parent="GnomeButtons" unique_id=2093452016]
-z_index = 10
-y_sort_enabled = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Scare
-Gnome"
-
-[node name="GnomeRingView" type="TextureRect" parent="." unique_id=738056034]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 567.0
-offset_top = 334.0
-offset_right = -585.0
-offset_bottom = -314.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="QteVContainer" type="VBoxContainer" parent="." unique_id=1555622365]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -75.0
-offset_right = 306.0
-offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GnomeRingView" type="TextureRect" parent="VBoxContainer" unique_id=738056034]
+layout_mode = 2
+
+[node name="GnomeButtons" type="HBoxContainer" parent="VBoxContainer" unique_id=1493342502]
+top_level = true
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VBoxContainer/GnomeButtons" unique_id=1318978197]
+z_index = 10
+y_sort_enabled = true
+layout_mode = 2
+text = "Back"
+
+[node name="Scare Gnome" type="Button" parent="VBoxContainer/GnomeButtons" unique_id=2093452016]
+z_index = 10
+y_sort_enabled = true
+layout_mode = 2
+text = "Scare
+Gnome"
+
+[node name="QteVContainer" type="VBoxContainer" parent="." unique_id=1555622365]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -91.0
+offset_right = 106.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(351, 72)
+
+[node name="TextureRect" type="TextureRect" parent="QteVContainer" unique_id=975070946]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_c0vrj")
+expand_mode = 1
+
 [node name="QteHContainer" type="HBoxContainer" parent="QteVContainer" unique_id=644184991]
 layout_mode = 2
+alignment = 1
 
 [node name="QTERect1" type="TextureRect" parent="QteVContainer/QteHContainer" unique_id=1017101745]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("3_bkcj5")
+expand_mode = 1
 
 [node name="QTERect2" type="TextureRect" parent="QteVContainer/QteHContainer" unique_id=1899433710]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("4_c0vrj")
+expand_mode = 1
 
 [node name="QTERect3" type="TextureRect" parent="QteVContainer/QteHContainer" unique_id=1857151402]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("5_jy02w")
+expand_mode = 1
 
 [node name="QTERect4" type="TextureRect" parent="QteVContainer/QteHContainer" unique_id=680469161]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("6_qxtta")
+expand_mode = 1
+
+[node name="QteStartButton" type="Button" parent="QteVContainer" unique_id=640858710]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../QteBackButton")
+text = "Start"
+
+[node name="QteBackButton" type="Button" parent="QteVContainer" unique_id=856245175]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QteStartButton")
+text = "Back"
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="GnomeButtons/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="GnomeButtons/Scare Gnome" to="." method="_on_scare_gnome_pressed"]
+[connection signal="pressed" from="VBoxContainer/GnomeButtons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/GnomeButtons/Scare Gnome" to="." method="_on_scare_gnome_pressed"]
+[connection signal="pressed" from="QteVContainer/QteStartButton" to="." method="_on_qte_start_button_pressed"]
+[connection signal="pressed" from="QteVContainer/QteBackButton" to="." method="_on_qte_back_button_pressed"]

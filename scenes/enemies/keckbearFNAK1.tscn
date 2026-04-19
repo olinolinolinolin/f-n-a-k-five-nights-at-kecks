@@ -33,5 +33,6 @@ transform = Transform3D(0.0059917346, -1.1175869e-08, -0.999982, 0.10349618, 0.9
 stream = ExtResource("3_mjmd0")
 
 [node name="visibletime" type="Timer" parent="." unique_id=1226658766]
+one_shot = true
 
 [connection signal="timeout" from="visibletime" to="." method="_on_visibletime_timeout"]

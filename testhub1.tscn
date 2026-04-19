@@ -13,9 +13,6 @@
 height = 21.0
 radius = 2.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_l2drd"]
-viewport_path = NodePath("Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport")
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iquic"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
 
@@ -46,8 +43,11 @@ _data = {
 }
 point_count = 5
 
-[node name="Node3D" type="Node3D" unique_id=687863000]
+[node name="Node3D" type="Node3D" unique_id=687863000 node_paths=PackedStringArray("CompProgressBar", "PatienceTimer", "MultiLabel")]
 script = ExtResource("1_l4bsx")
+CompProgressBar = NodePath("Control/ComplaintProgressUI/ComplainProgresBar")
+PatienceTimer = NodePath("Patience")
+MultiLabel = NodePath("Control/ComplaintProgressUI/MultiLabel")
 
 [node name="Room1" type="CSGBox3D" parent="." unique_id=648013926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19995117, 0, 0)
@@ -102,10 +102,6 @@ omni_range = 0.27577606
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33771825, -0.529721, 0.10998821)
 radius = 0.32545885
 
-[node name="Sprite3D" type="Sprite3D" parent="Player/Player Camera/Phone" unique_id=445940984]
-transform = Transform3D(0.08790785, 0, 0, 0, 0.18719022, 0, 8.881784e-16, 0, 0.99999994, 0, 0, 0.0524745)
-texture = SubResource("ViewportTexture_l2drd")
-
 [node name="PhoneBody" type="StaticBody3D" parent="Player/Player Camera/Phone" unique_id=1840292616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8146973e-06, 0, 0.060123444)
 script = ExtResource("4_l2drd")
@@ -124,22 +120,18 @@ handle_input_locally = false
 physics_object_picking = true
 
 [node name="Phone Screen Texture" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport" unique_id=1918666695 instance=ExtResource("4_iquic")]
-offset_left = 390.0
-offset_top = 6.0
-offset_right = -366.0
-offset_bottom = -3.0
 focus_mode = 2
 
 [node name="Button" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture/GridContainer" parent_id_path=PackedInt32Array(1918666695, 1228841675) index="0" unique_id=362813103]
 focus_next = NodePath("../Button2")
 focus_behavior_recursive = 2
 
-[node name="Back" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture/GnomeButtons" parent_id_path=PackedInt32Array(1918666695, 1493342502) index="0" unique_id=1318978197]
+[node name="GnomeRingView" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture/VBoxContainer" parent_id_path=PackedInt32Array(1918666695, 47579587) index="0" unique_id=738056034]
+texture = SubResource("ViewportTexture_skcaj")
+
+[node name="Back" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture/VBoxContainer/GnomeButtons" parent_id_path=PackedInt32Array(1918666695, 1493342502) index="0" unique_id=1318978197]
 z_as_relative = false
 y_sort_enabled = false
-
-[node name="GnomeRingView" parent="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" index="3" unique_id=738056034]
-texture = SubResource("ViewportTexture_skcaj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782115699]
 environment = SubResource("Environment_l4bsx")
@@ -164,20 +156,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="Keckbear" parent="." unique_id=376216375 instance=ExtResource("6_82okx")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -1, 1)
+attacktime1 = 15.0
+attacktime2 = 30.0
 
 [node name="Path3D" parent="Keckbear" index="0" unique_id=1077918954]
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027542715, 0.2992238, 2.3282974e-10, 0.9998663, -0.009205024, -0.29923776, -0.0087825, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.0027542622, 0.2992238, 2.3282974e-10, 0.99986297, -0.009205024, -0.29923776, -0.008782471, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
-
-[node name="Sprite3D" parent="Keckbear/Path3D/PathFollow3D" index="0" unique_id=473914356]
-visible = true
 
 [node name="ShadowKeckbearFnak1" parent="." unique_id=1364804302 instance=ExtResource("7_5ht26")]
 transform = Transform3D(-2.9802322e-08, -4.656613e-10, -1, 9.313226e-10, 0.99999994, 4.656613e-10, 1, 1.8626451e-09, -5.9604645e-08, 18.568056, -1.1097641, -12.377404)
 spawnlocations = PackedVector3Array(2.568056, -1.1097641, 12.622596, 18.568056, -1.1097641, 6.622596, 18.568056, -1.1097641, -12.377404)
+attacktime1 = 25.0
+attacktime2 = 45.0
 
 [node name="DifferentSubviewport" type="SubViewport" parent="." unique_id=788115743]
 
@@ -206,9 +199,23 @@ theme_override_font_sizes/font_size = 40
 text = "Annoyance"
 horizontal_alignment = 1
 
+[node name="MultiLabel" type="Label" parent="Control/ComplaintProgressUI" unique_id=772937364]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Multi"
+horizontal_alignment = 1
+
 [node name="ComplainProgresBar" type="ProgressBar" parent="Control/ComplaintProgressUI" unique_id=1474884735]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
+
+[node name="AnnoyTimer" type="Timer" parent="." unique_id=1360222031]
+wait_time = 0.5
+autostart = true
+
+[node name="Patience" type="Timer" parent="." unique_id=1940406895]
+wait_time = 10.0
+one_shot = true
 
 [connection signal="lightonshadow" from="." to="ShadowKeckbearFnak1" method="_on_node_3d_lightonshadow"]
 [connection signal="dead" from="Player" to="Keckbear" method="_on_player_dead"]
@@ -220,6 +227,8 @@ theme_override_font_sizes/font_size = 25
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
 [connection signal="qteresult" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="." method="_on_phone_screen_texture_qteresult"]
 [connection signal="attackplayer" from="Keckbear" to="Player" method="_on_keckbear_attackplayer"]
+[connection signal="timeout" from="AnnoyTimer" to="." method="_on_annoy_timer_timeout"]
+[connection signal="timeout" from="Patience" to="." method="_on_patience_timeout"]
 
 [editable path="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture"]
 [editable path="Keckbear"]

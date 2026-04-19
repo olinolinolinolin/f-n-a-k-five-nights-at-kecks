@@ -19,8 +19,10 @@ func _ready() -> void:
 	$GridContainer/Button.grab_focus()
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if qtebeingdone == true:
 		if Input.is_action_just_pressed("qte1"):
 			enteredqtesequence.append("1")
@@ -62,7 +64,9 @@ func _process(delta: float) -> void:
 			qtefail()
 
 func _on_button_pressed() -> void:
-	discordqtecheck()
+	$QteVContainer.show()
+	$GridContainer.hide()
+	$QteVContainer/QteStartButton.grab_focus()
 
 
 func _on_button_3_pressed() -> void:
@@ -98,16 +102,15 @@ func appfunction():
 
 
 func _on_back_pressed() -> void:
-	$GnomeRingView.hide()
-	$GnomeButtons.hide()
+	$VBoxContainer.hide()
 	$GridContainer.show()
+	$GridContainer/Button.grab_focus()
 
 
 func _on_button_2_pressed() -> void:
 	$GridContainer.hide()
-	$GnomeButtons.show()
-	$GnomeRingView.show()
-	$GnomeButtons/Back.grab_focus()
+	$VBoxContainer.show()
+	$VBoxContainer/GnomeButtons/Back.grab_focus()
 
 
 func _on_scare_gnome_pressed() -> void:
@@ -137,7 +140,7 @@ func qtesuccess():
 	qteprogresscheck = 0
 	print("you did it")
 	enteredqtesequence.clear()
-	qteresult.emit(1)
+	qteresult.emit(.3)
 
 
 func qtefail():
@@ -145,4 +148,14 @@ func qtefail():
 	qteprogresscheck = 0
 	print("you fucked up")
 	enteredqtesequence.clear()
-	qteresult.emit(-1)
+	qteresult.emit(-.3)
+
+
+func _on_qte_back_button_pressed() -> void:
+	$QteVContainer.hide()
+	$GridContainer.show()
+	$GridContainer/Button.grab_focus()
+
+
+func _on_qte_start_button_pressed() -> void:
+	discordqtecheck()
