@@ -163,7 +163,7 @@ attacktime2 = 30.0
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027542622, 0.2992238, 2.3282974e-10, 0.99986297, -0.009205024, -0.29923776, -0.008782471, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.0027542592, 0.2992238, 2.3282974e-10, 0.99986184, -0.009205024, -0.29923776, -0.008782461, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
 [node name="ShadowKeckbearFnak1" parent="." unique_id=1364804302 instance=ExtResource("7_5ht26")]
@@ -223,6 +223,7 @@ one_shot = true
 [connection signal="usingphone" from="Player" to="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" method="_on_player_usingphone"]
 [connection signal="body_entered" from="Player/Player Camera/Phone/PhoneLight/FlashLightArea" to="." method="_on_flash_light_area_body_entered"]
 [connection signal="body_exited" from="Player/Player Camera/Phone/PhoneLight/FlashLightArea" to="." method="_on_flash_light_area_body_exited"]
+[connection signal="gui_focus_changed" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport" to="Player" method="_on_sub_viewport_gui_focus_changed"]
 [connection signal="GnomeScare" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="DifferentSubviewport/Node3D" method="_on_phone_screen_texture_gnome_scare"]
 [connection signal="LightOff" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="Player" method="_on_phone_screen_texture_light_off"]
 [connection signal="qteresult" from="Player/Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport/Phone Screen Texture" to="." method="_on_phone_screen_texture_qteresult"]

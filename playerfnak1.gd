@@ -4,6 +4,7 @@ extends Node3D
 var phoneinface = false
 var phonelighton = true
 var hiding = false
+var lasthoveredbutton: Control = null
 signal dead
 signal usingphone
 
@@ -14,7 +15,11 @@ var phonelocations = [Vector3(0.678,0.042,-1.01),Vector3(0,0,-.50)]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
+
+
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,10 +61,13 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("hide"):
 		if hiding == true:
+			
 			$"../HideBasic".hide()
 			hiding = false
 			usingphone.emit(true)
+			lasthoveredbutton.call_deferred("grab_focus")
 		else:
+			lasthoveredbutton = $"Player Camera/Phone/PhoneBody/PhoneScreen/SubViewport".get_viewport().gui_get_focus_owner()
 			$"../HideBasic".show()
 			hiding = true
 			usingphone.emit(false)
@@ -93,3 +101,8 @@ func _on_keckbear_attackplayer() -> void:
 	else:
 		print("dead af")
 	dead.emit(hiding)
+
+
+func _on_sub_viewport_gui_focus_changed(node: Control) -> void:
+	if node != null and hiding == false:
+		lasthoveredbutton = node

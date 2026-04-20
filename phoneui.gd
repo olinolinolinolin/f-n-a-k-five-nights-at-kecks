@@ -75,7 +75,6 @@ func _on_button_3_pressed() -> void:
 
 func _on_player_usingphone(phone) -> void:
 	if phone == true:
-		apps[appnumber].grab_focus()
 		usingphone = true
 	else:
 		get_viewport().gui_release_focus()
