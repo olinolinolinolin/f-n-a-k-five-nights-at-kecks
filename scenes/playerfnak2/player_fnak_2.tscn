@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cchgqcxq8u8ei"]
+
+[ext_resource type="Script" uid="uid://okyima0imvfj" path="res://scenes/playerfnak2/player_fnak_2.gd" id="1_kaew5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_biqx6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kaew5"]
+
+[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("InteractionRay")]
+script = ExtResource("1_kaew5")
+InteractionRay = NodePath("PlayerMesh/PlayerHead/PlayerCamera/PlayerRaycast")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=757520033]
+mesh = SubResource("CapsuleMesh_biqx6")
+
+[node name="PlayerBody" type="CharacterBody3D" parent="PlayerMesh" unique_id=889288442]
+
+[node name="PlayerCollison" type="CollisionShape3D" parent="PlayerMesh/PlayerBody" unique_id=871465453]
+shape = SubResource("CapsuleShape3D_kaew5")
+
+[node name="PlayerHead" type="Node3D" parent="PlayerMesh" unique_id=1071127989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45657134, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerMesh/PlayerHead" unique_id=1632718731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4831108)
+
+[node name="PlayerRaycast" type="RayCast3D" parent="PlayerMesh/PlayerHead/PlayerCamera" unique_id=1819936163]
+target_position = Vector3(0, 0, -5)

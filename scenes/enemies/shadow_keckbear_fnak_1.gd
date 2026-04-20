@@ -35,6 +35,7 @@ func _on_node_3d_lightonshadow(flashlight) -> void:
 	lightbool = flashlight
 
 func determinetimetoscare():
+	scared = 1.0
 	$SpawnTimer.wait_time = rng.randi_range(attacktime1,attacktime2)
 	$SpawnTimer.start()
 
