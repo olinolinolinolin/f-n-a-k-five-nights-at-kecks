@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://gma6h1a3o5by"]
 
-[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/playerfnak2/interact.tscn" id="1_2jxr5"]
-[ext_resource type="Script" uid="uid://cfbhgo3yodfhp" path="res://scenes/playerfnak2/test_interactable.gd" id="1_b44dv"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="1_2jxr5"]
+[ext_resource type="Script" uid="uid://cfbhgo3yodfhp" path="res://scenes/interactables/test_interactable.gd" id="1_b44dv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b44dv"]
 
@@ -19,5 +19,6 @@ mesh = SubResource("BoxMesh_b44dv")
 shape = SubResource("BoxShape3D_v4gtk")
 
 [node name="Interact" parent="MeshInstance3D/StaticBody3D" unique_id=931876195 instance=ExtResource("1_2jxr5")]
+InteractText = "Test Interact"
 
 [connection signal="InteractFunction" from="MeshInstance3D/StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

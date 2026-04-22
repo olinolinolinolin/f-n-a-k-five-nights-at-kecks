@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cu8qyrxls10mc"]
+
+[ext_resource type="PackedScene" uid="uid://lkres4pl4dc7" path="res://assets/models/NickHeadTest.glb" id="1_56kf0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56kf0"]
+albedo_color = Color(0.8231071, 0.72433496, 0.71016914, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c282"]
+albedo_color = Color(0.48406476, 0.43441194, 0.3224744, 1)
+
+[node name="NickHeadTest" unique_id=1244014209 instance=ExtResource("1_56kf0")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 0, 0)
+
+[node name="Head" parent="." index="0" unique_id=519541965]
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_56kf0")
+
+[node name="Hair" parent="." index="1" unique_id=1617197148]
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_3c282")
+
+[node name="Eyes" parent="." index="2" unique_id=1435267169]
+layers = 2

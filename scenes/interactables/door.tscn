@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c0np2s0irbbr7"]
+
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="1_qq3h0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6xrn"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0phs7"]
+size = Vector3(1, 2, 0.5)
+
+[node name="Door" type="Node3D" unique_id=807698237]
+
+[node name="DoorBody" type="StaticBody3D" parent="." unique_id=178693223]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBody" unique_id=1335056522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_v6xrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorBody" unique_id=993392697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_0phs7")
+
+[node name="Interact" parent="DoorBody" unique_id=931876195 instance=ExtResource("1_qq3h0")]
+InteractText = "Open Door"

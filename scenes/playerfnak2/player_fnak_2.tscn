@@ -1,28 +1,143 @@
 [gd_scene format=3 uid="uid://cchgqcxq8u8ei"]
 
 [ext_resource type="Script" uid="uid://okyima0imvfj" path="res://scenes/playerfnak2/player_fnak_2.gd" id="1_kaew5"]
+[ext_resource type="Script" uid="uid://dqakj5df5fd28" path="res://scenes/playerfnak2/PlayerMovement.gd" id="2_n5pto"]
+[ext_resource type="PackedScene" uid="uid://cu8qyrxls10mc" path="res://assets/models/nick_head_test.tscn" id="3_1drsx"]
+[ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="4_bekvq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_biqx6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kaew5"]
 
-[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("InteractionRay")]
-script = ExtResource("1_kaew5")
-InteractionRay = NodePath("PlayerMesh/PlayerHead/PlayerCamera/PlayerRaycast")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spu38"]
+albedo_color = Color(0.40227535, 0.3138663, 0.2853084, 1)
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=757520033]
+[sub_resource type="Animation" id="Animation_bekvq"]
+resource_name = "NickFlashAnim"
+length = 2.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1, -0.7062672, -0.7428367, 0.0001, 1, -1, -0.7062672, -0.7428367, 0.5, 1, -2, -0.7062672, -0.7428367, 1, 1, -1, -0.7062672, -0.7428367, 1.5, 1, 0, -0.706, -0.743, 2, 1, -1, -0.7062672, -0.7428367)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0.130526, 0.991445, 1, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, -0.130526, 0.991445, 2, 1, 0, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 0.51763237, 0.51763237, 0.51763237, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.5, 2.0, 9.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_spu38"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1, -0.7062672, -0.7428367)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cldu"]
+_data = {
+&"NickFlashAnim": SubResource("Animation_bekvq"),
+&"RESET": SubResource("Animation_spu38")
+}
+
+[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("InteractionRay", "InteractText") groups=["Player"]]
+script = ExtResource("1_kaew5")
+InteractionRay = NodePath("PlayerBody/PlayerHead/PlayerCamera/PlayerRaycast")
+InteractText = NodePath("PlayerUI/InteractLabel")
+
+[node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=889288442 node_paths=PackedStringArray("PlayerHead", "PlayerCam", "HeadAnimPlayer")]
+script = ExtResource("2_n5pto")
+PlayerHead = NodePath("PlayerHead")
+PlayerCam = NodePath("PlayerHead/PlayerCamera")
+HeadAnimPlayer = NodePath("PlayerHead/PlayerCamera/HeadController/HeadAnimPlayer")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=757520033]
 mesh = SubResource("CapsuleMesh_biqx6")
 
-[node name="PlayerBody" type="CharacterBody3D" parent="PlayerMesh" unique_id=889288442]
-
-[node name="PlayerCollison" type="CollisionShape3D" parent="PlayerMesh/PlayerBody" unique_id=871465453]
+[node name="PlayerCollison" type="CollisionShape3D" parent="PlayerBody" unique_id=871465453]
 shape = SubResource("CapsuleShape3D_kaew5")
 
-[node name="PlayerHead" type="Node3D" parent="PlayerMesh" unique_id=1071127989]
+[node name="PlayerHead" type="Node3D" parent="PlayerBody" unique_id=1071127989]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45657134, 0)
 
-[node name="PlayerCamera" type="Camera3D" parent="PlayerMesh/PlayerHead" unique_id=1632718731]
+[node name="PlayerCamera" type="Camera3D" parent="PlayerBody/PlayerHead" unique_id=1632718731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4831108)
 
-[node name="PlayerRaycast" type="RayCast3D" parent="PlayerMesh/PlayerHead/PlayerCamera" unique_id=1819936163]
+[node name="PlayerRaycast" type="RayCast3D" parent="PlayerBody/PlayerHead/PlayerCamera" unique_id=1819936163]
 target_position = Vector3(0, 0, -5)
+
+[node name="HeadController" type="MeshInstance3D" parent="PlayerBody/PlayerHead/PlayerCamera" unique_id=484895939]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1, -0.7062672, -0.7428367)
+
+[node name="NickHeadTest" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=1244014209 instance=ExtResource("3_1drsx")]
+transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0.23733449, 5.9604645e-08, -0.12318635)
+
+[node name="Hand2" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=246673746 instance=ExtResource("4_bekvq")]
+transform = Transform3D(0.06470477, 0, -0.24148145, 0, 0.25, 0, 0.24148145, 0, 0.06470477, 0.19999999, 0, -0.5999998)
+
+[node name="Hand" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2" index="0" unique_id=1481917873]
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_spu38")
+
+[node name="HeadAnimPlayer" type="AnimationPlayer" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=403780332]
+root_node = NodePath("../../../../..")
+libraries/ = SubResource("AnimationLibrary_3cldu")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=514303589]
+light_cull_mask = 4294967293
+
+[node name="PlayerUI" type="Control" parent="." unique_id=633964515]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractLabel" type="Label" parent="PlayerUI" unique_id=2035965911]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "dqdqqdqdqdqd"
+horizontal_alignment = 1
+
+[editable path="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2"]

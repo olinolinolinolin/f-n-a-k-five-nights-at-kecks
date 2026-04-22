@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_interact_interact_function() -> void:
-	print("muthafucka this signal is workin")
+	pass
