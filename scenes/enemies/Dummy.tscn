@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bi42ptl2lln1n"]
+
+[ext_resource type="Script" uid="uid://c1fhwc2ph0xjr" path="res://scenes/enemies/dummy.gd" id="1_keykn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eutx7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_keykn"]
+
+[node name="Dummy" type="Node3D" unique_id=1920256388]
+script = ExtResource("1_keykn")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1487913052 groups=["Enemy"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1565356651]
+shape = SubResource("CapsuleShape3D_eutx7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=994517706]
+mesh = SubResource("CapsuleMesh_keykn")

@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cchgqcxq8u8ei"]
 
 [ext_resource type="Script" uid="uid://okyima0imvfj" path="res://scenes/playerfnak2/player_fnak_2.gd" id="1_kaew5"]
+[ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="2_2ocrr"]
+[ext_resource type="Resource" uid="uid://do3lrdeudlhqd" path="res://assets/items/FloppyDisk.tres" id="2_3cldu"]
 [ext_resource type="Script" uid="uid://dqakj5df5fd28" path="res://scenes/playerfnak2/PlayerMovement.gd" id="2_n5pto"]
 [ext_resource type="PackedScene" uid="uid://cu8qyrxls10mc" path="res://assets/models/nick_head_test.tscn" id="3_1drsx"]
 [ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="4_bekvq"]
+[ext_resource type="Resource" uid="uid://cwbttycrj5tx7" path="res://assets/items/Rock.tres" id="4_u6ahv"]
+[ext_resource type="Texture2D" uid="uid://b1ywwqcbwcp88" path="res://assets/sprites/evilcord.png" id="5_spu38"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_biqx6"]
 
@@ -74,6 +78,8 @@ _data = {
 script = ExtResource("1_kaew5")
 InteractionRay = NodePath("PlayerBody/PlayerHead/PlayerCamera/PlayerRaycast")
 InteractText = NodePath("PlayerUI/InteractLabel")
+InventoryArray = Array[ExtResource("2_2ocrr")]([ExtResource("2_3cldu"), ExtResource("4_u6ahv")])
+HeldItem = ExtResource("2_3cldu")
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=889288442 node_paths=PackedStringArray("PlayerHead", "PlayerCam", "HeadAnimPlayer")]
 script = ExtResource("2_n5pto")
@@ -97,7 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4831108)
 target_position = Vector3(0, 0, -5)
 
 [node name="HeadController" type="MeshInstance3D" parent="PlayerBody/PlayerHead/PlayerCamera" unique_id=484895939]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1, -0.7062672, -0.7428367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.7062672, -0.7428367)
 
 [node name="NickHeadTest" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=1244014209 instance=ExtResource("3_1drsx")]
 transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0.23733449, 5.9604645e-08, -0.12318635)
@@ -115,6 +121,9 @@ libraries/ = SubResource("AnimationLibrary_3cldu")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=514303589]
 light_cull_mask = 4294967293
+
+[node name="RightHand" type="Node3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=2054007313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4719102, -0.00063854456, 0.2259475)
 
 [node name="PlayerUI" type="Control" parent="." unique_id=633964515]
 layout_mode = 3
@@ -139,5 +148,30 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 60
 text = "dqdqqdqdqdqd"
 horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI" unique_id=1389851127]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_right = 516.0
+grow_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/HBoxContainer" unique_id=398966390]
+layout_mode = 2
+texture = ExtResource("5_spu38")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="PlayerUI/HBoxContainer" unique_id=971973804]
+layout_mode = 2
+texture = ExtResource("5_spu38")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="PlayerUI/HBoxContainer" unique_id=1310539104]
+layout_mode = 2
+texture = ExtResource("5_spu38")
+expand_mode = 3
 
 [editable path="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ctu31kooo2080"]
+
+[ext_resource type="PackedScene" uid="uid://dewfi68j8rtwy" path="res://assets/models/FloppyDisk.glb" id="1_lydsq"]
+
+[node name="FloppyDisk" unique_id=1163671581 instance=ExtResource("1_lydsq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

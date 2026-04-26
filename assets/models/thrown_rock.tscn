@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ba3cxkbb1ta30"]
+
+[ext_resource type="Script" uid="uid://c00itbcl7o73k" path="res://assets/models/thrown_rock.gd" id="1_4qknu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l51pa"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4qknu"]
+
+[node name="ThrownRock" type="RigidBody3D" unique_id=663539345]
+script = ExtResource("1_4qknu")
+
+[node name="RockCollison" type="CollisionShape3D" parent="." unique_id=1602674508]
+shape = SubResource("SphereShape3D_l51pa")
+
+[node name="RockMesh" type="MeshInstance3D" parent="." unique_id=1341044127]
+mesh = SubResource("SphereMesh_4qknu")
+
+[node name="RockAreaCheck" type="Area3D" parent="." unique_id=1098713733]
+
+[node name="RockCollison" type="CollisionShape3D" parent="RockAreaCheck" unique_id=544156296]
+shape = SubResource("SphereShape3D_l51pa")
+
+[node name="Timer" type="Timer" parent="." unique_id=1145500507]
+wait_time = 6.0
+autostart = true
+
+[connection signal="body_entered" from="RockAreaCheck" to="." method="_on_rock_area_check_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

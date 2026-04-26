@@ -9,6 +9,10 @@ const JumpVelocity = 4.5
 
 
 func _input(event: InputEvent) -> void:
+	
+	
+	
+	
 	if event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("ui_cancel"):
@@ -23,6 +27,13 @@ func _input(event: InputEvent) -> void:
 		PlayerCam.rotation.x = clamp(PlayerCam.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
+	
+	var axis_vector = Input.get_vector("joystickleft","joystickright","joystickup","joystickdown")
+	if axis_vector.length() >= 0.2:
+		rotate_y(deg_to_rad(-axis_vector.x * 1.5))
+		PlayerCam.rotate_x(deg_to_rad(-axis_vector.y * 1.5))
+		PlayerCam.rotation.x = clamp(PlayerCam.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+	
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta

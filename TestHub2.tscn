@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cchgqcxq8u8ei" path="res://scenes/playerfnak2/player_fnak_2.tscn" id="1_l76dh"]
 [ext_resource type="PackedScene" uid="uid://gma6h1a3o5by" path="res://scenes/interactables/test_interactable.tscn" id="2_jvth5"]
 [ext_resource type="PackedScene" uid="uid://c0np2s0irbbr7" path="res://scenes/interactables/door.tscn" id="3_viq7g"]
+[ext_resource type="PackedScene" uid="uid://bi42ptl2lln1n" path="res://scenes/enemies/Dummy.tscn" id="4_eii1q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvth5"]
 albedo_color = Color(0, 0, 0, 1)
@@ -32,9 +33,12 @@ environment = SubResource("Environment_jvth5")
 shadow_enabled = true
 
 [node name="Door" parent="." unique_id=807698237 instance=ExtResource("3_viq7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 3)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1933310501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -1)
 size = Vector3(11, 6, 1)
 material = SubResource("StandardMaterial3D_viq7g")
+
+[node name="Dummy" parent="." unique_id=1920256388 instance=ExtResource("4_eii1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 4)

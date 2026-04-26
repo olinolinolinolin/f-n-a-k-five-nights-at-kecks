@@ -27,18 +27,13 @@ func _process(delta: float) -> void:
 	
 	
 	
-	if Input.get_connected_joypads().size() > 0 and hiding == false:
-		if Input.is_action_pressed("joystickleft"):
-			camera.rotate_y(1 * delta) 
-		if Input.is_action_pressed("joystickright"):
-			camera.rotate_y(-1 * delta) 
-		if Input.is_action_pressed("joystickup"):
-			camera.rotate_x(-1* delta)
-		if Input.is_action_pressed("joystickdown"):
-			camera.rotate_x(1 * delta)
+	var axis_vector = Input.get_vector("joystickleft","joystickright","joystickup","joystickdown")
+	if axis_vector.length() >= 0.2:
+		rotate_y(deg_to_rad(-axis_vector.x * 1.5))
+		camera.rotate_x(deg_to_rad(axis_vector.y * 1.5))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 			
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
-	camera.rotation.z = clamp(camera.rotation.z,deg_to_rad(0),deg_to_rad(0))
+
 	
 	
 	if Input.is_action_just_pressed("phone") and hiding == false:
