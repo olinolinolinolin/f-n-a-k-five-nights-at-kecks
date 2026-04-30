@@ -18,6 +18,9 @@ func _on_rock_area_check_body_entered(body: Node3D) -> void:
 		if parent.has_method("stun"):
 			parent.stun()
 			queue_free()
+		if body.has_method("stun"):
+			body.stun()
+			queue_free()
 
 
 func _on_timer_timeout() -> void:
