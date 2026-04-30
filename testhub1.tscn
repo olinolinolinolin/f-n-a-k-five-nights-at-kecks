@@ -163,7 +163,7 @@ attacktime2 = 30.0
 curve = SubResource("Curve3D_82okx")
 
 [node name="PathFollow3D" parent="Keckbear/Path3D" index="0" unique_id=164052617]
-transform = Transform3D(-0.9541746, 0.0027542592, 0.2992238, 2.3282974e-10, 0.99986184, -0.009205024, -0.29923776, -0.008782461, -0.95413023, 45.136112, -0.2195282, -2.7548084)
+transform = Transform3D(-0.9541746, 0.002754259, 0.2992238, 2.3282974e-10, 0.9998618, -0.009205024, -0.29923776, -0.00878246, -0.95413023, 45.136112, -0.2195282, -2.7548084)
 loop = false
 
 [node name="ShadowKeckbearFnak1" parent="." unique_id=1364804302 instance=ExtResource("7_5ht26")]
