@@ -1,9 +1,28 @@
 extends CharacterBody3D
 
 @export var NavMap : NavigationRegion3D
-
+@export var playerdetected: bool = false
+@onready var bt_player: BTPlayer = $BTPlayer
+var playerpos : Vector3
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+
+
+
+
+func _ready() -> void:
+	bt_player.active = false
+	
+	var player = get_tree().get_first_node_in_group("Player")
+	
+	bt_player.blackboard.set_var("player", player)
+	
+	bt_player.active = true
+	
+	
+func attack():
+	print("get attacked")
 
 func stun():
 	print("ooof")
@@ -26,9 +45,9 @@ func move(target_pos: Vector3, delta: float):
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 
 
 	move_and_slide()

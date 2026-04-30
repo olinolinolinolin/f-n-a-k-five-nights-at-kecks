@@ -1,7 +1,7 @@
 extends Node
 signal InteractFunction
 signal SendInteractText
-@onready var Player =  get_tree().get_nodes_in_group("Player")[0]
+@onready var Player =  get_tree().get_nodes_in_group("PlayerUI")[0]
 @export var InteractText: String
 
 # Called when the node enters the scene tree for the first time.
