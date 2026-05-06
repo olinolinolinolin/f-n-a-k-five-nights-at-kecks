@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dtcsbifflwm0x"]
+
+[ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_gl5fo"]
+[ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="1_k7atv"]
+[ext_resource type="Texture2D" uid="uid://dfb3nb3il8k00" path="res://assets/sprites/test assets/3.png" id="1_ssfv3"]
+
+[resource]
+script = ExtResource("1_gl5fo")
+model = ExtResource("1_k7atv")
+image = ExtResource("1_ssfv3")
+position = Vector3(1, 0, -6)
+rotation = Vector3(0, -1.5707964, 0)
+function = "UseNothing"
+metadata/_custom_type_script = "uid://cjikoacyfclgn"

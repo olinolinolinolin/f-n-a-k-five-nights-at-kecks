@@ -2,6 +2,7 @@ extends Node3D
 const JumpVelocity = 4.5
 const Speed = 5.0
 
+var NothingItem = preload("res://assets/items/Nothing.tres")
 var ThrownRock = preload("res://assets/models/thrown_rock.tscn")
 
 @export var InteractionRay: RayCast3D
@@ -12,6 +13,7 @@ var InventoryIndex := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	showhelditem()
+	UpdateInventory()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,6 +43,8 @@ func _input(event: InputEvent) -> void:
 	InvetoryScroll()
 	if Input.is_action_just_pressed("UseHeldItem"):
 		self.call(HeldItem.function)
+	if Input.is_key_pressed(KEY_Q):
+		DropItem()
 
 func trytointeract():
 	if InteractionRay.get_collider() != null:
@@ -82,3 +86,29 @@ func UseRock():
 	
 func UseFloppyDisk():
 	print("floppin it")
+	ConsumeItem()
+	showhelditem()
+	
+func UseNothing():
+	print("nothing it")
+
+func AddItem(Item):
+	InventoryArray[InventoryIndex] = Item
+	showhelditem()
+	UpdateInventory()
+
+func DropItem():
+	match  HeldItem:
+		NothingItem:
+			print("Cant Drop")
+
+func ConsumeItem():
+	InventoryArray[InventoryIndex] = NothingItem
+	UpdateInventory()
+
+func UpdateInventory():
+	var InvIcons = [$PlayerUI/HBoxContainer/TextureRect, $PlayerUI/HBoxContainer/TextureRect2, $PlayerUI/HBoxContainer/TextureRect3]
+	var progress = 0
+	for Icon in InvIcons:
+		Icon.texture = InventoryArray[progress].image
+		progress += 1

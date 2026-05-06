@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0np2s0irbbr7" path="res://scenes/interactables/door.tscn" id="3_viq7g"]
 [ext_resource type="PackedScene" uid="uid://bi42ptl2lln1n" path="res://scenes/enemies/Dummy.tscn" id="4_eii1q"]
 [ext_resource type="PackedScene" uid="uid://big5hawipskwa" path="res://fnak_2_keck_roam.tscn" id="5_ukiv7"]
+[ext_resource type="PackedScene" uid="uid://cuxocfr480k3n" path="res://scenes/interactables/floppy_disk_pickup.tscn" id="6_my5tr"]
 
 [sub_resource type="Environment" id="Environment_jvth5"]
 
@@ -66,3 +67,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.4528961, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 3, 4)
 NavMap = NodePath("../NavigationRegion3D")
 playerdetected = true
+
+[node name="FloppyDiskPickup" parent="." unique_id=928219498 instance=ExtResource("6_my5tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 1)

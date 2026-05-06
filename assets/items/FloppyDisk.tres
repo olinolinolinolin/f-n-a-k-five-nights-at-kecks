@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://do3lrdeudlhqd"]
 
 [ext_resource type="PackedScene" uid="uid://ctu31kooo2080" path="res://assets/models/floppy_disksizedbetter.tscn" id="1_5jj30"]
+[ext_resource type="Texture2D" uid="uid://bpvw4ovaiki3o" path="res://assets/sprites/test assets/360.png" id="1_gjkkj"]
 [ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_mynm1"]
 
 [resource]
 script = ExtResource("1_mynm1")
 model = ExtResource("1_5jj30")
+image = ExtResource("1_gjkkj")
 position = Vector3(0, 0.25719047, -1)
 rotation = Vector3(0, 1.5707964, 0)
 function = "UseFloppyDisk"

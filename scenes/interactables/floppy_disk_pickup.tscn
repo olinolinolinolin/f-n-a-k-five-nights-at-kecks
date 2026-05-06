@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cuxocfr480k3n"]
+
+[ext_resource type="Script" uid="uid://cdg5qej320auf" path="res://scenes/interactables/floppy_disk_pickup.gd" id="1_b5aai"]
+[ext_resource type="PackedScene" uid="uid://ctu31kooo2080" path="res://assets/models/floppy_disksizedbetter.tscn" id="1_jmi8j"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="2_b5aai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dgmr"]
+size = Vector3(0.12109375, 0.5749512, 0.5649414)
+
+[node name="FloppyDiskPickup" type="Node3D" unique_id=928219498]
+script = ExtResource("1_b5aai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=533237938]
+
+[node name="FloppyDisk" parent="StaticBody3D" unique_id=1163671581 instance=ExtResource("1_jmi8j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=426385471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107421875, -0.01184082, 0.0061035156)
+shape = SubResource("BoxShape3D_3dgmr")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("2_b5aai")]
+InteractText = "Pick up Floppy Disk"
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]
