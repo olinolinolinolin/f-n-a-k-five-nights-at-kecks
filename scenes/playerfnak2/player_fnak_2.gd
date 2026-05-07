@@ -4,6 +4,7 @@ const Speed = 5.0
 
 var NothingItem = preload("res://assets/items/Nothing.tres")
 var ThrownRock = preload("res://assets/models/thrown_rock.tscn")
+var ItemShader = preload("res://shaders/HighlightInvShader.tres")
 
 @export var InteractionRay: RayCast3D
 @export var InteractText: Label
@@ -68,6 +69,13 @@ func showhelditem():
 	
 	item_model.position = HeldItem.position
 	item_model.rotation = HeldItem.rotation
+	var InvIcons = [$PlayerUI/HBoxContainer/TextureRect, $PlayerUI/HBoxContainer/TextureRect2, $PlayerUI/HBoxContainer/TextureRect3]
+	var progress = 0
+	for Icon in InvIcons:
+		InvIcons[progress].material = null
+		progress += 1
+	InvIcons[InventoryIndex].material = ItemShader
+	progress = 0
 
 
 

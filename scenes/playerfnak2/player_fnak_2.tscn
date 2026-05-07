@@ -150,12 +150,13 @@ text = "dqdqqdqdqdqd"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI" unique_id=1389851127]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -168.0
-offset_right = 516.0
+offset_top = -80.0
+offset_right = 300.0
 grow_vertical = 0
 alignment = 1
 
