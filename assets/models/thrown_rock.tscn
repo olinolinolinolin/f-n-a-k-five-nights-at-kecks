@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://ba3cxkbb1ta30"]
 
 [ext_resource type="Script" uid="uid://c00itbcl7o73k" path="res://assets/models/thrown_rock.gd" id="1_4qknu"]
+[ext_resource type="AudioStream" uid="uid://b5gjgn3mulvd1" path="res://assets/audio/rock land.wav" id="2_hbg7s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l51pa"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4qknu"]
 
-[node name="ThrownRock" type="RigidBody3D" unique_id=663539345]
+[node name="ThrownRock" type="RigidBody3D" unique_id=663539345 node_paths=PackedStringArray("RockPlayer")]
 script = ExtResource("1_4qknu")
+RockPlayer = NodePath("RockPlayer")
 
 [node name="RockCollison" type="CollisionShape3D" parent="." unique_id=1602674508]
 shape = SubResource("SphereShape3D_l51pa")
@@ -23,6 +25,9 @@ shape = SubResource("SphereShape3D_l51pa")
 [node name="Timer" type="Timer" parent="." unique_id=1145500507]
 wait_time = 6.0
 autostart = true
+
+[node name="RockPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2069220444]
+stream = ExtResource("2_hbg7s")
 
 [connection signal="body_entered" from="RockAreaCheck" to="." method="_on_rock_area_check_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

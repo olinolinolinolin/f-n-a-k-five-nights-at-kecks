@@ -11,4 +11,5 @@ image = ExtResource("1_gjkkj")
 position = Vector3(0, 0.25719047, -1)
 rotation = Vector3(0, 1.5707964, 0)
 function = "UseFloppyDisk"
+key = "comp"
 metadata/_custom_type_script = "uid://cjikoacyfclgn"

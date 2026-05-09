@@ -179,6 +179,10 @@ UseHeldItem={
 ]
 }
 
+[limbo_ai]
+
+behavior_tree/favorite_tasks=PackedStringArray("BTSequence", "BTComment", "BTSelector")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

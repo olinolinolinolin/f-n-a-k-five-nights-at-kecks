@@ -14,17 +14,20 @@ var/player/name = &"player"
 var/player/type = 24
 var/player/hint = 0
 var/player/hint_string = ""
+var/pos/name = &"pos"
+var/pos/type = 9
+var/pos/value = Vector3(0, 0, 0)
+var/pos/hint = 0
+var/pos/hint_string = ""
 
-[sub_resource type="BBVariant" id="BBVariant_e20b7"]
-type = 1
-saved_value = false
+[sub_resource type="BBVariant" id="BBVariant_ncph0"]
+type = 2
+saved_value = 0
 resource_name = "<null>"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_n0ig4"]
-property = &"playerdetected"
-value = SubResource("BBVariant_e20b7")
-
-[sub_resource type="BTWait" id="BTWait_e20b7"]
+property = &"CurrentState"
+value = SubResource("BBVariant_ncph0")
 
 [sub_resource type="BTAction" id="BTAction_e20b7"]
 script = ExtResource("2_1n5tt")
@@ -32,20 +35,23 @@ script = ExtResource("2_1n5tt")
 [sub_resource type="BTAction" id="BTAction_n0ig4"]
 script = ExtResource("2_e20b7")
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_e20b7"]
-text = "I moved"
+[sub_resource type="BTWait" id="BTWait_e20b7"]
+duration = 6.0
+
+[sub_resource type="BTSequence" id="BTSequence_n0ig4"]
+children = [SubResource("BTAction_e20b7"), SubResource("BTAction_n0ig4"), SubResource("BTWait_e20b7")]
 
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_ncph0"]
 custom_name = "Roam if Player not seen"
-children = [SubResource("BTCheckAgentProperty_n0ig4"), SubResource("BTWait_e20b7"), SubResource("BTAction_e20b7"), SubResource("BTAction_n0ig4"), SubResource("BTConsolePrint_e20b7")]
+children = [SubResource("BTCheckAgentProperty_n0ig4"), SubResource("BTSequence_n0ig4")]
 
 [sub_resource type="BBVariant" id="BBVariant_n0ig4"]
-type = 1
-saved_value = true
-resource_name = "true"
+type = 2
+saved_value = 3
+resource_name = "3"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_ncph0"]
-property = &"playerdetected"
+property = &"CurrentState"
 value = SubResource("BBVariant_n0ig4")
 
 [sub_resource type="BTAction" id="BTAction_ncph0"]

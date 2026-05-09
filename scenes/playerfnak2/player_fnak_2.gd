@@ -113,6 +113,7 @@ func DropItem():
 func ConsumeItem():
 	InventoryArray[InventoryIndex] = NothingItem
 	UpdateInventory()
+	showhelditem()
 
 func UpdateInventory():
 	var InvIcons = [$PlayerUI/HBoxContainer/TextureRect, $PlayerUI/HBoxContainer/TextureRect2, $PlayerUI/HBoxContainer/TextureRect3]

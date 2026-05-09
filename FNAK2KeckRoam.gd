@@ -6,8 +6,8 @@ extends CharacterBody3D
 var playerpos : Vector3
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
-
+enum AlertState {Passive,Alert,Hunting,Chase}
+@export var CurrentState : AlertState
 
 
 
@@ -29,8 +29,8 @@ func stun():
 
 func get_random_point() -> Vector3:
 	var randompoint = NavigationServer3D.map_get_random_point(NavMap.get_navigation_map(), 1, true)
-	print(randompoint)
 	return randompoint
+	bt_player.blackboard.set_var("pos",randompoint)
 
 func move(target_pos: Vector3, delta: float):
 	var direction = Vector3(
@@ -51,3 +51,9 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+
+func Alert():
+	CurrentState = AlertState.Alert
+
+func Hunt():
+	CurrentState = AlertState.Hunting
