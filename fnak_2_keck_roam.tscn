@@ -19,6 +19,11 @@ var/pos/type = 9
 var/pos/value = Vector3(0, 0, 0)
 var/pos/hint = 0
 var/pos/hint_string = ""
+var/noisepos/name = &"noisepos"
+var/noisepos/type = 9
+var/noisepos/value = Vector3(0, 0, 0)
+var/noisepos/hint = 0
+var/noisepos/hint_string = ""
 
 [sub_resource type="BBVariant" id="BBVariant_ncph0"]
 type = 2
@@ -72,8 +77,82 @@ children = [SubResource("BTCallMethod_ncph0")]
 custom_name = "If Player seen chase him"
 children = [SubResource("BTCheckAgentProperty_ncph0"), SubResource("BTAction_ncph0"), SubResource("BTRunLimit_n0ig4")]
 
+[sub_resource type="BBVariant" id="BBVariant_ivhdq"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_1uqdi"]
+property = &"CurrentState"
+value = SubResource("BBVariant_ivhdq")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_uw7l6"]
+text = "Alerted"
+
+[sub_resource type="BTWait" id="BTWait_n0ig4"]
+duration = 2.5
+
+[sub_resource type="BTAction" id="BTAction_ivhdq"]
+script = ExtResource("2_e20b7")
+
+[sub_resource type="BBNode" id="BBNode_ncph0"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ivhdq"]
+node = SubResource("BBNode_ncph0")
+method = &"cooldown"
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_1uqdi"]
+children = [SubResource("BTCallMethod_ivhdq")]
+
+[sub_resource type="BTSequence" id="BTSequence_wek2d"]
+custom_name = "Noise Alert"
+children = [SubResource("BTCheckAgentProperty_1uqdi"), SubResource("BTConsolePrint_uw7l6"), SubResource("BTWait_n0ig4"), SubResource("BTAction_ivhdq"), SubResource("BTRunLimit_1uqdi")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_n0ig4"]
+custom_name = "Noise Alert Selector"
+children = [SubResource("BTSequence_wek2d")]
+
+[sub_resource type="BBVariant" id="BBVariant_1uqdi"]
+type = 2
+saved_value = 2
+resource_name = "2"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_uw7l6"]
+property = &"CurrentState"
+value = SubResource("BBVariant_1uqdi")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_wek2d"]
+text = "Hunting"
+
+[sub_resource type="BTWait" id="BTWait_ncph0"]
+duration = 0.5
+
+[sub_resource type="BTAction" id="BTAction_tasnu"]
+script = ExtResource("2_e20b7")
+
+[sub_resource type="BBNode" id="BBNode_1uqdi"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_uw7l6"]
+node = SubResource("BBNode_1uqdi")
+method = &"cooldown"
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_uw7l6"]
+children = [SubResource("BTCallMethod_uw7l6")]
+
+[sub_resource type="BTSequence" id="BTSequence_tasnu"]
+custom_name = "Noise Hunt"
+children = [SubResource("BTCheckAgentProperty_uw7l6"), SubResource("BTConsolePrint_wek2d"), SubResource("BTWait_ncph0"), SubResource("BTAction_tasnu"), SubResource("BTRunLimit_uw7l6")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_ncph0"]
+custom_name = "Noise Hunt Selector"
+children = [SubResource("BTSequence_tasnu")]
+
 [sub_resource type="BTSelector" id="BTSelector_ivhdq"]
-children = [SubResource("BTDynamicSequence_ncph0"), SubResource("BTDynamicSequence_ivhdq")]
+children = [SubResource("BTDynamicSequence_ncph0"), SubResource("BTDynamicSequence_ivhdq"), SubResource("BTDynamicSelector_n0ig4"), SubResource("BTDynamicSelector_ncph0")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_1n5tt"]
 blackboard_plan = SubResource("BlackboardPlan_6e3w3")
@@ -95,3 +174,8 @@ behavior_tree = SubResource("BehaviorTree_1n5tt")
 blackboard_plan = SubResource("BlackboardPlan_e20b7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=120468556]
+
+[node name="Hunt_Alert" type="Timer" parent="." unique_id=401253804]
+wait_time = 5.0
+
+[connection signal="timeout" from="Hunt_Alert" to="." method="_on_hunt_alert_timeout"]

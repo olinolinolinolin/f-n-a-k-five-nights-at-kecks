@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var NavMap : NavigationRegion3D
 @export var playerdetected: bool = false
 @onready var bt_player: BTPlayer = $BTPlayer
+@onready var HuntAlertCD = $Hunt_Alert
 var playerpos : Vector3
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -52,8 +53,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func Alert():
+func Alert(pos):
 	CurrentState = AlertState.Alert
+	bt_player.blackboard.set_var("pos",pos)
 
-func Hunt():
+func Hunt(pos):
 	CurrentState = AlertState.Hunting
+	bt_player.blackboard.set_var("pos",pos)
+
+
+func _on_hunt_alert_timeout() -> void:
+	CurrentState = AlertState.Passive
+
+func cooldown():
+	HuntAlertCD.start()

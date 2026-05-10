@@ -33,11 +33,10 @@ func makenoise(pos):
 	RockPlayer.play()
 	var Enemies = get_tree().get_nodes_in_group("Enemy")
 	for i in Enemies:
-		
 		print(i.global_position.distance_to(pos))
 		if i.global_position.distance_to(pos) < 5.0:
 			if i.has_method("Hunt"):
-				i.Hunt()
-		if i.global_position.distance_to(pos) < 15.0:
+				i.Hunt(pos)
+		if i.global_position.distance_to(pos) < 15.0 and i.global_position.distance_to(pos) > 5:
 			if i.has_method("Alert"):
-				i.Alert()
+				i.Alert(pos)
