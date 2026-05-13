@@ -1,6 +1,6 @@
 extends Node3D
 const JumpVelocity = 4.5
-const Speed = 5.0
+var Speed = 5.0
 
 var NothingItem = preload("res://assets/items/Nothing.tres")
 var ThrownRock = preload("res://assets/models/thrown_rock.tscn")
@@ -26,7 +26,12 @@ func _process(delta: float) -> void:
 					child.SendInteractTextFunc()
 	else:
 		InteractText.text = " "
-
+	if OS.is_debug_build():
+		$PlayerUI/Debug/Label.show()
+		var Keckbear = get_tree().get_nodes_in_group("Enemy")
+		for i in Keckbear:
+			if i.has_method("stun"):
+				$PlayerUI/Debug/Label.text = "CURRENT STATE" + " " + str(i.CurrentState)
 
 func InvetoryScroll():
 	if Input.is_action_just_released("InvDown"):
@@ -46,6 +51,9 @@ func _input(event: InputEvent) -> void:
 		self.call(HeldItem.function)
 	if Input.is_key_pressed(KEY_Q):
 		DropItem()
+
+
+
 
 func trytointeract():
 	if InteractionRay.get_collider() != null:

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="4_bekvq"]
 [ext_resource type="Texture2D" uid="uid://b1ywwqcbwcp88" path="res://assets/sprites/evilcord.png" id="5_spu38"]
 [ext_resource type="Resource" uid="uid://dtcsbifflwm0x" path="res://assets/items/Nothing.tres" id="5_u6ahv"]
+[ext_resource type="Theme" uid="uid://c22cnqqd2nf0" path="res://assets/fonts/DEBUG TEXT.tres" id="9_u6ahv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_biqx6"]
 
@@ -174,5 +175,26 @@ expand_mode = 3
 layout_mode = 2
 texture = ExtResource("5_spu38")
 expand_mode = 3
+
+[node name="Debug" type="Control" parent="PlayerUI" unique_id=321764621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerUI/Debug" unique_id=338339297]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("9_u6ahv")
+text = "CURRENT STATE: CHASE"
+horizontal_alignment = 1
 
 [editable path="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2"]

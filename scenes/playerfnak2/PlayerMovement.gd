@@ -3,13 +3,16 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var PlayerHead: Node3D
 @export var PlayerCam: Camera3D
 @export var HeadAnimPlayer: AnimationPlayer
-const Speed = 5.0
+var Speed = 5.0
 const JumpVelocity = 4.5
 
 
 
 func _input(event: InputEvent) -> void:
-	
+	if Input.is_action_just_pressed("Run"):
+		Speed = 10.0
+	if Input.is_action_just_released("Run"):
+		Speed = 5.0
 	
 	
 	

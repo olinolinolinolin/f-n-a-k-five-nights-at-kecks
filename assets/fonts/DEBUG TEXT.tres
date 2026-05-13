@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://c22cnqqd2nf0"]
+
+[ext_resource type="FontFile" uid="uid://b7l6ngbx7hadw" path="res://assets/fonts/DiarrheaG-Regular(2).otf" id="1_8ghlm"]
+
+[resource]
+default_font = ExtResource("1_8ghlm")
+default_font_size = 100
