@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://3r864rxrvfgv" path="res://ai/tasks/random_pos.gd" id="2_1n5tt"]
 [ext_resource type="Script" uid="uid://d112kkbxpokto" path="res://ai/tasks/move_to_pos.gd" id="2_e20b7"]
 [ext_resource type="Script" uid="uid://ksiwxyywa7rs" path="res://ai/tasks/move_to_player.gd" id="4_n0ig4"]
+[ext_resource type="Script" uid="uid://biqv0p55irmkq" path="res://ai/tasks/hunt_last_pos.gd" id="5_ncph0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1n5tt"]
 
@@ -24,31 +25,6 @@ var/noisepos/type = 9
 var/noisepos/value = Vector3(0, 0, 0)
 var/noisepos/hint = 0
 var/noisepos/hint_string = ""
-
-[sub_resource type="BBVariant" id="BBVariant_ncph0"]
-type = 2
-saved_value = 0
-resource_name = "<null>"
-
-[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_n0ig4"]
-property = &"CurrentState"
-value = SubResource("BBVariant_ncph0")
-
-[sub_resource type="BTAction" id="BTAction_e20b7"]
-script = ExtResource("2_1n5tt")
-
-[sub_resource type="BTAction" id="BTAction_n0ig4"]
-script = ExtResource("2_e20b7")
-
-[sub_resource type="BTWait" id="BTWait_e20b7"]
-duration = 6.0
-
-[sub_resource type="BTSequence" id="BTSequence_n0ig4"]
-children = [SubResource("BTAction_e20b7"), SubResource("BTAction_n0ig4"), SubResource("BTWait_e20b7")]
-
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_ncph0"]
-custom_name = "Roam if Player not seen"
-children = [SubResource("BTCheckAgentProperty_n0ig4"), SubResource("BTSequence_n0ig4")]
 
 [sub_resource type="BBVariant" id="BBVariant_n0ig4"]
 type = 2
@@ -76,6 +52,31 @@ children = [SubResource("BTCallMethod_ncph0")]
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_ivhdq"]
 custom_name = "If Player seen chase him"
 children = [SubResource("BTCheckAgentProperty_ncph0"), SubResource("BTAction_ncph0"), SubResource("BTRunLimit_n0ig4")]
+
+[sub_resource type="BBVariant" id="BBVariant_ncph0"]
+type = 2
+saved_value = 0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_n0ig4"]
+property = &"CurrentState"
+value = SubResource("BBVariant_ncph0")
+
+[sub_resource type="BTAction" id="BTAction_e20b7"]
+script = ExtResource("2_1n5tt")
+
+[sub_resource type="BTAction" id="BTAction_n0ig4"]
+script = ExtResource("2_e20b7")
+
+[sub_resource type="BTWait" id="BTWait_e20b7"]
+duration = 6.0
+
+[sub_resource type="BTSequence" id="BTSequence_n0ig4"]
+children = [SubResource("BTAction_e20b7"), SubResource("BTAction_n0ig4"), SubResource("BTWait_e20b7")]
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_ncph0"]
+custom_name = "Roam if Player not seen"
+children = [SubResource("BTCheckAgentProperty_n0ig4"), SubResource("BTSequence_n0ig4")]
 
 [sub_resource type="BBVariant" id="BBVariant_ivhdq"]
 type = 2
@@ -129,8 +130,8 @@ text = "Hunting"
 [sub_resource type="BTWait" id="BTWait_ncph0"]
 duration = 0.5
 
-[sub_resource type="BTAction" id="BTAction_tasnu"]
-script = ExtResource("2_e20b7")
+[sub_resource type="BTAction" id="BTAction_1uqdi"]
+script = ExtResource("5_ncph0")
 
 [sub_resource type="BBNode" id="BBNode_1uqdi"]
 saved_value = NodePath(".")
@@ -145,14 +146,17 @@ children = [SubResource("BTCallMethod_uw7l6")]
 
 [sub_resource type="BTSequence" id="BTSequence_tasnu"]
 custom_name = "Noise Hunt"
-children = [SubResource("BTCheckAgentProperty_uw7l6"), SubResource("BTConsolePrint_wek2d"), SubResource("BTWait_ncph0"), SubResource("BTAction_tasnu"), SubResource("BTRunLimit_uw7l6")]
+children = [SubResource("BTCheckAgentProperty_uw7l6"), SubResource("BTConsolePrint_wek2d"), SubResource("BTWait_ncph0"), SubResource("BTAction_1uqdi"), SubResource("BTRunLimit_uw7l6")]
 
 [sub_resource type="BTDynamicSelector" id="BTDynamicSelector_ncph0"]
 custom_name = "Noise Hunt Selector"
 children = [SubResource("BTSequence_tasnu")]
 
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_ivhdq"]
+children = [SubResource("BTDynamicSequence_ivhdq"), SubResource("BTDynamicSequence_ncph0"), SubResource("BTDynamicSelector_n0ig4"), SubResource("BTDynamicSelector_ncph0")]
+
 [sub_resource type="BTSelector" id="BTSelector_ivhdq"]
-children = [SubResource("BTDynamicSequence_ncph0"), SubResource("BTDynamicSequence_ivhdq"), SubResource("BTDynamicSelector_n0ig4"), SubResource("BTDynamicSelector_ncph0")]
+children = [SubResource("BTDynamicSelector_ivhdq")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_1n5tt"]
 blackboard_plan = SubResource("BlackboardPlan_6e3w3")
@@ -197,6 +201,9 @@ _data = {
 &"RESET": SubResource("Animation_ncph0")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncph0"]
+size = Vector3(1, 0.3, 1)
+
 [node name="FNAK2KeckRoam" type="CharacterBody3D" unique_id=1867517531 node_paths=PackedStringArray("Keckeyes") groups=["Enemy"]]
 script = ExtResource("1_6e3w3")
 Keckeyes = NodePath("KeckEyes")
@@ -233,6 +240,12 @@ libraries/ = SubResource("AnimationLibrary_ivhdq")
 [node name="KeckEyes" type="RayCast3D" parent="." unique_id=114783622]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.7)
 target_position = Vector3(0, 0, -9)
+
+[node name="KeckHead" type="Area3D" parent="." unique_id=589917846 groups=["EnemyHead"]]
+
+[node name="KeckHeadCollison" type="CollisionShape3D" parent="KeckHead" unique_id=172445573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74996984, 0)
+shape = SubResource("BoxShape3D_ncph0")
 
 [connection signal="timeout" from="Hunt_Alert" to="." method="_on_hunt_alert_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

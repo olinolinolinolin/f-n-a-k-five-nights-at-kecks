@@ -99,6 +99,7 @@ func UseRock():
 	var playerRotation = $PlayerBody/PlayerHead.global_transform.basis.z.normalized()
 	
 	UsedRock.apply_central_impulse(playerRotation * force + Vector3(0, upDirection, 0))
+	ConsumeItem()
 	
 func UseFloppyDisk():
 	print("floppin it")

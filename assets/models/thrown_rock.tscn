@@ -4,8 +4,11 @@
 [ext_resource type="AudioStream" uid="uid://b5gjgn3mulvd1" path="res://assets/audio/rock land.wav" id="2_hbg7s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l51pa"]
+radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_4qknu"]
+radius = 0.25
+height = 0.5
 
 [node name="ThrownRock" type="RigidBody3D" unique_id=663539345 node_paths=PackedStringArray("RockPlayer")]
 script = ExtResource("1_4qknu")
@@ -29,5 +32,6 @@ autostart = true
 [node name="RockPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2069220444]
 stream = ExtResource("2_hbg7s")
 
+[connection signal="area_entered" from="RockAreaCheck" to="." method="_on_rock_area_check_area_entered"]
 [connection signal="body_entered" from="RockAreaCheck" to="." method="_on_rock_area_check_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

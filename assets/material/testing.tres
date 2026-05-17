@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://m0fcv6exy3o2"]
+
+[ext_resource type="Texture2D" uid="uid://btidf55xhjq7i" path="res://assets/material/FNAK 2 TESTING BLOCKS_1m x 1m.png" id="1_dixf8"]
+
+[resource]
+albedo_texture = ExtResource("1_dixf8")
+uv1_triplanar = true
