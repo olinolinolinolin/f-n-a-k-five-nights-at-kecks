@@ -75,15 +75,17 @@ _data = {
 &"RESET": SubResource("Animation_spu38")
 }
 
-[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("InteractionRay", "InteractText") groups=["PlayerUI"]]
+[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("PlayerCam", "InteractionRay", "InteractText") groups=["PlayerUI"]]
 script = ExtResource("1_kaew5")
+PlayerCam = NodePath("PlayerBody/PlayerHead/PlayerCamera")
 InteractionRay = NodePath("PlayerBody/PlayerHead/PlayerCamera/PlayerRaycast")
 InteractText = NodePath("PlayerUI/InteractLabel")
 InventoryArray = Array[ExtResource("2_2ocrr")]([ExtResource("2_3cldu"), ExtResource("5_u6ahv"), ExtResource("5_u6ahv")])
 HeldItem = ExtResource("2_3cldu")
 
-[node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=889288442 node_paths=PackedStringArray("PlayerHead", "PlayerCam", "HeadAnimPlayer") groups=["Player"]]
+[node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=889288442 node_paths=PackedStringArray("PlayerController", "PlayerHead", "PlayerCam", "HeadAnimPlayer") groups=["Player"]]
 script = ExtResource("2_n5pto")
+PlayerController = NodePath("..")
 PlayerHead = NodePath("PlayerHead")
 PlayerCam = NodePath("PlayerHead/PlayerCamera")
 HeadAnimPlayer = NodePath("PlayerHead/PlayerCamera/HeadController/HeadAnimPlayer")

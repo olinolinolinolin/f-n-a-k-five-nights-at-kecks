@@ -5,16 +5,24 @@ var Speed = 5.0
 var NothingItem = preload("res://assets/items/Nothing.tres")
 var ThrownRock = preload("res://assets/models/thrown_rock.tscn")
 var ItemShader = preload("res://shaders/HighlightInvShader.tres")
+var PlayingCabinet = false
 
+@export_category("Player Objects")
+@export var PlayerCam: Camera3D
 @export var InteractionRay: RayCast3D
 @export var InteractText: Label
+@export_category("Inventory")
 @export var InventoryArray: Array[Item] = []
 @export var HeldItem : Item
+@export_category("Player Vars")
+@export var HaveNick: bool = false
 var InventoryIndex := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	showhelditem()
 	UpdateInventory()
+	if HaveNick == false :
+		$PlayerBody/PlayerHead/PlayerCamera/HeadController/NickHeadTest.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -102,12 +110,15 @@ func UseRock():
 	ConsumeItem()
 	
 func UseFloppyDisk():
-	print("floppin it")
+	print("floppin it" + " this is the " + HeldItem.key + " Key")
 	ConsumeItem()
 	showhelditem()
 	
 func UseNothing():
 	print("nothing it")
+	
+func UseKey():
+	print("keying it" + " this is the " + HeldItem.key + " Key")
 
 func AddItem(Item):
 	InventoryArray[InventoryIndex] = Item
@@ -130,3 +141,7 @@ func UpdateInventory():
 	for Icon in InvIcons:
 		Icon.texture = InventoryArray[progress].image
 		progress += 1
+
+func GetNick():
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/NickHeadTest.show()
+	HaveNick = true

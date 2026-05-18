@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ccfwwn0ur26m2"]
+
+[ext_resource type="Script" uid="uid://cjc6ax16wpqos" path="res://scenes/interactables/key_pickup.gd" id="1_81kd0"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="3_p64wn"]
+[ext_resource type="PackedScene" uid="uid://csmsf5t5c5k7f" path="res://assets/models/keyig.glb" id="3_ygfwh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dgmr"]
+size = Vector3(0.12109375, 0.5749512, 0.5649414)
+
+[node name="KeyPickup" type="Node3D" unique_id=928219498]
+script = ExtResource("1_81kd0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=533237938]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=426385471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107421875, -0.01184082, 0.0061035156)
+shape = SubResource("BoxShape3D_3dgmr")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("3_p64wn")]
+InteractText = "Pick up Floppy Disk"
+
+[node name="keyig" parent="StaticBody3D" unique_id=1588554759 instance=ExtResource("3_ygfwh")]
+transform = Transform3D(0.2707327, 0, 0, 0, 0.2048074, -0.17705965, 0, 0.17705965, 0.2048074, 0, 0, -0.058568895)
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

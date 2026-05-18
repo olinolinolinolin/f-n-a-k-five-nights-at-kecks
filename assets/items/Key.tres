@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cvqx25f4f4qf2"]
+
+[ext_resource type="PackedScene" uid="uid://csmsf5t5c5k7f" path="res://assets/models/keyig.glb" id="1_2rff8"]
+[ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_77p7a"]
+
+[resource]
+script = ExtResource("1_77p7a")
+model = ExtResource("1_2rff8")
+position = Vector3(3.5605502, 2, -4.015279)
+rotation = Vector3(1.3442341, -0.4578676, 3.075861)
+function = "UseKey"
+metadata/_custom_type_script = "uid://cjikoacyfclgn"

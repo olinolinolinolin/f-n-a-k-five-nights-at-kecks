@@ -1,6 +1,6 @@
 extends Node3D
-var floppydisk = preload("res://assets/items/FloppyDisk.tres")
-@export var keyname: String
+@export var keyname : String
+var key = preload("res://assets/items/Key.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_interact_interact_function() -> void:
 	var Player = get_tree().get_first_node_in_group("PlayerUI")
-	var newdisk = floppydisk.duplicate()
-	newdisk.key = keyname
-	Player.AddItem(floppydisk)
+	var newkey = key.duplicate()
+	newkey.key = keyname
+	Player.AddItem(newkey)
 	queue_free()

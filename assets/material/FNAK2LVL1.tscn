@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://ckn5f17k7op85"]
 
 [ext_resource type="Material" uid="uid://m0fcv6exy3o2" path="res://assets/material/testing.tres" id="1_e7sox"]
+[ext_resource type="PackedScene" uid="uid://ccjwp7ktwmmni" path="res://assets/items/ArcadeCabinet.tscn" id="2_j1ftj"]
 [ext_resource type="PackedScene" uid="uid://cchgqcxq8u8ei" path="res://scenes/playerfnak2/player_fnak_2.tscn" id="2_vqkiy"]
+[ext_resource type="PackedScene" uid="uid://ccfwwn0ur26m2" path="res://scenes/interactables/key_pickup.tscn" id="3_rbg00"]
 [ext_resource type="PackedScene" uid="uid://c0np2s0irbbr7" path="res://scenes/interactables/door.tscn" id="3_vqkiy"]
-[ext_resource type="PackedScene" uid="uid://big5hawipskwa" path="res://fnak_2_keck_roam.tscn" id="4_am8hn"]
+[ext_resource type="PackedScene" uid="uid://dvt0hd6fbpcnh" path="res://scenes/pooptable.tscn" id="4_am8hn"]
 
 [sub_resource type="Environment" id="Environment_am8hn"]
 background_mode = 1
@@ -11,8 +13,6 @@ background_color = Color(0.033853274, 0.03385328, 0.033853255, 1)
 ssil_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_e7sox"]
-vertices = PackedVector3Array(0, 5, -33, 0, 5, 4, 8, 5, 4, 8, 5, -33, 1.25, 0, -31.75, 1.25, 0, -11, 7, 0, -11, 7, 0, -31.75, 1.25, 0, -8.75, 1.25, 0, 2, 7, 0, 2, 7, 0, -8.75)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
 
 [node name="Node3D" type="Node3D" unique_id=472739094]
 
@@ -20,6 +20,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 environment = SubResource("Environment_am8hn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=401965503]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1607798113]
@@ -29,42 +30,94 @@ navigation_mesh = SubResource("NavigationMesh_e7sox")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1244106113]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -10.5)
-size = Vector3(9, 1, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -28)
+size = Vector3(9, 1, 65)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1030289438]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -10)
-size = Vector3(9, 6, 1)
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=2019409453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -139)
+size = Vector3(9, 1, 65)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=287599352]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -10)
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1414802918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -48.5)
+size = Vector3(40, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=952118689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, -1, -82.5)
+size = Vector3(40, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1905824651]
+transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, -35.138, -1, -100.026)
+size = Vector3(40, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1557848737]
+transform = Transform3D(0.9063077, 0, 0.42261824, 0, 1, 0, -0.42261824, 0, 0.9063077, 41.862, -1, -102.026)
+size = Vector3(40, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=139722605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -22.5)
+size = Vector3(40, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1076358592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, -1, -48.5)
+size = Vector3(88, 1, 10)
+material = ExtResource("1_e7sox")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=485158891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.5, -83)
+radius = 25.0
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1757834232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -57.5)
+size = Vector3(9, 4, 2)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D9" unique_id=220308425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 operation = 2
-size = Vector3(2, 3, 1)
+size = Vector3(2, 3, 2)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=517437296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -14.5)
-size = Vector3(9, 6, 38)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=525702261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -82)
+radius = 6.0
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D4" unique_id=357160791]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-operation = 2
-size = Vector3(7, 4, 35)
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/CSGCylinder3D2" unique_id=479134066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+radius = 4.0
+material = ExtResource("1_e7sox")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/CSGCylinder3D2" unique_id=1312341904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+radius = 2.0
+height = 4.0
 material = ExtResource("1_e7sox")
 
 [node name="Door" parent="NavigationRegion3D" unique_id=807698237 instance=ExtResource("3_vqkiy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.4, -9.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -57)
+Locked = true
+LockName = "Door1"
 
-[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D" unique_id=1026061858]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4727902, 0, -7)
-start_position = Vector3(0, 0, -6)
+[node name="KeyPickup" parent="NavigationRegion3D" unique_id=928219498 instance=ExtResource("3_rbg00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -51)
+keyname = "Door1"
 
 [node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("2_vqkiy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1)
 
-[node name="FNAK2KeckRoam" parent="." unique_id=1867517531 node_paths=PackedStringArray("NavMap") instance=ExtResource("4_am8hn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
-NavMap = NodePath("../NavigationRegion3D")
+[node name="Node3D" parent="." unique_id=1688958343 instance=ExtResource("4_am8hn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 1, -6)
+
+[node name="ArcadeMachine" parent="." unique_id=200284906 instance=ExtResource("2_j1ftj")]
+transform = Transform3D(-0.42261827, 0, -0.9063079, 0, 1, 0, 0.9063079, 0, -0.42261827, -52.3, -0.33709764, -107.7)
+
+[node name="ArcadeMachine2" parent="." unique_id=2113940478 instance=ExtResource("2_j1ftj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -7)
