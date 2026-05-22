@@ -22,10 +22,10 @@ func _on_interact_interact_function() -> void:
 	print("lmao Im playing with myself so quirky ahah!!!")
 	Camera.make_current()
 	$AnimationPlayer.play("Start Playing")
-	
+	Player.StartArcade()
 
 func quit():
 	var Player = get_tree().get_first_node_in_group("PlayerUI")
 	Player.PlayerCam.make_current()
 	Player.PlayingCabinet = false
-	
+	Player.StopArcade()

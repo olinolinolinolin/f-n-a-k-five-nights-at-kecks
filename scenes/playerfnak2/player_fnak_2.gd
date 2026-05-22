@@ -145,3 +145,11 @@ func UpdateInventory():
 func GetNick():
 	$PlayerBody/PlayerHead/PlayerCamera/HeadController/NickHeadTest.show()
 	HaveNick = true
+
+func StartArcade():
+	InteractionRay.enabled = false
+	$PlayerUI.hide()
+
+func StopArcade():
+	InteractionRay.enabled = true
+	$PlayerUI.show()
