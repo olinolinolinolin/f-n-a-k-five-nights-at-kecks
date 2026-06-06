@@ -11,6 +11,8 @@ var PlayingCabinet = false
 @export var PlayerCam: Camera3D
 @export var InteractionRay: RayCast3D
 @export var InteractText: Label
+@export_category("Debug Tools")
+@export var fpscounter: Label
 @export_category("Inventory")
 @export var InventoryArray: Array[Item] = []
 @export var HeldItem : Item
@@ -40,6 +42,7 @@ func _process(delta: float) -> void:
 		for i in Keckbear:
 			if i.has_method("stun"):
 				$PlayerUI/Debug/Label.text = "CURRENT STATE" + " " + str(i.CurrentState)
+	fpscounter.text = ("FPS " +str(Engine.get_frames_per_second()))
 
 func InvetoryScroll():
 	if Input.is_action_just_released("InvDown"):
@@ -52,13 +55,14 @@ func setinteracttext(senttext):
 	InteractText.text = senttext
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Interact"):
-		trytointeract()
-	InvetoryScroll()
-	if Input.is_action_just_pressed("UseHeldItem"):
-		self.call(HeldItem.function)
-	if Input.is_key_pressed(KEY_Q):
-		DropItem()
+	if PlayingCabinet == false:
+		if Input.is_action_just_pressed("Interact"):
+			trytointeract()
+		InvetoryScroll()
+		if Input.is_action_just_pressed("UseHeldItem"):
+			self.call(HeldItem.function)
+		if Input.is_key_pressed(KEY_Q):
+			DropItem()
 
 
 
@@ -149,7 +153,9 @@ func GetNick():
 func StartArcade():
 	InteractionRay.enabled = false
 	$PlayerUI.hide()
+	$PlayerBody.hide()
 
 func StopArcade():
 	InteractionRay.enabled = true
 	$PlayerUI.show()
+	$PlayerBody.show()

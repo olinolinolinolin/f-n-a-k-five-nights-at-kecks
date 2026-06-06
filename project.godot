@@ -32,7 +32,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg")
+enabled=PackedStringArray("res://addons/asset_placer/plugin.cfg", "res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg")
 
 [global_group]
 
@@ -196,6 +196,7 @@ behavior_tree/favorite_tasks=PackedStringArray("BTSequence", "BTComment", "BTSel
 
 rendering_device/driver.windows="d3d12"
 anti_aliasing/quality/msaa_3d=1
+occlusion_culling/use_occlusion_culling=true
 
 [savestate]
 

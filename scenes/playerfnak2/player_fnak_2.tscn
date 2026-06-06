@@ -14,9 +14,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kaew5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spu38"]
-albedo_color = Color(0.40227535, 0.3138663, 0.2853084, 1)
-
 [sub_resource type="Animation" id="Animation_bekvq"]
 resource_name = "NickFlashAnim"
 length = 2.0
@@ -34,18 +31,6 @@ tracks/1/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0.130526, 0.991445, 1, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, -0.130526, 0.991445, 2, 1, 0, 0, 0, 1)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D:light_energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 0.51763237, 0.51763237, 0.51763237, 1),
-"update": 0,
-"values": [1.0, 1.0, 1.5, 2.0, 9.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_spu38"]
 length = 0.001
@@ -56,18 +41,6 @@ tracks/0/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -1, -0.7062672, -0.7428367)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3cldu"]
 _data = {
@@ -75,13 +48,22 @@ _data = {
 &"RESET": SubResource("Animation_spu38")
 }
 
-[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("PlayerCam", "InteractionRay", "InteractText") groups=["PlayerUI"]]
+[sub_resource type="Gradient" id="Gradient_u6ahv"]
+offsets = PackedFloat32Array(0.5274262)
+colors = PackedColorArray(0.2520276, 0.25202766, 0.25202763, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kfcxp"]
+gradient = SubResource("Gradient_u6ahv")
+
+[node name="PlayerFNAK2" type="Node3D" unique_id=1413244261 node_paths=PackedStringArray("PlayerCam", "InteractionRay", "InteractText", "fpscounter") groups=["PlayerUI"]]
 script = ExtResource("1_kaew5")
 PlayerCam = NodePath("PlayerBody/PlayerHead/PlayerCamera")
 InteractionRay = NodePath("PlayerBody/PlayerHead/PlayerCamera/PlayerRaycast")
 InteractText = NodePath("PlayerUI/InteractLabel")
+fpscounter = NodePath("PlayerUI/Debug/FPS Counter")
 InventoryArray = Array[ExtResource("2_2ocrr")]([ExtResource("2_3cldu"), ExtResource("5_u6ahv"), ExtResource("5_u6ahv")])
 HeldItem = ExtResource("2_3cldu")
+HaveNick = true
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=889288442 node_paths=PackedStringArray("PlayerController", "PlayerHead", "PlayerCam", "HeadAnimPlayer") groups=["Player"]]
 script = ExtResource("2_n5pto")
@@ -109,24 +91,27 @@ target_position = Vector3(0, 0, -5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.7062672, -0.7428367)
 
 [node name="NickHeadTest" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=1244014209 instance=ExtResource("3_1drsx")]
-transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0.23733449, 5.9604645e-08, -0.12318635)
+transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0.0373345, 5.9604645e-08, -0.12318635)
 
 [node name="Hand2" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=246673746 instance=ExtResource("4_bekvq")]
-transform = Transform3D(0.06470477, 0, -0.24148145, 0, 0.25, 0, 0.24148145, 0, 0.06470477, 0.19999999, 0, -0.5999998)
+transform = Transform3D(0.06470477, 0, -0.24148145, 0, 0.25, 0, 0.24148145, 0, 0.06470477, 0, 0, -0.5999998)
 
 [node name="Hand" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2" index="0" unique_id=1481917873]
 layers = 2
-surface_material_override/0 = SubResource("StandardMaterial3D_spu38")
 
 [node name="HeadAnimPlayer" type="AnimationPlayer" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=403780332]
 root_node = NodePath("../../../../..")
 libraries/ = SubResource("AnimationLibrary_3cldu")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=514303589]
-light_cull_mask = 4294967293
-
 [node name="RightHand" type="Node3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=2054007313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4719102, -0.00063854456, 0.2259475)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerBody/PlayerHead/PlayerCamera/HeadController" unique_id=1977982147]
+light_color = Color(0.7355525, 0.63908446, 0.60609084, 1)
+light_energy = 4.0
+spot_range = 100.0
+spot_attenuation = 1.5
+spot_angle_attenuation = 3.0314333
 
 [node name="PlayerUI" type="Control" parent="." unique_id=633964515]
 layout_mode = 3
@@ -187,7 +172,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="PlayerUI/Debug" unique_id=338339297]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -198,5 +182,32 @@ grow_horizontal = 0
 theme = ExtResource("9_u6ahv")
 text = "CURRENT STATE: CHASE"
 horizontal_alignment = 1
+
+[node name="FPS Counter" type="Label" parent="PlayerUI/Debug" unique_id=2071886121]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.12100001
+anchor_right = 1.0
+anchor_bottom = 0.12100001
+offset_left = -714.0
+offset_top = 0.31999207
+offset_right = -6.0
+offset_bottom = 120.31999
+grow_horizontal = 0
+theme = ExtResource("9_u6ahv")
+text = "FPS: "
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI" unique_id=1558619945]
+z_index = -1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+offset_right = 312.0
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_kfcxp")
 
 [editable path="PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2"]

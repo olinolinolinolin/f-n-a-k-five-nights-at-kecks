@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cc0sx3u1q2hi4"]
+
+[ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="1_jxvsj"]
+
+[node name="HandSized" unique_id=246673746 instance=ExtResource("1_jxvsj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

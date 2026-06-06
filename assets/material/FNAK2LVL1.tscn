@@ -1,18 +1,54 @@
 [gd_scene format=3 uid="uid://ckn5f17k7op85"]
 
 [ext_resource type="Material" uid="uid://m0fcv6exy3o2" path="res://assets/material/testing.tres" id="1_e7sox"]
+[ext_resource type="Material" uid="uid://b10us5pckey2w" path="res://assets/material/testbuilding.tres" id="2_eh3w6"]
 [ext_resource type="PackedScene" uid="uid://ccjwp7ktwmmni" path="res://assets/items/ArcadeCabinet.tscn" id="2_j1ftj"]
 [ext_resource type="PackedScene" uid="uid://cchgqcxq8u8ei" path="res://scenes/playerfnak2/player_fnak_2.tscn" id="2_vqkiy"]
 [ext_resource type="PackedScene" uid="uid://ccfwwn0ur26m2" path="res://scenes/interactables/key_pickup.tscn" id="3_rbg00"]
 [ext_resource type="PackedScene" uid="uid://c0np2s0irbbr7" path="res://scenes/interactables/door.tscn" id="3_vqkiy"]
 [ext_resource type="PackedScene" uid="uid://dvt0hd6fbpcnh" path="res://scenes/pooptable.tscn" id="4_am8hn"]
+[ext_resource type="PackedScene" uid="uid://w4abji04fdmp" path="res://scenes/interactables/autodoubledoor.tscn" id="4_ghv81"]
+[ext_resource type="LightmapGIData" uid="uid://ejgtni370eig" path="res://assets/material/FNAK2LVL1.lmbake" id="9_nwyb5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwyb5"]
+sky_top_color = Color(0.18523812, 0.15183389, 0.2822732, 1)
+sky_horizon_color = Color(0.119358145, 0.12711313, 0.13460976, 1)
+ground_bottom_color = Color(0.12225228, 0.12225222, 0.1222522, 1)
+ground_horizon_color = Color(0.25565878, 0.2556588, 0.25565875, 1)
+
+[sub_resource type="Sky" id="Sky_ix0f4"]
+sky_material = SubResource("ProceduralSkyMaterial_nwyb5")
 
 [sub_resource type="Environment" id="Environment_am8hn"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.033853274, 0.03385328, 0.033853255, 1)
-ssil_enabled = true
+sky = SubResource("Sky_ix0f4")
+tonemap_mode = 3
+sdfgi_read_sky_light = false
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 5.0
+fog_depth_end = 50.0
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.099985994, 0.099985994, 0.09998598, 1)
+volumetric_fog_emission = Color(0.43739322, 0.13313842, 0.11430145, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_length = 128.0
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_e7sox"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwyb5"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_j1ftj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, -35.192, 0, 0, 0, 0, 0, 0, 0.9641104, -0.5, -44.513763, 0, 0, 0, 0, 0, 0, -16.67952, -0.5, -47.646317, 0, 0, 0, 0, 0, 0, -37.324776, -0.5, -54.888535, 0, 0, 0, 0, 0, 0, -27.088049, -0.5, -68.377655, 0, 0, 0, 0, 0, 0, -6.7725363, -0.5, -73.39896, 0, 0, 0, 0, 0, 0, 13.358717, -0.5, -71.924835, 0, 0, 0, 0, 0, 0, 17.056564, -0.5, -80.90671, 0, 0, 0, 0, 0, 0, 12.798759, -0.5, -88.723145, 0, 0, 0, 0, 0, 0, -10.997042, -0.5, -94.329254, 0, 0, 0, 0, 0, 0, -27.634993, -0.5, -100.95886, 0, 0, 0, 0, 0, 0, -15.950434, -0.5, -113.6351, 0, 0, 0, 0, 0, 0, 0.19964814, -0.5, -116.50159, 0, 0, 0, 0, 0, 0, 0.302747, -0.5, -128.2221),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 15
 
 [node name="Node3D" type="Node3D" unique_id=472739094]
 
@@ -21,103 +57,395 @@ environment = SubResource("Environment_am8hn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=401965503]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+visible = false
+light_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 shadow_enabled = true
+
+[node name="TreePlace" type="CSGBox3D" parent="." unique_id=1843525231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -3, -141.5)
+use_collision = true
+size = Vector3(193, 1, 284)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1607798113]
 navigation_mesh = SubResource("NavigationMesh_e7sox")
 
-[node name="BoxedOutLevel" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=2110627896]
+[node name="BoxedOutLevel" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=2125035684]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1244106113]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1014587073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -28)
 size = Vector3(9, 1, 65)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=2019409453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -139)
-size = Vector3(9, 1, 65)
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D" unique_id=429235100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, -354.5)
+size = Vector3(228, 1, 12)
+material = SubResource("StandardMaterial3D_nwyb5")
+
+[node name="GasStationPathStart" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1836044374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -119.5)
+size = Vector3(9, 1, 26)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1414802918]
+[node name="GasStationPathEnd" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1402536897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, -1, -273.5)
+size = Vector3(9, 1, 26)
+material = ExtResource("1_e7sox")
+
+[node name="GasPumps" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1480911705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2, 7.65, -354)
+size = Vector3(76, 16.5, 26)
+
+[node name="GasPumps2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasPumps" unique_id=1316862824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+operation = 2
+size = Vector3(76, 15.5, 24)
+
+[node name="GasPumps3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasPumps" unique_id=2146232809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.7000003, 0)
+operation = 2
+size = Vector3(73, 15.400001, 28)
+
+[node name="GasStationParking" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=252586748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, -1, -331.5)
+size = Vector3(91, 1, 90)
+material = ExtResource("1_e7sox")
+
+[node name="GasPump1" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=608117843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -30.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=2060600663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -16.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=1044639947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -30.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=1875619376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -16.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=2073968905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -30.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=281270603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -16.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=548044664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -30.97705)
+size = Vector3(3, 3, 1)
+
+[node name="GasPump8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=905905948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -16.97705)
+size = Vector3(3, 3, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=456142891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.94806, 0.5432003, -366.19437)
+size = Vector3(5, 2, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1966693788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -48.5)
 size = Vector3(40, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=952118689]
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=857599460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, -1, -82.5)
 size = Vector3(40, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1905824651]
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1096796727]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, -35.138, -1, -100.026)
 size = Vector3(40, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1557848737]
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=781898066]
 transform = Transform3D(0.9063077, 0, 0.42261824, 0, 1, 0, -0.42261824, 0, 0.9063077, 41.862, -1, -102.026)
 size = Vector3(40, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=139722605]
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1561495265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -22.5)
 size = Vector3(40, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1076358592]
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=2099095326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, -1, -48.5)
 size = Vector3(88, 1, 10)
 material = ExtResource("1_e7sox")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=485158891]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1309879504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.5, -83)
 radius = 25.0
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1757834232]
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1799078776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -57.5)
 size = Vector3(9, 4, 2)
 material = ExtResource("1_e7sox")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D9" unique_id=220308425]
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D9" unique_id=1856768952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 operation = 2
 size = Vector3(2, 3, 2)
 material = ExtResource("1_e7sox")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=525702261]
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1350250728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -107.5)
+size = Vector3(9, 4, 2)
+material = ExtResource("1_e7sox")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/CSGBox3D10" unique_id=80542618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+material = ExtResource("1_e7sox")
+
+[node name="Fountain" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=404030066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -82)
 radius = 6.0
 material = ExtResource("1_e7sox")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/CSGCylinder3D2" unique_id=479134066]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/Fountain" unique_id=2110572291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 radius = 4.0
 material = ExtResource("1_e7sox")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/CSGCylinder3D2" unique_id=1312341904]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D/BoxedOutLevel/Fountain" unique_id=803448724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 radius = 2.0
 height = 4.0
 material = ExtResource("1_e7sox")
 
-[node name="Door" parent="NavigationRegion3D" unique_id=807698237 instance=ExtResource("3_vqkiy")]
+[node name="Path3D" type="Path3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=123974644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -132.5)
+curve = SubResource("Curve3D_j1ftj")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/BoxedOutLevel/Path3D" unique_id=2046447192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(-2.5, -1, -2.5, 1, 6.5, 1, 6.5, -1.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("1_e7sox")
+
+[node name="Shack" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=58818727]
+transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, -11.232232, 1.5, -67.76777)
+size = Vector3(9, 4, 6)
+material = ExtResource("2_eh3w6")
+
+[node name="Shack2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/Shack" unique_id=544369285]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -7.6293945e-06, -0.5, 7.6293945e-06)
+operation = 2
+size = Vector3(7, 3, 4)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/Shack" unique_id=1267757918]
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, -1.7374344, -0.5, -2.0229645)
+operation = 2
+size = Vector3(2, 3, 2)
+material = ExtResource("2_eh3w6")
+
+[node name="Door3" parent="NavigationRegion3D/BoxedOutLevel" unique_id=807698237 instance=ExtResource("3_vqkiy")]
+transform = Transform3D(-0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, -0.70710665, -9.969671, -0.5, -70.07323)
+
+[node name="GasStation" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1733723103]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -37.5, 6, -311)
+size = Vector3(72, 13, 35)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=1795769613]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 36.17157, 0, -17.292908)
+operation = 2
+size = Vector3(12, 11, 14)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=1158744150]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -36.82843, 0, -17.292908)
+operation = 2
+size = Vector3(12, 11, 14)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=666714317]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -36.242645, 0, 17.121307)
+operation = 2
+size = Vector3(12, 11, 10)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=1246942469]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 35.23223, 0, 16.767761)
+operation = 2
+size = Vector3(9, 11, 14)
+material = ExtResource("2_eh3w6")
+
+[node name="GasStation2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=2054129435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4500003, 0)
+operation = 2
+size = Vector3(57, 11.900001, 33)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=326863563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -4.9, 17)
+operation = 2
+size = Vector3(4, 3, 3)
+material = ExtResource("2_eh3w6")
+
+[node name="DoubleDoor(Auto)" parent="NavigationRegion3D/BoxedOutLevel/GasStation/CSGBox3D5" unique_id=1150274279 instance=ExtResource("4_ghv81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=1700689480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.500004, -4.9, -17)
+operation = 2
+size = Vector3(4, 3, 3)
+material = ExtResource("2_eh3w6")
+
+[node name="DoubleDoor(Auto)" parent="NavigationRegion3D/BoxedOutLevel/GasStation/CSGBox3D6" unique_id=1318954641 instance=ExtResource("4_ghv81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=316452901]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -32.45001, -4.9, -1)
+operation = 2
+size = Vector3(4, 3, 7.1)
+material = ExtResource("2_eh3w6")
+
+[node name="DoubleDoor(Auto)" parent="NavigationRegion3D/BoxedOutLevel/GasStation/CSGBox3D7" unique_id=2108701977 instance=ExtResource("4_ghv81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="GasStationBackroom" type="Node3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=137116566]
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/GasStationBackroom" unique_id=471948547]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5999985, -2.1500006, -11)
+use_collision = true
+size = Vector3(11, 8.3, 8.2)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/GasStationBackroom/CSGBox3D9" unique_id=1712085964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4500122, -0.099999905, 0.099998474)
+operation = 2
+size = Vector3(9.900001, 8.1, 8)
+material = ExtResource("2_eh3w6")
+
+[node name="Door" parent="NavigationRegion3D/BoxedOutLevel/GasStation/GasStationBackroom/CSGBox3D9/CSGBox3D10" unique_id=157673893 instance=ExtResource("3_vqkiy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.700012, -4, 0)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/GasStationBackroom/CSGBox3D9" unique_id=240269988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -2.6220884, 1.0950203)
+operation = 2
+size = Vector3(3, 3.0558228, 2.0099611)
+material = ExtResource("2_eh3w6")
+
+[node name="RegisterDesk" type="Node3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=2063125275]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/RegisterDesk" unique_id=1328458297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.8, -3.5)
+use_collision = true
+size = Vector3(3, 1, 4)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/RegisterDesk" unique_id=372296766]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.0999985, -5.7999997, -1)
+use_collision = true
+size = Vector3(1, 1, 5.2000003)
+material = ExtResource("2_eh3w6")
+
+[node name="Shelf" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=805580841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -4.9, 8)
+size = Vector3(3, 3, 11)
+
+[node name="Shelf2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=434729606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -4.9, -7)
+size = Vector3(3, 3, 11)
+
+[node name="Shelf3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=207070391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -4.9, -7)
+size = Vector3(3, 3, 11)
+
+[node name="Shelf4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=2114431130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -4.9, 8)
+size = Vector3(3, 3, 11)
+
+[node name="Bathrooms" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation" unique_id=719941700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, -0.4499998, -8.5)
+size = Vector3(21, 11.900001, 16)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/Bathrooms" unique_id=2069489016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8999996, -4.25, 5)
+operation = 2
+size = Vector3(3, 3.5, 9)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/Bathrooms" unique_id=533903411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3999996, -4.25, -3.5)
+operation = 2
+size = Vector3(8, 3.5, 8)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/Bathrooms" unique_id=877411460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.25, 5)
+operation = 2
+size = Vector3(3, 3.5, 9)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/Bathrooms" unique_id=1844757934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -4.25, -3.75)
+operation = 2
+size = Vector3(8, 3.5, 8.5)
+material = ExtResource("2_eh3w6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/BoxedOutLevel/GasStation/Bathrooms" unique_id=600125201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3.6, -3)
+light_color = Color(0.6716214, 0.605475, 0.3408157, 1)
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="Door" parent="NavigationRegion3D" unique_id=902628826 instance=ExtResource("3_vqkiy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -57)
 Locked = true
 LockName = "Door1"
+
+[node name="Door2" parent="NavigationRegion3D" unique_id=2030878873 instance=ExtResource("3_vqkiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -107)
+Locked = true
+LockName = "Door2"
 
 [node name="KeyPickup" parent="NavigationRegion3D" unique_id=928219498 instance=ExtResource("3_rbg00")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -51)
 keyname = "Door1"
 
 [node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("2_vqkiy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -4)
 
 [node name="Node3D" parent="." unique_id=1688958343 instance=ExtResource("4_am8hn")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 1, -6)
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 7, 0, -6)
 
 [node name="ArcadeMachine" parent="." unique_id=200284906 instance=ExtResource("2_j1ftj")]
 transform = Transform3D(-0.42261827, 0, -0.9063079, 0, 1, 0, 0.9063079, 0, -0.42261827, -52.3, -0.33709764, -107.7)
 
-[node name="ArcadeMachine2" parent="." unique_id=2113940478 instance=ExtResource("2_j1ftj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -7)
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1801815574]
+light_data = ExtResource("9_nwyb5")
+
+[node name="Trees" type="Node3D" parent="." unique_id=1260831449]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1842747946]
+transform = Transform3D(-0.7071068, -4.2146848e-08, 0.7071068, 0.35355335, 0.8660253, 0.3535534, -0.6123724, 0.5, -0.6123724, 0, 6, -79)
+light_color = Color(0.91131425, 0.88560885, 0.76439184, 1)
+light_indirect_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 100.0
+spot_attenuation = 1.5
+spot_angle_attenuation = 3.3635907

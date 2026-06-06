@@ -15,17 +15,17 @@ length = 0.75
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("HingePivot")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.75, 1, 0, 0.707107, 0, 0.707107)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.73333335, 1, 0, 0.70710677, 0, 0.70710677)
 
 [sub_resource type="Animation" id="Animation_fnoyy"]
 length = 0.001
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("HingePivot")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
@@ -40,20 +40,22 @@ _data = {
 script = ExtResource("1_fnoyy")
 AnimPlayer = NodePath("AnimationPlayer")
 
-[node name="DoorBody" type="StaticBody3D" parent="." unique_id=178693223]
+[node name="HingePivot" type="Node3D" parent="." unique_id=1787616076]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBody" unique_id=1335056522]
+[node name="DoorBody" type="StaticBody3D" parent="HingePivot" unique_id=178693223]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HingePivot/DoorBody" unique_id=1335056522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 shape = SubResource("BoxShape3D_v6xrn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorBody" unique_id=993392697]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HingePivot/DoorBody" unique_id=993392697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 mesh = SubResource("BoxMesh_0phs7")
 
-[node name="Interact" parent="DoorBody" unique_id=931876195 instance=ExtResource("1_qq3h0")]
+[node name="Interact" parent="HingePivot/DoorBody" unique_id=931876195 instance=ExtResource("1_qq3h0")]
 InteractText = "Open Door"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450044093]
 libraries/ = SubResource("AnimationLibrary_xetrc")
 
-[connection signal="InteractFunction" from="DoorBody/Interact" to="." method="_on_interact_interact_function"]
+[connection signal="InteractFunction" from="HingePivot/DoorBody/Interact" to="." method="_on_interact_interact_function"]
