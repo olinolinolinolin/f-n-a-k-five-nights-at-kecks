@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cnfgqb6nnm6hg"]
+
+[ext_resource type="Script" uid="uid://bef2av1msggjr" path="res://GasStationExit.gd" id="1_cmt6u"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="2_xixfo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_845dy"]
+size = Vector3(7, 4, 7)
+
+[node name="Car" type="Node3D" unique_id=1062140473]
+script = ExtResource("1_cmt6u")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1700470644]
+size = Vector3(5, 1, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1675576305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(3, 1, 3)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1588590250]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2096491984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_845dy")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("2_xixfo")]
+InteractText = "Use Car"
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

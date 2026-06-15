@@ -32,7 +32,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/asset_placer/plugin.cfg", "res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg")
+enabled=PackedStringArray("res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg", "res://addons/ultimate_asset_placer_v1.5/ultimate_placer/plugin.cfg", "res://addons/ultimate_placer/plugin.cfg")
 
 [global_group]
 

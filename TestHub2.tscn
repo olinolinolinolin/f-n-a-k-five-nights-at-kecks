@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dtcsbifflwm0x" path="res://assets/items/Nothing.tres" id="4_1jy2p"]
 [ext_resource type="PackedScene" uid="uid://bi42ptl2lln1n" path="res://scenes/enemies/Dummy.tscn" id="4_eii1q"]
 [ext_resource type="Resource" uid="uid://cwbttycrj5tx7" path="res://assets/items/Rock.tres" id="5_8rsjm"]
-[ext_resource type="PackedScene" uid="uid://big5hawipskwa" path="res://fnak_2_keck_roam.tscn" id="5_ukiv7"]
+[ext_resource type="PackedScene" uid="uid://big5hawipskwa" path="res://scenes/enemies/fnak_2_keck_roam.tscn" id="5_ukiv7"]
 [ext_resource type="PackedScene" uid="uid://cuxocfr480k3n" path="res://scenes/interactables/floppy_disk_pickup.tscn" id="6_my5tr"]
 
 [sub_resource type="Environment" id="Environment_jvth5"]

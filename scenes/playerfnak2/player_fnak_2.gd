@@ -124,10 +124,14 @@ func UseNothing():
 func UseKey():
 	print("keying it" + " this is the " + HeldItem.key + " Key")
 
-func AddItem(Item):
-	InventoryArray[InventoryIndex] = Item
-	showhelditem()
-	UpdateInventory()
+func AddItem(item):
+	for i in InventoryArray.size():
+		if InventoryArray[i] == NothingItem:
+			InventoryArray[i] = item
+			UpdateInventory()
+			showhelditem()
+			return
+	print("Inventory Full")
 
 func DropItem():
 	match  HeldItem:

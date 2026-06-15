@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://rp6f2m5iqiki"]
 
-[ext_resource type="PackedScene" uid="uid://bowe1withyrll" path="res://couch.tscn" id="1_0tj10"]
+[ext_resource type="PackedScene" uid="uid://bowe1withyrll" path="res://scenes/couch.tscn" id="1_0tj10"]
 [ext_resource type="Script" uid="uid://cw1l75xcsucjy" path="res://testhub_1.gd" id="1_l4bsx"]
 [ext_resource type="Script" uid="uid://dowvjaorvyddf" path="res://playerfnak1.gd" id="2_l4bsx"]
 [ext_resource type="PackedScene" uid="uid://lerqbjeo7kad" path="res://phonescreen.tscn" id="4_iquic"]
 [ext_resource type="Script" uid="uid://dennvt4mxtvc1" path="res://fnak1phone.gd" id="4_l2drd"]
 [ext_resource type="PackedScene" uid="uid://mr6vad7ungy7" path="res://scenes/enemies/keckbearFNAK1.tscn" id="6_82okx"]
 [ext_resource type="PackedScene" uid="uid://bh0g3c3j7amr6" path="res://scenes/enemies/ShadowKeckbearFNAK1.tscn" id="7_5ht26"]
-[ext_resource type="PackedScene" uid="uid://ckqft3h4qsqa3" path="res://GnomeScene.tscn" id="8_skcaj"]
+[ext_resource type="PackedScene" uid="uid://ckqft3h4qsqa3" path="res://scenes/enemies/GnomeScene.tscn" id="8_skcaj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5ht26"]
 height = 21.0

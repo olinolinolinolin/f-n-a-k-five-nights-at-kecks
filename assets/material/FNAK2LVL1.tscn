@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dvt0hd6fbpcnh" path="res://scenes/pooptable.tscn" id="4_am8hn"]
 [ext_resource type="PackedScene" uid="uid://w4abji04fdmp" path="res://scenes/interactables/autodoubledoor.tscn" id="4_ghv81"]
 [ext_resource type="LightmapGIData" uid="uid://ejgtni370eig" path="res://assets/material/FNAK2LVL1.lmbake" id="9_nwyb5"]
+[ext_resource type="PackedScene" uid="uid://cnfgqb6nnm6hg" path="res://scenes/interactables/FNAK2L1Car.tscn" id="10_ix0f4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwyb5"]
 sky_top_color = Color(0.18523812, 0.15183389, 0.2822732, 1)
@@ -107,7 +108,7 @@ operation = 2
 size = Vector3(73, 15.400001, 28)
 
 [node name="GasStationParking" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=252586748]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, -1, -331.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.476353, -1.0998764, -331.49228)
 size = Vector3(91, 1, 90)
 material = ExtResource("1_e7sox")
 
@@ -142,10 +143,6 @@ size = Vector3(3, 3, 1)
 [node name="GasPump8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=905905948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -16.97705)
 size = Vector3(3, 3, 1)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=456142891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.94806, 0.5432003, -366.19437)
-size = Vector3(5, 2, 3)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1966693788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -48.5)
@@ -427,7 +424,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -51)
 keyname = "Door1"
 
 [node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("2_vqkiy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -350)
 
 [node name="Node3D" parent="." unique_id=1688958343 instance=ExtResource("4_am8hn")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 7, 0, -6)
@@ -449,3 +446,10 @@ shadow_enabled = true
 spot_range = 100.0
 spot_attenuation = 1.5
 spot_angle_attenuation = 3.3635907
+
+[node name="Car" parent="." unique_id=1062140473 instance=ExtResource("10_ix0f4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0.5, -366)
+
+[node name="KeyPickup" parent="." unique_id=580623169 instance=ExtResource("3_rbg00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -359)
+keyname = "ExitCar"
