@@ -1,0 +1,74 @@
+[gd_scene format=4 uid="uid://btaa3grtnk5pm"]
+
+[ext_resource type="Script" uid="uid://bbmt46ktfu5ai" path="res://assets/models/Gnome/gnome_coin.gd" id="1_f0ksb"]
+[ext_resource type="Texture2D" uid="uid://ce23kqjuyxii0" path="res://assets/models/Gnome/gnomecoinv2_Gold_BaseColor.png" id="1_x5c20"]
+[ext_resource type="Texture2D" uid="uid://bj8fqhpqw8rsi" path="res://assets/models/Gnome/gnomecoinv2_orm.png" id="2_3mq4o"]
+[ext_resource type="Texture2D" uid="uid://b0nf14ic3cgnj" path="res://assets/models/Gnome/gnomecoinv2_Gold_Normal.png" id="3_f0ksb"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="5_tae2p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow7ug"]
+resource_name = "Coin"
+albedo_texture = ExtResource("1_x5c20")
+metallic = 1.0
+metallic_texture = ExtResource("2_3mq4o")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_3mq4o")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_f0ksb")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_17sbc"]
+_surfaces = [{
+"aabb": AABB(-1, -0.13441306, -1, 2, 0.26882613, 2),
+"format": 34896613377,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIABQADAAAABQACAAYAAgAHAAYABAAHAAIACAAFAAYACAAGAAcACQAFAAgACQAIAAcACQAHAAoACwAJAAoABwAMAAoACwAKAAwADQAJAAsADQAFAAkADQALAAwABwAOAAwABwAEAA4ADQAMAA8ADAAOAA8AEAANAA8AEAAPAA4AEQAFAA0ABQARAAMAEgANABAAEgAQAA4AEQANABIAAwATAAQAAwARABMAEwAUAAQAEwARABQAFQAEABQADgAEABUAEQAVABQAEgAOABYADgAVABYAEQASABcAEQAXABUAFwASABYAFwAWABUA"),
+"name": "Coin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/38AAAAAAAD/v///JhEAAP9///8AAAAA/78AACYRAADY7v///z8AAP8/AAAmEQAA/z///yYRAAAmEf///z8AACYRAAD/PwAAAAAAAP9/AAAAAP///38AACYRAAD/vwAAJhH///+/AAD/PwAA2O4AAP9//////wAA/z///9juAAD/fwAA//8AAP//AAD/fwAA/78AANjuAADY7gAA/z8AAP//////fwAA2O7///+/AAD/v///2O4AANjuAAD/vwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sjcsv"]
+resource_name = "gnomecoinv2_Cylinder"
+_surfaces = [{
+"aabb": AABB(-1, -0.13441306, -1, 2, 0.26882613, 2),
+"attribute_data": PackedByteArray("////f6nqAAD//wAAqer/f6nq/39U1QAAqeoAAFTV/39U1f9//78AAFTVAAD/v/9//7//f6qqAAD/vwAAqqr/f6qq/39UlQAAqqoAAFSV/39Ulf9//38AAFSVAAD/f/9//3//f6pqAAD/fwAAqmr/f6pq/39VVQAAqmoAAFVV/39VVf9//z8AAFVVAAD/P/9//z//f6oqAAD/PwAAqir/fzR1R6H/P46Ct17KisoKR6FHIcqKNHW33nB9/7//P2/9t1409coKt95HITT1jwL/v6oq/39VFQAAqioAAFUV/39VFf9/AAAAAFUVAAAAAP9/R6HKirfeyor/v46Cb/3/vzT1R6GOgv+/yopHoUehNPXKirfet9409f+/b/009bfe"),
+"format": 34896613399,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkAKQArACwALQAoAC4ALwAoAC0AKwAoAC8ALwAtADAAKwAvADEAMQAvADIAKwAxADMANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0APQA/AEAAQQA8AEIAQwA8AEEAPwA8AEMAQwBBAEQAPwBDAEUARQBDAEYAPwBFAEcA"),
+"material": SubResource("StandardMaterial3D_ow7ug"),
+"name": "Coin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("/38AAAAAVPX/v///JhFU9f9///8AAFT1/78AACYRVPX/vwAAJhH/39ju////P//f/7///yYR/9/Y7gAA/z//39juAAD/P6nK//////9/qcrY7v///z+pyv//AAD/f6nK//8AAP9/VLXY7v///79Utf//////f1S12O4AAP+/VLXY7gAA/7//n/+////Y7v+f2O7///+//5//vwAA2O7/n/+/AADY7qqK/3//////qor/v///2O6qiv9/AAD//6qK/38AAP//qor/P///2O6qiv9//////6qK/z8AANjuqor/PwAA2O7/nyYR////v/+f/z///9ju/58mEQAA/7//nyYRAAD/v1S1AAD///9/VLUmEf///79UtQAAAAD/f1S1AAAAAP9/qcomEf///z+pygAA////f6nKJhEAAP8/qcrY7v///z//v/9///8AAP+//7///yYR/78mEf///z//v/8///8mEf+/2O7///+//7///////3//v/9///////+//7///9ju/78mEf///7//v/8////Y7v+/AAD///9//78mEQAA/z//3/8///8mEf/fJhH///8//9//PwAAJhH/3/8/AAAmEVT1/3///wAAVPX/P///JhFU9f9/AAAAAFT1/z8AACYR/z//vwAAJhH/P/9/AAAAAP8///8AAP9//z/Y7gAA/z//PwAAAAD/f/8/JhEAAP8//z//PwAA2O7/PyYRAAD/v/8//78AANju/z//fwAA////P9juAAD/v/8//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3///////3////9/////f////3////9/////f////3////9/////f////3////9/////f/9/////f////3////9/////f////3////9/////f///AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_17sbc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0ksb"]
+size = Vector3(2, 1.3057319, 2)
+
+[node name="GnomeCoin" type="Node3D" unique_id=1760822471]
+script = ExtResource("1_f0ksb")
+
+[node name="gnomecoinv2" type="Node3D" parent="." unique_id=156035144]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Cylinder" type="MeshInstance3D" parent="gnomecoinv2" unique_id=1985658589]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+mesh = SubResource("ArrayMesh_sjcsv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gnomecoinv2/Cylinder" unique_id=841526924]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gnomecoinv2/Cylinder/StaticBody3D" unique_id=1217164564]
+transform = Transform3D(1, 0, 0, 0, 0.9999958, 6.750156e-14, 0, -6.750156e-14, 0.9999958, 0, 0.049771246, 1.0214052e-14)
+shape = SubResource("BoxShape3D_f0ksb")
+
+[node name="Interact" parent="gnomecoinv2/Cylinder/StaticBody3D" unique_id=931876195 instance=ExtResource("5_tae2p")]
+InteractText = "Collect Coin"
+
+[connection signal="InteractFunction" from="gnomecoinv2/Cylinder/StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

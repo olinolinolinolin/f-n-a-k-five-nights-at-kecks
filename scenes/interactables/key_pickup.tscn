@@ -17,7 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020141602, -0.029724121, 0
 shape = SubResource("BoxShape3D_3dgmr")
 
 [node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("3_p64wn")]
-InteractText = "Pick up Floppy Disk"
+InteractText = "Pick up Key"
 
 [node name="keyig" parent="StaticBody3D" unique_id=1588554759 instance=ExtResource("3_ygfwh")]
 transform = Transform3D(0.2707327, 0, 0, 0, 0.2048074, -0.17705965, 0, 0.17705965, 0.2048074, 0, 0, -0.058568895)

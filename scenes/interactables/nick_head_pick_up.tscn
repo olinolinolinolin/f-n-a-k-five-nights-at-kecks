@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://1v218i3ydra8"]
 
 [ext_resource type="Script" uid="uid://ckrrgctnfhwx2" path="res://scenes/interactables/nick_head_pick_up.gd" id="1_7hfsl"]
-[ext_resource type="PackedScene" uid="uid://lkres4pl4dc7" path="res://assets/models/NickHeadTest.glb" id="1_mxgv7"]
 [ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="2_7hfsl"]
+[ext_resource type="PackedScene" uid="uid://geir34p6qbew" path="res://assets/models/NickReal/nick.glb" id="2_bsuog"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bsuog"]
 
 [node name="NickHeadPickUp" type="Node3D" unique_id=1845257713]
 script = ExtResource("1_7hfsl")
 
-[node name="NickHeadTest" parent="." unique_id=1244014209 instance=ExtResource("1_mxgv7")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="nick" parent="." unique_id=335230695 instance=ExtResource("2_bsuog")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -1, 0)
 
 [node name="NickBody" type="StaticBody3D" parent="." unique_id=1210669458]
 

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://yaxj80hl2p17"]
+
+[ext_resource type="Script" uid="uid://ryt0daimfcdq" path="res://player_fnak_3.gd" id="1_jeqjs"]
+[ext_resource type="PackedScene" uid="uid://b7x7qo56hbbef" path="res://assets/models/Guns/SawedOff.glb" id="2_eei23"]
+[ext_resource type="Texture2D" uid="uid://b8gwmguopbirc" path="res://assets/models/Guns/pattern_015.png" id="3_eei23"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0px4j"]
+
+[sub_resource type="Gradient" id="Gradient_0px4j"]
+offsets = PackedFloat32Array(0, 0.5102041, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.5102041, 0.5102041, 0.5102041, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7antx"]
+gradient = SubResource("Gradient_0px4j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2upbm"]
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.89847374, 0.15399906, 0, 1)
+color_ramp = SubResource("GradientTexture1D_7antx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86ltq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7294118, 0.59607846, 0, 1)
+albedo_texture = ExtResource("3_eei23")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_0wy0w"]
+material = SubResource("StandardMaterial3D_86ltq")
+
+[sub_resource type="Animation" id="Animation_eei23"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SawedOff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.7071068, 0, 0.70710677)
+
+[sub_resource type="Animation" id="Animation_0px4j"]
+resource_name = "Shootgun"
+length = 0.45
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SawedOff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.7071068, 0, 0.70710677, 0.2, 1, 0.18301268, -0.68301284, -0.18301272, 0.68301266, 0.43333334, 1, 0, -0.7071068, 0, 0.70710677)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/SawedOff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.6, -1, -1.9000001)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emitthis"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7antx"]
+_data = {
+&"RESET": SubResource("Animation_eei23"),
+&"Shootgun": SubResource("Animation_0px4j")
+}
+
+[node name="PlayerFNAK3" type="CharacterBody3D" unique_id=1142558948]
+script = ExtResource("1_jeqjs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040655370]
+shape = SubResource("CapsuleShape3D_0px4j")
+
+[node name="Head" type="Node3D" parent="." unique_id=2086662228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1411570461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="SawedOff" parent="Head/Camera3D" unique_id=2041413132 instance=ExtResource("2_eei23")]
+transform = Transform3D(-1.629207e-07, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -1.629207e-07, 0.6, -1, -1.9000001)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Head/Camera3D/SawedOff" unique_id=1957595518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3999999, 0.3, 0)
+emitting = false
+lifetime = 0.2
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_2upbm")
+draw_pass_1 = SubResource("QuadMesh_0wy0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=963148558]
+libraries/ = SubResource("AnimationLibrary_7antx")

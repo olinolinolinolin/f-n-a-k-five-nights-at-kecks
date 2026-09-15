@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cbompuurgbbqo"]
+
+[ext_resource type="Script" uid="uid://bd8wfnm6ajp4o" path="res://lever.gd" id="1_1btnt"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="2_7uavd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_soi7j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1kj1s"]
+
+[node name="Lever" type="Node3D" unique_id=712083404]
+script = ExtResource("1_1btnt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1800030421]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=168168631]
+shape = SubResource("BoxShape3D_soi7j")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("2_7uavd")]
+InteractText = "Use Lever"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1744615271]
+mesh = SubResource("BoxMesh_1kj1s")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1800434918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+text = "Lever"
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

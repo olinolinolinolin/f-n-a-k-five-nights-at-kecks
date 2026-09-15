@@ -1,0 +1,477 @@
+[gd_scene format=3 uid="uid://bclpgbgt81jyj"]
+
+[ext_resource type="PackedScene" uid="uid://cchgqcxq8u8ei" path="res://scenes/playerfnak2/player_fnak_2.tscn" id="1_0omua"]
+[ext_resource type="Script" uid="uid://b6jcfbrawabo3" path="res://scenes/FNAK2CAMPAIGN/FNAK2L1.gd" id="1_7e71f"]
+[ext_resource type="Texture2D" uid="uid://dt2iqbiojmf8s" path="res://assets/material/grasstile.png" id="1_wi073"]
+[ext_resource type="PackedScene" uid="uid://ccfwwn0ur26m2" path="res://scenes/interactables/key_pickup.tscn" id="2_dwbsr"]
+[ext_resource type="Script" uid="uid://8ewcp6y5t36e" path="res://addons/ScatterShot/zone.gd" id="2_nnfwr"]
+[ext_resource type="Script" uid="uid://1b47ci4ks7ew" path="res://addons/ScatterShot/layer.gd" id="3_fuxud"]
+[ext_resource type="Script" uid="uid://jhw5h6gwpjmr" path="res://addons/ScatterShot/collection.gd" id="4_avhbr"]
+[ext_resource type="Script" uid="uid://gwqrknegmc0e" path="res://addons/ScatterShot/collection_meshes.gd" id="5_2q6y1"]
+[ext_resource type="Script" uid="uid://dyltpy7s15mtf" path="res://addons/ScatterShot/pattern.gd" id="6_wo251"]
+[ext_resource type="Script" uid="uid://bakbblh68cskr" path="res://addons/ScatterShot/modulator.gd" id="8_avhbr"]
+[ext_resource type="MeshLibrary" uid="uid://cgaee4ahusqkt" path="res://NewTreeLib.tres" id="9_itpyj"]
+[ext_resource type="Material" uid="uid://b10us5pckey2w" path="res://assets/material/testbuilding.tres" id="12_wo251"]
+[ext_resource type="PackedScene" uid="uid://cjdwdd0kxwqjo" path="res://assets/models/Enviroment/fountain.tscn" id="15_tcvym"]
+[ext_resource type="PackedScene" uid="uid://bfh4n1p85pd5q" path="res://assets/models/Enviroment/Shack.tscn" id="16_wi073"]
+[ext_resource type="PackedScene" uid="uid://b1renow80ccty" path="res://fountain_lamp.tscn" id="17_sindi"]
+[ext_resource type="PackedScene" uid="uid://gap16jpqrthh" path="res://nick_shack.tscn" id="18_51jqd"]
+[ext_resource type="PackedScene" uid="uid://d2nu2w2uv0e0x" path="res://assets/models/Enviroment/Shack2.tscn" id="18_yeuit"]
+[ext_resource type="PackedScene" uid="uid://ccbox0cxieapo" path="res://nick_body_tree.tscn" id="19_51jqd"]
+[ext_resource type="PackedScene" uid="uid://r5fttufyfy8s" path="res://rock_crash.tscn" id="20_7e71f"]
+[ext_resource type="PackedScene" uid="uid://cg66sm6pw5ihu" path="res://electric_fence.tscn" id="20_gqvo6"]
+[ext_resource type="Script" uid="uid://gxqlgcojvurw" path="res://trigger_box.gd" id="21_gqvo6"]
+[ext_resource type="Material" uid="uid://d3x1numodqs16" path="res://assets/material/lightning.tres" id="22_4ecs0"]
+[ext_resource type="Shader" uid="uid://bviwni1b0v7iv" path="res://assets/material/lightning.gdshader" id="23_cmx3h"]
+[ext_resource type="AudioStream" uid="uid://b5gjgn3mulvd1" path="res://assets/audio/rock land.wav" id="24_3eu5h"]
+[ext_resource type="PackedScene" uid="uid://btaa3grtnk5pm" path="res://assets/models/Gnome/gnome_coin.tscn" id="25_iarrb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi073"]
+albedo_texture = ExtResource("1_wi073")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.09089609
+
+[sub_resource type="Resource" id="Resource_yeuit"]
+script = ExtResource("5_2q6y1")
+mesh_library = ExtResource("9_itpyj")
+mesh_proportions = Array[int]([10])
+collision_layer = 1
+collision_user_data = null
+align = 1
+modulator_mask = 3
+metadata/_custom_type_script = "uid://gwqrknegmc0e"
+
+[sub_resource type="Resource" id="Resource_51jqd"]
+script = ExtResource("3_fuxud")
+collections = Array[ExtResource("4_avhbr")]([SubResource("Resource_yeuit")])
+metadata/_custom_type_script = "uid://1b47ci4ks7ew"
+
+[sub_resource type="Resource" id="Resource_7e71f"]
+script = ExtResource("6_wo251")
+layers = Array[ExtResource("3_fuxud")]([SubResource("Resource_51jqd")])
+metadata/_custom_type_script = "uid://dyltpy7s15mtf"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0omua"]
+sky_top_color = Color(0.08335758, 0.067231305, 0.14134806, 1)
+sky_horizon_color = Color(0.052131124, 0.057034194, 0.0619369, 1)
+ground_bottom_color = Color(0.06469653, 0.064696535, 0.0646965, 1)
+ground_horizon_color = Color(0.118581556, 0.11858132, 0.11858139, 1)
+
+[sub_resource type="Sky" id="Sky_ix0f4"]
+sky_material = SubResource("ProceduralSkyMaterial_0omua")
+
+[sub_resource type="Environment" id="Environment_dwbsr"]
+background_mode = 2
+background_color = Color(0.033853274, 0.03385328, 0.033853255, 1)
+sky = SubResource("Sky_ix0f4")
+tonemap_mode = 3
+sdfgi_read_sky_light = false
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 5.0
+fog_depth_end = 50.0
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.099985994, 0.099985994, 0.09998598, 1)
+volumetric_fog_emission = Color(0.43739322, 0.13313842, 0.11430145, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_length = 128.0
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ecs0"]
+size = Vector3(11.399414, 1.5981445, 10.842224)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cmx3h"]
+material = ExtResource("22_4ecs0")
+size = Vector2(1, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3eu5h"]
+render_priority = 0
+shader = ExtResource("23_cmx3h")
+shader_parameter/Main_Color = Color(1, 1, 1, 1)
+shader_parameter/Effect_Color = Color(0.9195111, 0.93653417, 1, 1)
+shader_parameter/Octave_Count = 12
+shader_parameter/Amp_Start = 0.865
+shader_parameter/Amp_Coeff = 0.5
+shader_parameter/Freq_Coeff = 5.0
+shader_parameter/Speed = 3.0
+shader_parameter/Y_Size = 4.0
+shader_parameter/X_Size = 1.0
+shader_parameter/Emission_Power = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_iarrb"]
+material = SubResource("ShaderMaterial_3eu5h")
+size = Vector2(1, 5)
+
+[sub_resource type="Animation" id="Animation_iarrb"]
+resource_name = "LightningStrike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("lightningstrike:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("lightningstrike2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.29999998, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"thundersound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fep24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lightningstrike:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lightningstrike2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uab4x"]
+_data = {
+&"LightningStrike": SubResource("Animation_iarrb"),
+&"RESET": SubResource("Animation_fep24")
+}
+
+[node name="FNAK2L1PROD" type="Node3D" unique_id=236306706]
+script = ExtResource("1_7e71f")
+
+[node name="WorldBase" type="CSGBox3D" parent="." unique_id=38215183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -4, 109.5)
+use_collision = true
+collision_layer = 3
+size = Vector3(94, 9, 246)
+material = SubResource("StandardMaterial3D_wi073")
+
+[node name="ScatterShotZone" type="Node3D" parent="WorldBase" unique_id=726026086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 6, 3)
+script = ExtResource("2_nnfwr")
+pattern = SubResource("Resource_7e71f")
+depth = 2.0
+density = 0.8999999999999999
+rect_size = Vector2(92.21505, 237.14532)
+collection_mask = 4294967295
+metadata/_custom_type_script = "uid://8ewcp6y5t36e"
+
+[node name="ScatterShotModulator" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=782659939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 61)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 113.06415)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator7" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=2124019502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 27.877716)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator2" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=620290957]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.306866, 0, 96.306244)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(18.736176, 51.652557)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator3" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=1678004368]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 67)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 38.51253)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator5" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=61549472]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, -23, 0, -24)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 50.609085)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator8" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=1228470924]
+transform = Transform3D(-0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071067, 10, 0, -44)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 26.932827)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator9" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=1764037940]
+transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, 14, 0, -59)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 26.932827)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator10" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=594227325]
+transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, 6, 0, -75)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 26.932827)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator11" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=44654385]
+transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, -12, 0, -93)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 26.932827)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator12" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=953841315]
+transform = Transform3D(-0.99999976, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -0.99999976, -16, 0, -105)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(11.638721, 34.980267)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator6" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=1337061548]
+transform = Transform3D(0.25881898, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881898, 25.3, 0, -12)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+rect_size = Vector2(18.535719, 38.51253)
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="ScatterShotModulator4" type="Node3D" parent="WorldBase/ScatterShotZone" unique_id=953038299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+script = ExtResource("8_avhbr")
+density = -1.0
+hardness = 1.0
+shape = 1
+circle_radius = 18.24952
+metadata/_custom_type_script = "uid://bakbblh68cskr"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=112251244]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+light_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=259753081]
+environment = SubResource("Environment_dwbsr")
+
+[node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("1_0omua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.570799, 2, 224.85878)
+HaveNick = false
+
+[node name="OuterWall" type="CSGBox3D" parent="." unique_id=107937017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.329918, 27.061357, 108.15)
+use_collision = true
+size = Vector3(97.659836, 58.522717, 249.7)
+material = ExtResource("12_wo251")
+
+[node name="TunnelOpening" type="CSGBox3D" parent="OuterWall" unique_id=180128053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -25.103064, -117.5)
+operation = 2
+size = Vector3(4, 2.8, 18)
+material = ExtResource("12_wo251")
+
+[node name="OuterWall2" type="CSGBox3D" parent="OuterWall" unique_id=1878523358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4598122, 5.3391094, 3.3301468)
+operation = 2
+use_collision = true
+size = Vector3(92.68276, 69.200935, 234.61545)
+material = ExtResource("12_wo251")
+
+[node name="Cave" type="CSGBox3D" parent="." unique_id=14409691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 6, -45)
+use_collision = true
+size = Vector3(42, 13, 57)
+material = ExtResource("12_wo251")
+
+[node name="TunnelOpening" type="CSGBox3D" parent="Cave" unique_id=11476479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.05, -4.050002, 9.599998)
+operation = 2
+size = Vector3(4.2000003, 2.8, 39.100002)
+material = ExtResource("12_wo251")
+
+[node name="WeirdCircle" type="CSGTorus3D" parent="Cave" unique_id=1699133113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.2, 0)
+operation = 2
+inner_radius = 11.0
+outer_radius = 15.0
+material = ExtResource("12_wo251")
+
+[node name="WeirdCircle2" type="CSGTorus3D" parent="Cave" unique_id=336099819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.099999905, 14)
+operation = 2
+inner_radius = 5.0
+outer_radius = 9.0
+material = ExtResource("12_wo251")
+
+[node name="RampUp" type="CSGBox3D" parent="Cave" unique_id=673666927]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, -6.199999, -2.5669873, 16.75)
+operation = 2
+size = Vector3(5, 2, 9)
+material = ExtResource("12_wo251")
+
+[node name="RampUp2" type="CSGBox3D" parent="Cave" unique_id=893211263]
+transform = Transform3D(0.258819, -0.9659258, 0, 0.9659258, 0.258819, 0, 0, 0, 1, -6.064644, -0.4609213, -11.800003)
+operation = 2
+size = Vector3(2.6000001, 2.7, 35.9)
+material = ExtResource("12_wo251")
+
+[node name="AreaBeforeGasStation" type="CSGBox3D" parent="." unique_id=1232647674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, -1, -108.5)
+size = Vector3(40, 1, 72)
+
+[node name="AreaBeforeGasStation2" type="CSGBox3D" parent="." unique_id=1156005908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -1, -180.5)
+size = Vector3(127, 1, 72)
+
+[node name="GasStation" type="CSGBox3D" parent="." unique_id=1604431553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5, 9.299999, -179.5)
+size = Vector3(45, 19, 49)
+
+[node name="Negative" type="CSGBox3D" parent="GasStation" unique_id=1288679368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+operation = 2
+size = Vector3(43, 19, 47)
+
+[node name="fountain" parent="." unique_id=705901927 instance=ExtResource("15_tcvym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.180715, 1.1102031, 103.1211)
+
+[node name="Node3D" parent="." unique_id=492649114 instance=ExtResource("16_wi073")]
+transform = Transform3D(-0.36477923, 0, -0.931094, 0, 1, 0, 0.931094, 0, -0.36477923, -27.674843, 0.54566133, 79.00119)
+
+[node name="FountainLamp" parent="." unique_id=1522316606 instance=ExtResource("17_sindi")]
+transform = Transform3D(0.95388997, 0.20704305, -0.21731797, 1.3552459e-08, 0.7240155, 0.6897836, 0.3001566, -0.65797794, 0.6906312, 4.997516, 1.5333418, 107.20542)
+
+[node name="FountainLamp2" parent="." unique_id=587872094 instance=ExtResource("17_sindi")]
+transform = Transform3D(-0.9630921, 0.1856705, -0.1948847, -1.4176447e-08, 0.7240154, 0.6897835, 0.26917186, 0.6643254, -0.69729376, 5.1072316, 1.4893779, 99.00713)
+
+[node name="FountainLamp3" parent="." unique_id=2143483010 instance=ExtResource("17_sindi")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.69512284, 0.7188911, 0, -0.7188912, 0.6951228, 5.98488, 4.6994796, 103.81213)
+
+[node name="FountainLamp4" parent="." unique_id=1658812530 instance=ExtResource("17_sindi")]
+transform = Transform3D(-0.9980604, 0.04475137, -0.04327177, 0, 0.69512284, 0.7188911, 0.062250536, 0.71749693, -0.6937746, 6.3403077, 4.6994796, 102.393196)
+
+[node name="KeyPickup2" parent="." unique_id=2089337175 instance=ExtResource("2_dwbsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.17857, 1.6402341, 81.81983)
+keyname = "PowerShack"
+
+[node name="ElectricFence" parent="." unique_id=872031932 instance=ExtResource("20_gqvo6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8058853, 0.5000002, 84.31866)
+
+[node name="Shack2" parent="." unique_id=732115690 instance=ExtResource("18_yeuit")]
+transform = Transform3D(-0.36758888, 0, 0.9299884, 0, 1, 0, -0.9299884, 0, -0.36758888, 41.91151, 0.58939576, 97.23267)
+
+[node name="NickShack" parent="." unique_id=2143859101 instance=ExtResource("18_51jqd")]
+transform = Transform3D(-0.006771795, 0, 0.99997705, 0, 1, 0, -0.99997705, 0, -0.006771795, 39.453285, 0.5099995, 204.7507)
+
+[node name="NickBodyTree" parent="." unique_id=532695563 instance=ExtResource("19_51jqd")]
+transform = Transform3D(0.34831032, 0, -0.9373793, 0, 1, 0, 0.9373793, 0, 0.34831032, 27.96258, 0.48378968, 213.28548)
+
+[node name="RockCrash" parent="." unique_id=438978440 instance=ExtResource("20_7e71f")]
+transform = Transform3D(-0.02797398, 0, 0.99960864, 0, 1, 0, -0.99960864, 0, -0.02797398, 20.813543, 1.1968125, 213.64226)
+
+[node name="TriggerBox" type="Node3D" parent="." unique_id=1642403084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.471404, 0.5, 208.33484)
+script = ExtResource("21_gqvo6")
+TriggerName = "NickLightningFlash"
+
+[node name="Area3D" type="Area3D" parent="TriggerBox" unique_id=333063433]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerBox/Area3D" unique_id=1958832427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.199708, 0.9264772, -1.169281)
+shape = SubResource("BoxShape3D_4ecs0")
+
+[node name="TheLightning" type="Node3D" parent="." unique_id=1321885808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.007874, 0, 207.57188)
+visible = false
+
+[node name="lightningstrike" type="MeshInstance3D" parent="TheLightning" unique_id=1910803848]
+transform = Transform3D(-0.04775153, 0, 0.9988593, 0, 1, 0, -0.9988593, 0, -0.04775153, 0, 6.260953, 0)
+mesh = SubResource("QuadMesh_cmx3h")
+
+[node name="lightningstrike2" type="MeshInstance3D" parent="TheLightning" unique_id=2051680830]
+transform = Transform3D(0.5004835, 0, 0.865746, 0, 1, 0, -0.865746, 0, 0.5004835, 0, 6.260953, 0)
+mesh = SubResource("QuadMesh_iarrb")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="TheLightning" unique_id=1134466144]
+stream = ExtResource("24_3eu5h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TheLightning" unique_id=726952073]
+libraries/ = SubResource("AnimationLibrary_uab4x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TheLightning" unique_id=1787724306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66897655, 0)
+light_color = Color(0, 0.3046415, 0.70024055, 1)
+
+[node name="GnomeCoin" parent="." unique_id=1760822471 instance=ExtResource("25_iarrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.030403, 1.5, 205.87263)
+coinname = "Coin 1"
+
+[node name="GnomeCoin2" parent="." unique_id=1695066356 instance=ExtResource("25_iarrb")]
+transform = Transform3D(0.13065773, -0.3914701, 0.9108677, 0.055584755, 0.9201909, 0.3875037, -0.9898682, 0, 0.14198981, -40.313663, 0.75, -3.223441)
+coinname = "Coin 2"
+
+[connection signal="shackpowertoggle" from="Shack2" to="ElectricFence" method="powertoggle"]
+[connection signal="playertrigger" from="TriggerBox" to="." method="nicklightningtrigger"]
+[connection signal="body_entered" from="TriggerBox/Area3D" to="TriggerBox" method="_on_area_3d_body_entered"]

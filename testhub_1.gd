@@ -9,7 +9,7 @@ var annoyancemulti = 1
 var annoyancepatience = 1.0
 var annoyancepatiencebool = false
 
-var checkpoint := int(SaveManager.get_value(&"playercheckpoint", 0))
+
 
 var KeckbearFlashed = false
 signal lightonshadow
@@ -17,16 +17,12 @@ signal lightonshadow
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	savecheckpoint()
-
+	pass
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		checkpoint += 1
-		savecheckpoint()
 	CompProgressBar.value = annoyance
 	if annoyancepatiencebool == true:
 		annoyancemulti =  clamp(annoyancemulti -.05 * delta ,.5,1.75)
@@ -52,9 +48,7 @@ func _unhandled_input(event):
 	your_subviewport.push_input(event)
 
 
-func savecheckpoint():
-	SaveManager.set_value(&"playercheckpoint", checkpoint)
-	SaveManager.persist()
+
 
 
 func _on_phone_screen_texture_qteresult(result) -> void:

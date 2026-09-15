@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://csmsf5t5c5k7f" path="res://assets/models/keyig.glb" id="1_2rff8"]
 [ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_77p7a"]
+[ext_resource type="Texture2D" uid="uid://bvk4j4omrc86h" path="res://assets/sprites/test assets/Key.svg" id="1_gmdnd"]
 
 [resource]
 script = ExtResource("1_77p7a")
 model = ExtResource("1_2rff8")
-position = Vector3(3.5605502, 2, -4.015279)
-rotation = Vector3(1.3442341, -0.4578676, 3.075861)
+image = ExtResource("1_gmdnd")
+position = Vector3(0, 0, -1)
 function = "UseKey"
 metadata/_custom_type_script = "uid://cjikoacyfclgn"

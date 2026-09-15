@@ -12,6 +12,8 @@ enum AlertState {Passive,Alert,Hunting,Chase}
 @export var Keckeyes: RayCast3D
 var playerinrange: bool = false
 var stunned = false
+var waited = false
+var waittime = 0
 
 
 
@@ -24,9 +26,16 @@ func _ready() -> void:
 	
 	bt_player.active = true
 	
+	$keckbearrunning/AnimationPlayer.play("mixamo_com")
+	
+	
 	
 func attack():
 	print("get attacked")
+	bt_player.active = false
+	var player = get_tree().get_first_node_in_group("PlayerUI")
+	player.GetScared()
+	hide()
 
 func stun():
 	bt_player.active = false
@@ -40,7 +49,7 @@ func stun():
 	bt_player.active = true
 
 func get_random_point() -> Vector3:
-	var randompoint = NavigationServer3D.map_get_random_point(NavMap.get_navigation_map(), 1, true)
+	var randompoint = NavigationServer3D.map_get_random_point(NavMap.get_navigation_map(), 1, false)
 	bt_player.blackboard.set_var("pos",randompoint)
 	return randompoint
 
@@ -57,6 +66,10 @@ func move(target_pos: Vector3, delta: float):
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	
+	waittime += 1 * delta
+	if waittime >= 1.0:
+		waited =  true
 	
 	if stunned == true:
 		velocity = Vector3.ZERO
@@ -85,7 +98,8 @@ func CanSeePlayer():
 	Keckeyes.force_raycast_update()
 	
 	if Keckeyes.is_colliding():
-		return Keckeyes.get_collider().is_in_group("Player")
+		if Keckeyes.get_collider().has_method("is_in_group"):
+			return Keckeyes.get_collider().is_in_group("Player")
 	return false
 
 func Alert(pos):

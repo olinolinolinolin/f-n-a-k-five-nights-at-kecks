@@ -1,21 +1,37 @@
 [gd_scene format=3 uid="uid://ckn5f17k7op85"]
 
+[ext_resource type="Script" uid="uid://mcws0esdcub2" path="res://assets/material/fnak_2lvl_1.gd" id="1_73tud"]
 [ext_resource type="Material" uid="uid://m0fcv6exy3o2" path="res://assets/material/testing.tres" id="1_e7sox"]
 [ext_resource type="Material" uid="uid://b10us5pckey2w" path="res://assets/material/testbuilding.tres" id="2_eh3w6"]
 [ext_resource type="PackedScene" uid="uid://ccjwp7ktwmmni" path="res://assets/items/ArcadeCabinet.tscn" id="2_j1ftj"]
+[ext_resource type="Texture2D" uid="uid://btidf55xhjq7i" path="res://assets/material/FNAK 2 TESTING BLOCKS_1m x 1m.png" id="2_s27hd"]
 [ext_resource type="PackedScene" uid="uid://cchgqcxq8u8ei" path="res://scenes/playerfnak2/player_fnak_2.tscn" id="2_vqkiy"]
 [ext_resource type="PackedScene" uid="uid://ccfwwn0ur26m2" path="res://scenes/interactables/key_pickup.tscn" id="3_rbg00"]
 [ext_resource type="PackedScene" uid="uid://c0np2s0irbbr7" path="res://scenes/interactables/door.tscn" id="3_vqkiy"]
+[ext_resource type="PackedScene" uid="uid://crvl3h5383pab" path="res://gas_pump.tscn" id="4_8cuac"]
 [ext_resource type="PackedScene" uid="uid://dvt0hd6fbpcnh" path="res://scenes/pooptable.tscn" id="4_am8hn"]
 [ext_resource type="PackedScene" uid="uid://w4abji04fdmp" path="res://scenes/interactables/autodoubledoor.tscn" id="4_ghv81"]
 [ext_resource type="LightmapGIData" uid="uid://ejgtni370eig" path="res://assets/material/FNAK2LVL1.lmbake" id="9_nwyb5"]
+[ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="10_hcggu"]
 [ext_resource type="PackedScene" uid="uid://cnfgqb6nnm6hg" path="res://scenes/interactables/FNAK2L1Car.tscn" id="10_ix0f4"]
+[ext_resource type="Resource" uid="uid://do3lrdeudlhqd" path="res://assets/items/FloppyDisk.tres" id="11_c54wa"]
+[ext_resource type="PackedScene" uid="uid://dk0hveoaktipu" path="res://scenes/interactables/GSSafe.tscn" id="12_s27hd"]
+[ext_resource type="Resource" uid="uid://qy83ydbjswg5" path="res://assets/items/GasCan.tres" id="12_ygx3g"]
+[ext_resource type="Resource" uid="uid://cwbttycrj5tx7" path="res://assets/items/Rock.tres" id="13_8cuac"]
+[ext_resource type="PackedScene" uid="uid://cbompuurgbbqo" path="res://lever.tscn" id="14_4lkid"]
+[ext_resource type="PackedScene" uid="uid://dvyyphucbkbaq" path="res://scenes/interactables/gas_can_pickup.tscn" id="15_4lkid"]
+[ext_resource type="Script" uid="uid://8ewcp6y5t36e" path="res://addons/ScatterShot/zone.gd" id="21_6sk2u"]
+[ext_resource type="Script" uid="uid://1b47ci4ks7ew" path="res://addons/ScatterShot/layer.gd" id="22_iq3x7"]
+[ext_resource type="Script" uid="uid://jhw5h6gwpjmr" path="res://addons/ScatterShot/collection.gd" id="23_d3f2m"]
+[ext_resource type="MeshLibrary" uid="uid://d10tmnne7i6es" path="res://assets/models/trees.tres" id="24_a7k14"]
+[ext_resource type="Script" uid="uid://gwqrknegmc0e" path="res://addons/ScatterShot/collection_meshes.gd" id="25_oj8mj"]
+[ext_resource type="Script" uid="uid://dyltpy7s15mtf" path="res://addons/ScatterShot/pattern.gd" id="26_tgj0j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwyb5"]
-sky_top_color = Color(0.18523812, 0.15183389, 0.2822732, 1)
+sky_top_color = Color(0.08335758, 0.067231305, 0.14134806, 1)
 sky_horizon_color = Color(0.119358145, 0.12711313, 0.13460976, 1)
 ground_bottom_color = Color(0.12225228, 0.12225222, 0.1222522, 1)
-ground_horizon_color = Color(0.25565878, 0.2556588, 0.25565875, 1)
+ground_horizon_color = Color(0.118581556, 0.11858132, 0.11858139, 1)
 
 [sub_resource type="Sky" id="Sky_ix0f4"]
 sky_material = SubResource("ProceduralSkyMaterial_nwyb5")
@@ -44,6 +60,13 @@ adjustment_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwyb5"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_obb8v"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_operator = 1
+emission_texture = ExtResource("2_s27hd")
+
 [sub_resource type="Curve3D" id="Curve3D_j1ftj"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, -35.192, 0, 0, 0, 0, 0, 0, 0.9641104, -0.5, -44.513763, 0, 0, 0, 0, 0, 0, -16.67952, -0.5, -47.646317, 0, 0, 0, 0, 0, 0, -37.324776, -0.5, -54.888535, 0, 0, 0, 0, 0, 0, -27.088049, -0.5, -68.377655, 0, 0, 0, 0, 0, 0, -6.7725363, -0.5, -73.39896, 0, 0, 0, 0, 0, 0, 13.358717, -0.5, -71.924835, 0, 0, 0, 0, 0, 0, 17.056564, -0.5, -80.90671, 0, 0, 0, 0, 0, 0, 12.798759, -0.5, -88.723145, 0, 0, 0, 0, 0, 0, -10.997042, -0.5, -94.329254, 0, 0, 0, 0, 0, 0, -27.634993, -0.5, -100.95886, 0, 0, 0, 0, 0, 0, -15.950434, -0.5, -113.6351, 0, 0, 0, 0, 0, 0, 0.19964814, -0.5, -116.50159, 0, 0, 0, 0, 0, 0, 0.302747, -0.5, -128.2221),
@@ -51,23 +74,38 @@ _data = {
 }
 point_count = 15
 
-[node name="Node3D" type="Node3D" unique_id=472739094]
+[sub_resource type="Resource" id="Resource_4mbga"]
+script = ExtResource("25_oj8mj")
+mesh_library = ExtResource("24_a7k14")
+mesh_proportions = Array[int]([10, 10])
+collision_user_data = null
+metadata/_custom_type_script = "uid://gwqrknegmc0e"
+
+[sub_resource type="Resource" id="Resource_j8oks"]
+script = ExtResource("22_iq3x7")
+collections = Array[ExtResource("23_d3f2m")]([SubResource("Resource_4mbga")])
+raycast_mask = 0
+metadata/_custom_type_script = "uid://1b47ci4ks7ew"
+
+[sub_resource type="Resource" id="Resource_h8jhg"]
+script = ExtResource("26_tgj0j")
+layers = Array[ExtResource("22_iq3x7")]([SubResource("Resource_j8oks")])
+metadata/_custom_type_script = "uid://dyltpy7s15mtf"
+
+[node name="FNK2L1" type="Node3D" unique_id=472739094 node_paths=PackedStringArray("ElectricFence")]
+script = ExtResource("1_73tud")
+ElectricFence = NodePath("Fence")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=31463042]
 environment = SubResource("Environment_am8hn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=401965503]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
-visible = false
 light_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 shadow_enabled = true
 
-[node name="TreePlace" type="CSGBox3D" parent="." unique_id=1843525231]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -3, -141.5)
-use_collision = true
-size = Vector3(193, 1, 284)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1607798113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000005, 0)
 navigation_mesh = SubResource("NavigationMesh_e7sox")
 
 [node name="BoxedOutLevel" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=2125035684]
@@ -88,9 +126,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -119.5)
 size = Vector3(9, 1, 26)
 material = ExtResource("1_e7sox")
 
+[node name="ShackGasCanPath" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=719457137]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 37, -1, -211.5)
+size = Vector3(9, 1, 26)
+material = ExtResource("1_e7sox")
+
+[node name="ShackElectricity" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1992360666]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -40, -1, -234.5)
+size = Vector3(9, 1, 26)
+material = ExtResource("1_e7sox")
+
 [node name="GasStationPathEnd" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1402536897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, -1, -273.5)
 size = Vector3(9, 1, 26)
+material = ExtResource("1_e7sox")
+
+[node name="GasStationPathEnd2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1085455288]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 43.8, -1, -345.5)
+size = Vector3(9, 1, 59)
 material = ExtResource("1_e7sox")
 
 [node name="GasPumps" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1480911705]
@@ -113,36 +166,16 @@ size = Vector3(91, 1, 90)
 material = ExtResource("1_e7sox")
 
 [node name="GasPump1" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=608117843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -30.97705)
-size = Vector3(3, 3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 3.5, -30.97705)
+size = Vector3(7, 6, 1)
 
-[node name="GasPump2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=2060600663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -16.97705)
-size = Vector3(3, 3, 1)
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=786610606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 20.5, 24)
+size = Vector3(11, 4, 1)
+material = SubResource("ORMMaterial3D_obb8v")
 
-[node name="GasPump3" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=1044639947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -30.97705)
-size = Vector3(3, 3, 1)
-
-[node name="GasPump4" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=1875619376]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -16.97705)
-size = Vector3(3, 3, 1)
-
-[node name="GasPump5" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=2073968905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -30.97705)
-size = Vector3(3, 3, 1)
-
-[node name="GasPump6" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=281270603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -16.97705)
-size = Vector3(3, 3, 1)
-
-[node name="GasPump7" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=548044664]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -30.97705)
-size = Vector3(3, 3, 1)
-
-[node name="GasPump8" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=905905948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -16.97705)
-size = Vector3(3, 3, 1)
+[node name="GasPump" parent="NavigationRegion3D/BoxedOutLevel/GasStationParking" unique_id=1812068238 instance=ExtResource("4_8cuac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.476353, 0.9998763, -29.50772)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1966693788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, -1, -48.5)
@@ -239,8 +272,8 @@ path_joined = false
 material = ExtResource("1_e7sox")
 
 [node name="Shack" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=58818727]
-transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, -11.232232, 1.5, -67.76777)
-size = Vector3(9, 4, 6)
+transform = Transform3D(0.08715583, 0, 0.99619484, 0, 1, 0, -0.99619484, 0, 0.08715583, 52.76777, 1.55, -210.76776)
+size = Vector3(9, 4.1, 6)
 material = ExtResource("2_eh3w6")
 
 [node name="Shack2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/Shack" unique_id=544369285]
@@ -255,8 +288,29 @@ operation = 2
 size = Vector3(2, 3, 2)
 material = ExtResource("2_eh3w6")
 
-[node name="Door3" parent="NavigationRegion3D/BoxedOutLevel" unique_id=807698237 instance=ExtResource("3_vqkiy")]
-transform = Transform3D(-0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, -0.70710665, -9.969671, -0.5, -70.07323)
+[node name="Door3" parent="NavigationRegion3D/BoxedOutLevel/Shack" unique_id=807698237 instance=ExtResource("3_vqkiy")]
+transform = Transform3D(-0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -0.9999999, -0.7374382, -2, -2.5229683)
+
+[node name="Shack2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=803286281]
+transform = Transform3D(-0.087155715, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, -0.087155715, -54.23223, 1.55, -234.76776)
+size = Vector3(9, 4.1, 6)
+material = ExtResource("2_eh3w6")
+
+[node name="Shack2" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/Shack2" unique_id=1479407668]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -7.6293945e-06, -0.5, 7.6293945e-06)
+operation = 2
+size = Vector3(7, 3, 4)
+material = ExtResource("2_eh3w6")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel/Shack2" unique_id=1675741911]
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, -1.7374344, -0.5, -2.0229645)
+operation = 2
+size = Vector3(2, 3, 2)
+material = ExtResource("2_eh3w6")
+
+[node name="Door3" parent="NavigationRegion3D/BoxedOutLevel/Shack2" unique_id=1717605960 instance=ExtResource("3_vqkiy")]
+transform = Transform3D(-0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -0.9999999, -0.7374382, -2, -2.5229683)
+LockName = "SafeKey"
 
 [node name="GasStation" type="CSGBox3D" parent="NavigationRegion3D/BoxedOutLevel" unique_id=1733723103]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -37.5, 6, -311)
@@ -420,11 +474,12 @@ Locked = true
 LockName = "Door2"
 
 [node name="KeyPickup" parent="NavigationRegion3D" unique_id=928219498 instance=ExtResource("3_rbg00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -51)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -51)
 keyname = "Door1"
 
 [node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("2_vqkiy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -350)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 1, -319)
+InventoryArray = Array[ExtResource("10_hcggu")]([ExtResource("11_c54wa"), ExtResource("12_ygx3g"), ExtResource("13_8cuac")])
 
 [node name="Node3D" parent="." unique_id=1688958343 instance=ExtResource("4_am8hn")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 7, 0, -6)
@@ -448,8 +503,48 @@ spot_attenuation = 1.5
 spot_angle_attenuation = 3.3635907
 
 [node name="Car" parent="." unique_id=1062140473 instance=ExtResource("10_ix0f4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0.5, -366)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 70, 0.5, -345)
 
 [node name="KeyPickup" parent="." unique_id=580623169 instance=ExtResource("3_rbg00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -359)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 1, -302)
 keyname = "ExitCar"
+
+[node name="Safe" parent="." unique_id=1122861221 instance=ExtResource("12_s27hd")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -42.9, 0.49999994, -295.6)
+SafeCombination = [15, 50, 25]
+
+[node name="KeyPickup2" parent="." unique_id=2049359881 instance=ExtResource("3_rbg00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0.6, -295.6)
+keyname = "ExitCar"
+
+[node name="Lever" parent="." unique_id=712083404 instance=ExtResource("14_4lkid")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -55.7, 1.3, -235)
+
+[node name="Fence" type="CSGBox3D" parent="." unique_id=1812016301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.85, -212)
+size = Vector3(1, 6.3, 21)
+
+[node name="GasCanPickup" parent="." unique_id=511223180 instance=ExtResource("15_4lkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0.6, -210)
+
+[node name="KeyPickup3" parent="." unique_id=1195045964 instance=ExtResource("3_rbg00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0, -108)
+keyname = "Door2"
+
+[node name="ScatterShotZone" type="Node3D" parent="." unique_id=204615799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -186)
+script = ExtResource("21_6sk2u")
+pattern = SubResource("Resource_h8jhg")
+density = 0.10000000000000007
+rect_size = Vector2(201.06067, 386.90237)
+metadata/_custom_type_script = "uid://8ewcp6y5t36e"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1590444139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204.5, 3, -189.5)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(208, 15, 404)
+
+[connection signal="LeverPull" from="Lever" to="." method="_on_lever_lever_pull_power"]

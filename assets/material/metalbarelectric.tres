@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://lvw0q87yn155"]
+
+[ext_resource type="Texture2D" uid="uid://i164hl61wnk2" path="res://PSX MEGAPACK/Modular Structures/bars_metal_2_metal_mp_6.png" id="1_sqf6g"]
+[ext_resource type="Shader" uid="uid://dfbhug7xsdb33" path="res://lightning.gdshader" id="2_heqs2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkahc"]
+resource_name = "metal_mp_6"
+cull_mode = 2
+albedo_texture = ExtResource("1_sqf6g")
+texture_filter = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ls54m"]
+noise_type = 5
+seed = -149
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_amstm"]
+noise = SubResource("FastNoiseLite_ls54m")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_tkahc")
+shader = ExtResource("2_heqs2")
+shader_parameter/fire_color = Color(1.92523e-06, 0.6862824, 0.82178897, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_amstm")
+shader_parameter/speed = 1.0
+shader_parameter/fire_intensity = 2.0
+shader_parameter/fresnel_power = 3.0
+shader_parameter/distortion_strength = 0.1
+shader_parameter/noise_scale = 1.0

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dvyyphucbkbaq"]
+
+[ext_resource type="Script" uid="uid://c73y6ycsxkxn1" path="res://scenes/interactables/gas_can_pickup.gd" id="1_emku3"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="2_7s8w0"]
+[ext_resource type="PackedScene" uid="uid://bxgk2xwsolf8d" path="res://assets/models/gascan.tscn" id="3_emku3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dgmr"]
+size = Vector3(0.7067871, 0.8497925, 0.5649414)
+
+[node name="GasCanPickup" type="Node3D" unique_id=928219498]
+script = ExtResource("1_emku3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=533237938]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=426385471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020141602, 0.08981323, 0.0061035156)
+shape = SubResource("BoxShape3D_3dgmr")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("2_7s8w0")]
+InteractText = "Pick up Gas Can"
+
+[node name="gascan" parent="StaticBody3D" unique_id=1106578697 instance=ExtResource("3_emku3")]
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

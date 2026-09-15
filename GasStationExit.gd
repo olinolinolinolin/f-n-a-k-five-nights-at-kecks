@@ -21,3 +21,10 @@ func _on_interact_interact_function() -> void:
 			print("leave")
 	else:
 		print("Car Needs Gas still")
+
+
+func _on_interact_interact_function_gas_port() -> void:
+	if player.HeldItem.key == "GasCanCar":
+		GasFull = true
+	else:
+		print_debug("I need the gas can")

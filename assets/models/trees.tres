@@ -1,0 +1,19 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://d10tmnne7i6es"]
+
+[ext_resource type="ArrayMesh" uid="uid://da65bbl5nol8g" path="res://assets/models/bettertree.tres" id="1_wj2k0"]
+
+[resource]
+item/0/name = "Tree"
+item/0/mesh = ExtResource("1_wj2k0")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "Tree2"
+item/1/mesh = ExtResource("1_wj2k0")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1

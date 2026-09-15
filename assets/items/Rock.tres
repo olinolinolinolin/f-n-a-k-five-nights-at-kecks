@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cwbttycrj5tx7"]
 
 [ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_0cglc"]
-[ext_resource type="Texture2D" uid="uid://cqmtu8lr7d7u3" path="res://assets/sprites/test assets/4.png" id="1_4klww"]
+[ext_resource type="Texture2D" uid="uid://dbkeurkusgpgh" path="res://assets/sprites/test assets/Group 2.svg" id="1_4klww"]
 [ext_resource type="PackedScene" uid="uid://xa0wny217frs" path="res://assets/models/Hand.glb" id="1_dewcg"]
 
 [resource]

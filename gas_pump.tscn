@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://crvl3h5383pab"]
+
+[ext_resource type="Script" uid="uid://3p0y8vvkxgjs" path="res://gas_pump.gd" id="1_dk0wy"]
+[ext_resource type="Material" uid="uid://b10us5pckey2w" path="res://assets/material/testbuilding.tres" id="2_50cfq"]
+[ext_resource type="PackedScene" uid="uid://xtsbjnu1pa40" path="res://scenes/interactables/interact.tscn" id="3_go257"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ts7ab"]
+size = Vector3(1, 2, 1)
+
+[node name="GasPump" type="Node3D" unique_id=1812068238]
+script = ExtResource("1_dk0wy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1533147529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+size = Vector3(1, 1.6, 1)
+material = ExtResource("2_50cfq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1281569803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+operation = 2
+size = Vector3(1, 1.4, 1)
+material = ExtResource("2_50cfq")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=1939074145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90000004, 0, 0)
+operation = 2
+size = Vector3(1, 1.4, 1)
+material = ExtResource("2_50cfq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1588007614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+size = Vector3(1, 0.4, 1)
+material = ExtResource("2_50cfq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1374450904]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=478474338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ts7ab")
+
+[node name="Interact" parent="StaticBody3D" unique_id=931876195 instance=ExtResource("3_go257")]
+InteractText = "Fill Gas Can"
+
+[connection signal="InteractFunction" from="StaticBody3D/Interact" to="." method="_on_interact_interact_function"]

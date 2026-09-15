@@ -16,24 +16,29 @@ var PlayingCabinet = false
 @export_category("Inventory")
 @export var InventoryArray: Array[Item] = []
 @export var HeldItem : Item
+@export var InventorySlots: Array[TextureRect] = []
 @export_category("Player Vars")
 @export var HaveNick: bool = false
 var InventoryIndex := 0
+var IsGameOver = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	showhelditem()
 	UpdateInventory()
 	if HaveNick == false :
-		$PlayerBody/PlayerHead/PlayerCamera/HeadController/NickHeadTest.hide()
-
+		$PlayerBody/PlayerHead/PlayerCamera/HeadController/handholdingnick.hide()
+		$PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D.hide()
+		$PlayerBody/PlayerHead/PlayerCamera/OmniLight3D.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if InteractionRay.get_collider() != null:
 		var HoveredObject = InteractionRay.get_collider()
 		if HoveredObject != null:
-			for child in HoveredObject.get_children():
-				if child.has_method("Interact"):
-					child.SendInteractTextFunc()
+			if HoveredObject.has_method("get_children"):
+				for child in HoveredObject.get_children():
+					if child.has_method("Interact"):
+						child.SendInteractTextFunc()
 	else:
 		InteractText.text = " "
 	if OS.is_debug_build():
@@ -62,7 +67,7 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("UseHeldItem"):
 			self.call(HeldItem.function)
 		if Input.is_key_pressed(KEY_Q):
-			DropItem()
+			GetScared()
 
 
 
@@ -71,10 +76,11 @@ func trytointeract():
 	if InteractionRay.get_collider() != null:
 		var InteractedObject = InteractionRay.get_collider()
 		print("Interacting With ", InteractedObject)
-		if InteractedObject.get_children() != null:
-			for child in InteractedObject.get_children():
-				if child.has_method("Interact"):
-					child.Interact()
+		if InteractedObject.has_method("get_children"):
+			if InteractedObject.get_children() != null:
+				for child in InteractedObject.get_children():
+					if child.has_method("Interact"):
+						child.Interact()
 
 
 func showhelditem():
@@ -89,7 +95,7 @@ func showhelditem():
 	
 	item_model.position = HeldItem.position
 	item_model.rotation = HeldItem.rotation
-	var InvIcons = [$PlayerUI/HBoxContainer/TextureRect, $PlayerUI/HBoxContainer/TextureRect2, $PlayerUI/HBoxContainer/TextureRect3]
+	var InvIcons = InventorySlots
 	var progress = 0
 	for Icon in InvIcons:
 		InvIcons[progress].material = null
@@ -144,14 +150,16 @@ func ConsumeItem():
 	showhelditem()
 
 func UpdateInventory():
-	var InvIcons = [$PlayerUI/HBoxContainer/TextureRect, $PlayerUI/HBoxContainer/TextureRect2, $PlayerUI/HBoxContainer/TextureRect3]
+	var InvIcons = InventorySlots 
 	var progress = 0
 	for Icon in InvIcons:
 		Icon.texture = InventoryArray[progress].image
 		progress += 1
 
 func GetNick():
-	$PlayerBody/PlayerHead/PlayerCamera/HeadController/NickHeadTest.show()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/handholdingnick.show()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D.show()
+	$PlayerBody/PlayerHead/PlayerCamera/OmniLight3D.show()
 	HaveNick = true
 
 func StartArcade():
@@ -163,3 +171,27 @@ func StopArcade():
 	InteractionRay.enabled = true
 	$PlayerUI.show()
 	$PlayerBody.show()
+
+
+func GetScared():
+	PlayingCabinet = true
+	$PlayerBody/PlayerHead/PlayerCamera/olinbearjumpscare.top_level = true
+	$PlayerBody/PlayerHead/PlayerCamera/CameraAnimPlayer.play("Jumpscare#1")
+	$PlayerUI.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/Hand2/Hand.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/OmniLight3D.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/SpotLight3D.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/olinbearjumpscare.show()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/handholdingnick.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/HeadController/RightHand.hide()
+	$PlayerBody/PlayerHead/PlayerCamera/olinbearjumpscare/AnimationPlayer.play("Jumpscare#1")
+
+func GameOver():
+	$CanvasLayer/GameOver.show()
+	IsGameOver = true
+	$CanvasLayer/RestartButton.show()
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	$CanvasLayer/RestartButton.grab_focus()
+
+func _on_restart_button_pressed() -> void:
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)

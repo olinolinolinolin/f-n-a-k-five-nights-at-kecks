@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cvajcrg8ve0u6"]
+
+[ext_resource type="Shader" uid="uid://w8yo3md63ma4" path="res://assets/material/AuraShader.gdshader" id="1_tajx5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2yj2r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1dkcx"]
+noise = SubResource("FastNoiseLite_2yj2r")
+seamless = true
+invert = true
+in_3d_space = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tajx5")
+shader_parameter/color_base = Color(0.6269438, 0, 0.1373021, 1)
+shader_parameter/color_mid = Color(0.6269438, 0, 0.1373021, 1)
+shader_parameter/color_tip = Color(0.6269438, 0, 0.1373021, 1)
+shader_parameter/intensity = 2.0
+shader_parameter/fresnel_power = 1.5000000679901202
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_1dkcx")
+shader_parameter/rise_speed = 1.5
+shader_parameter/turbulence_scale = 4.0
+shader_parameter/flame_height = 2.0
+shader_parameter/taper_sharpness = 2.5
+shader_parameter/flicker_speed = 6.0
+shader_parameter/tip_break_up = 0.8
+shader_parameter/tip_pinch = 0.4
+shader_parameter/wobble_amount = 0.05

@@ -22,6 +22,7 @@ general/text_to_speech=true
 [autoload]
 
 SaveManager="*uid://ikolxducgv75"
+Playerstats="*uid://c2svx7qdi16w0"
 
 [display]
 
@@ -32,7 +33,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg", "res://addons/ultimate_asset_placer_v1.5/ultimate_placer/plugin.cfg", "res://addons/ultimate_placer/plugin.cfg")
+enabled=PackedStringArray("res://addons/ScatterShot/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/savestate/plugin.cfg", "res://addons/savestate_pro/plugin.cfg", "res://addons/ultimate_placer/plugin.cfg")
 
 [global_group]
 
@@ -183,6 +184,16 @@ Run={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
 
 [limbo_ai]
 
@@ -195,7 +206,6 @@ behavior_tree/favorite_tasks=PackedStringArray("BTSequence", "BTComment", "BTSel
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true
 
 [savestate]

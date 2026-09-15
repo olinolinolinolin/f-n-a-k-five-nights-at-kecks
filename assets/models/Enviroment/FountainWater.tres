@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bxjyd5v3dhodi"]
+
+[ext_resource type="Shader" uid="uid://dokhv8qidkbvc" path="res://assets/models/Enviroment/FountainWater.gdshader" id="1_l6lvk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l6lvk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1s4bh"]
+noise = SubResource("FastNoiseLite_l6lvk")
+
+[sub_resource type="Gradient" id="Gradient_vwvs6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hq5wo"]
+gradient = SubResource("Gradient_vwvs6")
+
+[sub_resource type="Gradient" id="Gradient_hvtu5"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gn4ju"]
+gradient = SubResource("Gradient_hvtu5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_l6lvk")
+shader_parameter/albedo = Color(0.19589126, 0.6409935, 0.75525296, 1)
+shader_parameter/water_texture1 = SubResource("GradientTexture2D_hq5wo")
+shader_parameter/water_texture2 = SubResource("GradientTexture2D_gn4ju")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_1s4bh")
+shader_parameter/scroll_speed1 = Vector2(0.05, 0)
+shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
+shader_parameter/blend_factor = 1.0
+shader_parameter/scale1 = Vector2(1, 1)
+shader_parameter/scale2 = Vector2(1, 1)
+shader_parameter/wave_strength = 0.0
+shader_parameter/wave_scale = 0.02
+shader_parameter/pixelation_level = 64
+shader_parameter/FoamSize = 0.5
+shader_parameter/WaterOpacity = 0.95
+shader_parameter/FoamGlowIntensity = 0.05

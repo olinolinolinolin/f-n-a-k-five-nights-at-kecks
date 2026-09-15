@@ -5,5 +5,5 @@
 [resource]
 shader = ExtResource("1_acqxs")
 shader_parameter/allow_out_of_bounds = true
-shader_parameter/outline_thickness = 1.0
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 10.0
+shader_parameter/outline_color = Color(9.1448425e-07, 0.44125855, 0.2379393, 1)

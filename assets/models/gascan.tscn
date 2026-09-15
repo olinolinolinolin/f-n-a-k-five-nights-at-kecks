@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bxgk2xwsolf8d"]
+
+[ext_resource type="PackedScene" uid="uid://bxqi2aswvk3pw" path="res://assets/models/gascan.glb" id="1_6y8q7"]
+[ext_resource type="Material" uid="uid://m0fcv6exy3o2" path="res://assets/material/testing.tres" id="2_k1f0o"]
+
+[node name="gascan" unique_id=1106578697 instance=ExtResource("1_6y8q7")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Cylinder" parent="." index="1" unique_id=507475082]
+surface_material_override/0 = ExtResource("2_k1f0o")

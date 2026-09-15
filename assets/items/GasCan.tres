@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://qy83ydbjswg5"]
+
+[ext_resource type="Script" uid="uid://cjikoacyfclgn" path="res://assets/customresources/Item.gd" id="1_p1exi"]
+[ext_resource type="Texture2D" uid="uid://ctbm24rtcsmng" path="res://assets/sprites/test assets/Gas Can.svg" id="1_qilyj"]
+[ext_resource type="PackedScene" uid="uid://bxgk2xwsolf8d" path="res://assets/models/gascan.tscn" id="2_hsdig"]
+
+[resource]
+script = ExtResource("1_p1exi")
+model = ExtResource("2_hsdig")
+image = ExtResource("1_qilyj")
+position = Vector3(-0.099999994, 0, -0.100000024)
+function = "UseNothing"
+key = "GasFill"
+metadata/_custom_type_script = "uid://cjikoacyfclgn"

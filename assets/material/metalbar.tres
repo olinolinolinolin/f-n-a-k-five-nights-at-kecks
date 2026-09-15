@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://mrq2cq736wm8"]
+
+[ext_resource type="Texture2D" uid="uid://i164hl61wnk2" path="res://PSX MEGAPACK/Modular Structures/bars_metal_2_metal_mp_6.png" id="1_3f5qm"]
+
+[resource]
+resource_name = "metal_mp_6"
+cull_mode = 2
+albedo_texture = ExtResource("1_3f5qm")
+texture_filter = 2

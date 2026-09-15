@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3x1numodqs16"]
+
+[ext_resource type="Shader" uid="uid://bviwni1b0v7iv" path="res://assets/material/lightning.gdshader" id="1_l3y1y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_l3y1y")
+shader_parameter/Main_Color = Color(1, 1, 1, 1)
+shader_parameter/Effect_Color = Color(0.3, 0.3, 1, 1)
+shader_parameter/Octave_Count = 12
+shader_parameter/Amp_Start = 0.865
+shader_parameter/Amp_Coeff = 0.5
+shader_parameter/Freq_Coeff = 5.0
+shader_parameter/Speed = 3.0
+shader_parameter/Y_Size = 4.0
+shader_parameter/X_Size = 1.0
+shader_parameter/Emission_Power = 2.0

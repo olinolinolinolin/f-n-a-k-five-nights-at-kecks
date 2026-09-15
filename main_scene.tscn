@@ -58,8 +58,10 @@ attacktime2 = 10000000.0
 loop = false
 
 [node name="Sprite3D" parent="Keckbear/Path3D/PathFollow3D" index="0" unique_id=473914356]
+transform = Transform3D(0.99999994, -5.820766e-11, -9.313226e-10, -5.820766e-11, 0.99999994, -7.2857347e-09, 4.656613e-10, 7.614744e-09, 1, 0, 0, 0)
 visible = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 
 [editable path="Keckbear"]
