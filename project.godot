@@ -21,8 +21,8 @@ general/text_to_speech=true
 
 [autoload]
 
-SaveManager="*uid://ikolxducgv75"
 Playerstats="*uid://c2svx7qdi16w0"
+SaveManager="*uid://ikolxducgv75"
 
 [display]
 

@@ -73,7 +73,7 @@ fog_depth_begin = 5.0
 fog_depth_end = 50.0
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.099985994, 0.099985994, 0.09998598, 1)
-volumetric_fog_emission = Color(0.43739322, 0.13313842, 0.11430145, 1)
+volumetric_fog_emission = Color(0.35721987, 0.10092736, 0.08717135, 1)
 volumetric_fog_emission_energy = 0.1
 volumetric_fog_length = 128.0
 volumetric_fog_sky_affect = 0.0
@@ -317,8 +317,7 @@ shadow_enabled = true
 environment = SubResource("Environment_dwbsr")
 
 [node name="PlayerFNAK2" parent="." unique_id=1413244261 instance=ExtResource("1_0omua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.570799, 2, 224.85878)
-HaveNick = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4698124, 2, 0.3333702)
 
 [node name="OuterWall" type="CSGBox3D" parent="." unique_id=107937017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.329918, 27.061357, 108.15)
@@ -340,39 +339,52 @@ size = Vector3(92.68276, 69.200935, 234.61545)
 material = ExtResource("12_wo251")
 
 [node name="Cave" type="CSGBox3D" parent="." unique_id=14409691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 6, -45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7662916, -2.8740244, -45.011086)
 use_collision = true
-size = Vector3(42, 13, 57)
+size = Vector3(86.529724, 30.748047, 57)
 material = ExtResource("12_wo251")
 
 [node name="TunnelOpening" type="CSGBox3D" parent="Cave" unique_id=11476479]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.05, -4.050002, 9.599998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.214862, 4.8240213, 9.599998)
 operation = 2
 size = Vector3(4.2000003, 2.8, 39.100002)
 material = ExtResource("12_wo251")
 
 [node name="WeirdCircle" type="CSGTorus3D" parent="Cave" unique_id=1699133113]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.94322, 4.6740236, 0)
+operation = 2
+inner_radius = 11.0
+outer_radius = 15.0
+material = ExtResource("12_wo251")
+
+[node name="WeirdCircle3" type="CSGTorus3D" parent="Cave" unique_id=908371296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7793026, 4.6740236, 0)
 operation = 2
 inner_radius = 11.0
 outer_radius = 15.0
 material = ExtResource("12_wo251")
 
 [node name="WeirdCircle2" type="CSGTorus3D" parent="Cave" unique_id=336099819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.099999905, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.94322, 8.774023, 14)
 operation = 2
 inner_radius = 5.0
 outer_radius = 9.0
 material = ExtResource("12_wo251")
 
 [node name="RampUp" type="CSGBox3D" parent="Cave" unique_id=673666927]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, -6.199999, -2.5669873, 16.75)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, -26.143219, 6.3070364, 16.75)
+operation = 2
+size = Vector3(5, 2, 9)
+material = ExtResource("12_wo251")
+
+[node name="RampUp3" type="CSGBox3D" parent="Cave" unique_id=1965738866]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 4.6489105, 2.552218, 9.818672)
 operation = 2
 size = Vector3(5, 2, 9)
 material = ExtResource("12_wo251")
 
 [node name="RampUp2" type="CSGBox3D" parent="Cave" unique_id=893211263]
-transform = Transform3D(0.258819, -0.9659258, 0, 0.9659258, 0.258819, 0, 0, 0, 1, -6.064644, -0.4609213, -11.800003)
+transform = Transform3D(0.258819, -0.9659258, 0, 0.9659258, 0.258819, 0, 0, 0, 1, -26.007864, 8.413102, -11.800003)
 operation = 2
 size = Vector3(2.6000001, 2.7, 35.9)
 material = ExtResource("12_wo251")
